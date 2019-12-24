@@ -1,0 +1,8 @@
+<!--components/pickerYMDHM/pickerYMDHM.wxml-->
+<view>
+  <picker class="pictime" disabled="{{disabled}}" mode="multiSelector" bindchange="pickerChange" bindcolumnchange="pickerColumnChange" bindcancel ="pickerCancel" value="{{pickerIndex}}" range="{{pickerArray}}" range-key="{{'name'}}">
+    <view class="pictxt">
+      {{placeholder}}
+    </view>
+  </picker>
+</view>

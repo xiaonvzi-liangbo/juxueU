@@ -1,0 +1,31 @@
+page{
+  background-color: #F3F3F3;
+}
+.textarea{
+  width: 86%;
+  margin: auto;
+  background-color: #fff;
+  margin-top: 40rpx;
+  border-radius: 20rpx;
+  font-size: 33rpx;
+  padding: 30rpx;
+  line-height: 45rpx;
+  height: 700rpx;
+}
+.word_count{
+  font-size: 25rpx;
+  color: #808080;
+  position: absolute;
+  right:60rpx;
+  margin-top: -55rpx;
+}
+.submit{
+  width: 400rpx;
+  padding: 15rpx 0rpx;
+  text-align: center;
+  background-color: #287ACC;
+  color: #fff;
+  margin: auto;
+  border-radius: 50rpx;
+  margin-top: 150rpx;
+}

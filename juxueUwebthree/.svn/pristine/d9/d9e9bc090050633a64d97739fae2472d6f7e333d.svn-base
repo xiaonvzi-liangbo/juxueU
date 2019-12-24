@@ -1,0 +1,18 @@
+ 
+  <view class="title">
+    <input placeholder="加个美美哒标题吧~~" maxlength="16" placeholder-style="color:#D6D6D6" value="{{title}}" bindinput="headline"></input>
+  </view>
+  <view class="container">
+    <editor id="editor" class="ql-container" placeholder="{{placeholder}}" bindready="onEditorReady" bindinput="onContentChange">
+    </editor>
+  </view>
+  <view class="inco">
+    <view class="inco_left">
+      <view wx:if='{{topicsName}}' class="topics1" bindtap="into" data-url="/pages/components/issuetopics/topics">#{{topicsName}}</view>
+      <button wx:if='{{!topicsName}}' class="topics" bindtap="into" data-url="/pages/components/issuetopics/topics">添加话题</button>
+      <image src="/pages/images/icon-48.png" class="inco_img" bindtap="into" data-url="/pages/components/issueFocus/issueFocues"></image>
+      <image class="inco_img" src="/pages/images/icon-47.png" bindtap="accessToken" data-fun="uploading"></image>
+    </view>
+    <button class="but_fbwt" bindtap="accessToken" data-fun="issue">走你 </button>
+  </view>
+ 

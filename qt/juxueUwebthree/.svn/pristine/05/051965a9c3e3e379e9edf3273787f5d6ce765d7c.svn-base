@@ -1,0 +1,295 @@
+ const requestUrl = require('../../utils/request.js')
+ const time = require('../../utils/time.js')
+ const quantity = require('../../utils/quantity.js')
+ Component({
+       pageLifetimes: {
+         show() {
+           if (typeof this.getTabBar === 'function' &&
+             this.getTabBar()) {
+             this.getTabBar().setData({
+               selected: 0
+             })
+           }
+         }
+       },
+       data: {
+         imgUrls: [],
+         navOneUrl: [{
+             id: '0',
+             url: '../images/university.png',
+             linkUrl: '/pages/universityCircle/invitation/invitation',
+             title: '大学圈'
+           },
+           {
+             id: '1',
+             url: '../images/openclass.png',
+             linkUrl: '/pages/openClass/topTeacher/topTeacher',
+             title: '名师公开课'
+           },
+           {
+             id: '2',
+             url: '../images/promote.png',
+             linkUrl: '/pages/education/promote/promote',
+             title: '自我提升'
+           }, //自我测评
+           {
+             id: '3',
+             url: '../images/getjob.png',
+             linkUrl: '/pages/CourseActivities/CourseActivities',
+             title: '课程活动'
+           }
+         ], //就业分析
+         navTneUrl: [{
+             id: '0',
+             url: '../images/gains.png',
+             linkUrl: '/pages/prospects/Jobanalysis/Jobanalysis',
+             title: '就业分析'
+           }, //自我提升
+           {
+             id: '1',
+             url: '../images/occupation.png',
+             linkUrl: '/pages/appraisal/occupation/occupation',
+             title: '职业测评'
+           }, //赚点外快
+           {
+             id: '2',
+             url: '../images/sign_in.png',
+             linkUrl: '/pages/my/signIn/signIn',
+             title: '签到'
+           }, //兑换
+           {
+             id: '4',
+             url: '../images/exchange.png',
+             linkUrl: '/pages/my/conversion/conversion',
+             title: '兑换'
+           }
+         ], //签到
+         indicatorDots: true, //轮播指示点
+         interval: 5000, //切换时间
+         duration: 1000, //动画时长
+         article: [],
+         pageNum: 1,
+         user: true
+       },
+       methods: {
+         //点击跳转页面
+         navpage(e) {
+           if (e.currentTarget.dataset.linkurl == '/pages/prospects/Jobanalysis/Jobanalysis' || e.currentTarget.dataset.linkurl == '/pages/appraisal/occupation/occupation' || e.currentTarget.dataset.linkurl == '/pages/my/conversion/conversion') {
+             wx.showToast({
+               title: '暂未开放，敬请期待！',
+               icon: 'none',
+               duration: 2000
+             })
+           } else {
+             wx.navigateTo({
+               url: e.currentTarget.dataset.linkurl,
+             })
+           }
+         },
+         //用户授权
+         accredit() {
+           let that = this;
+           wx.getSetting({
+                 success: res => {
+                   if (res.authSetting['scope.userInfo']) {
+                     // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+                     console.log('用户已经授权')
+                   } else {
+                  
+                         limits: true,
+                         wx.navigateTo({
+                           url: '/pages/guidance/guidance',
+                         })
+                       }
+                     }
+                   })
+               },
+               //发帖人详情
+               personage(e) {
+                 wx.navigateTo({
+                   url: '/pages/universityCircle/myPost/myPost?id=' + e.currentTarget.dataset.id,
+                 })
+               },
+               //帖子详情点击事件
+               particulars(e) {
+                 wx.navigateTo({
+                   url: '/pages/universityCircle/information/information?tzid=' + e.currentTarget.dataset.id,
+                 })
+               },
+               //获取校园热点数据
+               getdata() {
+                 let that = this;
+                 console.log('123132132132')
+                 wx.request({
+                   url: requestUrl.requestUrl + '/jXCollagePostsApp/getList',
+                   data: {
+                     postsType: '首页',
+                     isDraft: '0',
+                     pageNum: that.data.pageNum,
+                     pageSize: '10'
+                   },
+                   method: 'GET',
+                   header: {
+                     'content-type': 'application/json',
+                     "content-type": "application/x-www-form-urlencoded"
+                   },
+                   success(res) {
+                     console.log(res, '218126548+9165')
+                     let information = res.data.rows
+                     console.log('有没有走这里')
+                     for (let i = 0; i < information.length; i++) {
+                       //时间处理
+                       information[i].createTime = time.getDateDiff(information[i].createTime);
+                       //数量处理
+                       information[i].commentNumber = quantity.number(information[i].commentNumber);
+                       information[i].visitNumber = quantity.number(information[i].visitNumber)
+                     };
+                     that.setData({
+                       article: that.data.article.concat(information)
+                     });
+                     console.log(that.data.article, '查看这个的值')
+                   }
+                 })
+               },
+               strike() {
+                 this.data.pageNum++
+                   this.getdata() 
+               },
+               //用户授权
+               jurisdiction() {
+                 let that = this;
+                 wx.getSetting({
+                   success: (res) => {
+                     const setting = res.authSetting;
+                     if (setting && setting["scope.userInfo"]) { //是否有用户信息获取权限
+                       console.log("当前用户有权限，自动登陆");
+                     } else {
+                       console.log("当前用户无权限，隐藏主页面");
+                       that.setData({
+                         limits: true
+                       })
+                     }
+                   }
+                 });
+               },
+               //点击授权
+               getUserInfo(e) {
+                 let that = this;
+                 wx.login({
+                   success: res => {
+                     if (res.code) {
+                       //发起网络请求
+                       wx.request({
+                         url: 'https://test.com/onLogin',
+                         data: {
+                           code: res.code
+                         }
+                       })
+                       // 发送 res.code 到后台换取 openId, sessionKey, unionId
+                       wx.request({
+                         url: 'https://api.weixin.qq.com/sns/jscode2session',
+                         method: 'POST',
+                         data: {
+                           appid: 'wx2d6f7f4096390ffe',
+                           secret: '0848d53d48b0a196883dfdcad43b7353',
+                           js_code: res.code,
+                           grant_type: 'authorization_code'
+                         },
+                         header: {
+                           'content-type': 'application/x-www-form-urlencoded',
+                           'Accept': 'application/json'
+                         },
+                         success: function(res) {
+                           wx.setStorageSync('session', res);
+                           wx.setStorageSync('info', e);
+                           that.setData({
+                             user: false
+                           })
+                         }
+                       })
+                     } else {
+                       console.log('登录失败！' + res.errMsg)
+                     }
+                   }
+                 })
+               },
+               //手机号授权
+               phonenumber(e) {
+                 let that = this;
+                 let userinfo = wx.getStorageSync('info');
+                 let session = wx.getStorageSync('session');
+                 wx.request({
+                     url: requestUrl.requestUrl + '/jj/weChat/jm',
+                     method: 'POST',
+                     data: {
+                       encryptedData: e.detail.encryptedData,
+                       errMsg: session.data.session_key,
+                       iv: e.detail.iv
+                     },
+                     header: {
+                       'content-type': 'application/x-www-form-urlencoded',
+                       'Accept': 'application/json'
+                     },
+                     success(res) {
+                       wx.request({
+                         url: requestUrl.requestUrl + '/jXUserApp/authorization',
+                         method: 'post',
+                         data: {
+                           nickName: userinfo.detail.userInfo.nickName,
+                           logo: userinfo.detail.userInfo.avatarUrl,
+                           openId: session.data.openid,
+                           country: userinfo.detail.userInfo.country,
+                           province: userinfo.detail.userInfo.province,
+                           city: userinfo.detail.userInfo.city,
+                           phone: res.data.phoneNumber
+                         },
+                         header: {
+                           'content-type': 'application/x-www-form-urlencoded',
+                           'Accept': 'application/json'
+                         },
+                         success(r) {
+                           console.log(r, '查看这个的值的内容')
+                           console.log(r.data.code, '查看这个1111111的值的内容')
+                           if (r.data.code == '200') {
+                             that.setData({
+                               limits: false
+                             })
+                             wx.setStorageSync('userid', r.data.data.id);
+                             wx.setStorageSync('quanxian', r.data.data.associationId);
+                           }
+                         }
+                       })
+                     }
+                   })
+               },
+               //首页轮播图
+               images() {
+                 let that = this
+                 wx.request({
+                   url: requestUrl.requestUrl + '/jXPictureManageApp/findByAutoFrom',
+                   data: {
+                     pageNum: that.data.pageNum,
+                     pmId:7,
+                     pageSize: 4,
+                   },
+                   method: 'GET',
+                   header: {
+                     'content-type': 'application/json',
+                     "content-type": "application/x-www-form-urlencoded"
+                   },
+                   success(res) {
+                     let information = res.data.rows
+                     that.setData({
+                       imgUrls: that.data.imgUrls.concat(information)
+                     })
+                   }
+                 })
+               }
+
+             },
+             attached() {
+               this.accredit();
+               this.getdata();
+               this.images()
+             }
+         })

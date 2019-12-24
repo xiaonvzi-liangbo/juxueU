@@ -1,0 +1,10 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "article": "/pages/components/my/article/article",
+    "question": "/pages/components/my/question/question",
+    "mood": "/pages/components/my/mood/mood",
+    "i-action-sheet": "/pages/components/action-sheet/index"
+   
+  }
+}

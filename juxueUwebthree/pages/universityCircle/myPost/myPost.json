@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "release": "/pages/components/universityCircle/release/release",
+    "community": "/pages/components/universityCircle/community/community",
+    "navigation": "/pages/index/navigation/navigation"
+  }
+}

@@ -1,0 +1,7 @@
+<view class="custom flex_center" style="height:{{navHeight}}px;padding-top:{{navTop}}px; opacity: {{opacity}} ">
+  <view wx:if="{{back}}" style="margin-top:{{top}}px" bindtap="back" data-url="{{imags}}">
+    <image src="{{imags}}" class="backtrack"></image>
+  </view>
+  <text wx:if="{{dome}}" style="line-height:{{line}}px">{{dome}}</text>
+</view>
+<view wx:if="{{vishow}}" style="height:{{navHeight}}px;margin-bottom:{{bottom}};"></view>

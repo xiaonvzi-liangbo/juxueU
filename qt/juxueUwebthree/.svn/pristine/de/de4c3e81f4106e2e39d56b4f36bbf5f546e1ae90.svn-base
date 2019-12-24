@@ -1,0 +1,78 @@
+.forbid{
+  position: fixed;
+}
+.deliver{
+  width: 95%;
+  margin: auto;
+}
+.time{
+  text-align: center;
+  width: 100%;
+  font-size: 20rpx;
+  color: #666666;
+  margin-top: 20rpx;
+}
+.heard_img{
+  width: 78rpx;
+  height: 78rpx;
+  border-radius: 50%;
+}
+.deli_img{
+  float: right;
+  margin-top: 20rpx;
+  position: relative;
+}
+.deli_conter{
+  margin-top: 25rpx;
+  float: right;
+  max-width: 450rpx;
+  box-shadow: 0 0 10rpx #D9D9D8;
+  padding: 16rpx;
+  margin-right: 20rpx;
+  border-radius: 10rpx;
+  position: relative;
+}
+.flixt{
+  height: 120rpx;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  box-shadow: 0 0 10rpx #D9D9D8;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.input{
+  width: 90%;
+  margin: auto;
+  height: 60rpx;
+  background-color: #E6E6E6 !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 50rpx;
+  /* background-color: red; */
+}
+.send{
+  background-color: #2896CC;
+  height: 100%;
+  width: 160rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #fff;
+  border-radius: 50rpx;
+}
+.input_con{
+  width: 100%;
+  padding: 0 30rpx;
+}
+.heard_icon{
+  width: 28rpx;
+  height: 28rpx;
+  position: relative;
+  right: 25rpx;
+}

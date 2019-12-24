@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "attention":"/pages/components/news/attention/attention",
+    "comment":"/pages/components/news/comment/comment"
+  },"navigationBarTitleText": "消息"
+}

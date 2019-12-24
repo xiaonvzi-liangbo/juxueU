@@ -1,0 +1,21 @@
+<navigation dome="认证中心"></navigation>
+<view  class="conter">
+  <view>
+    <image src="/pages/images/personage.png" class="icons" bindtap="self" wx:if="{{!approve.length}}"></image>
+    <view wx:else>
+      <view  wx:for="{{approve}}" wx:key="index">
+        <view class="all">
+          <image src="{{item.associationImg}}" class="rzicon"></image>
+          <view class="name"> {{item.associationType=='1'?item.associationName:item.collageName}}</view>
+          <view><radio checked="{{true}}" class="radio"></radio></view>
+        </view>
+      </view>
+      <view class="title">你已经认证成功！</view>
+      <view wx:if="{{reveal}}" class="nr">进行多个社团认证请点击下发社团认证！</view>
+      <view wx:else class="nr">升级社团认证请尽快加入社团或点击进行社团认证！</view>
+    </view>
+  </view>
+  <view class="images">
+    <image src="/pages/images/mass.png" class="icons" bindtap="stApprove"></image>
+  </view>
+</view>

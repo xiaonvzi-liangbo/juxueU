@@ -1,0 +1,138 @@
+.heards{
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+  margin:  20rpx  ;
+}
+.search_top{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  background-color: #E5E5E5;
+  padding: 10rpx 30rpx;
+  border-radius: 50rpx;
+  justify-content: space-between;
+  font-size: 24rpx;
+  color: #999999;
+}
+.search{
+  width: 36rpx;
+  height: 36rpx;
+  font-size: 36rpx;
+  color: #000;
+}
+.cleans{
+  width: 100rpx;
+  margin-left: 20rpx;
+  color: #2996CC;
+}
+
+
+.card{
+  width: 95%;
+  margin: auto;
+  margin-bottom: 50rpx;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+.logo{
+  width: 90rpx;
+  height: 90rpx;
+  margin-right: 24rpx;
+  border-radius: 10rpx;
+}
+.name{
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.hot_botm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 15rpx;
+}
+
+.hot_con {
+  flex: auto;
+}
+
+.hot_con_img {
+  width: 22rpx;
+  height: 22rpx;
+  font-size: 32rpx;
+  color: red;
+}
+
+.hot_num {
+  font-size: 22rpx;
+  color: #808080;
+  margin-left: 10rpx;
+}
+
+.middle{
+  font-size: 28rpx;
+  margin: 10rpx 0; 
+}
+.end{
+  padding: 10rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 0;
+  width: 106rpx;
+  height: 106rpx;
+  line-height: 28rpx;
+  background-color: #E6E6E6;
+  font-size: 18rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:4;
+  overflow: hidden;
+}
+.like{
+  width: 34rpx;
+  height: 34rpx;
+}
+.attention{
+  width:50rpx;
+  position: absolute;
+  right:20rpx;
+  top: 30rpx;
+  font-size: 24rpx;
+  background-color: #2996CC;
+  color: #fff;
+  border-radius: 10rpx;
+  padding: 15rpx 27rpx;
+}
+.atten{
+  width:100rpx;
+  height: 48rpx;
+  position: absolute;
+  right:20rpx;
+  top: 30rpx;
+  font-size: 20rpx;
+  text-align: center;
+  line-height: 48rpx;
+  background-image: linear-gradient(to bottom right,#7590f2, #2b6cef);
+ 
+  color:  #fff;
+  border-radius: 24rpx;
+}
+.img_icon{
+  width: 40rpx;
+  height: 40rpx;
+  position: relative;
+  top: 70rpx;
+  right: 35rpx;
+}
+.attention1{
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+  font-size: 24rpx;
+  background-color: #E6E6E6;
+  color: #fff;
+  border-radius: 10rpx;
+  padding: 15rpx 37rpx;
+}

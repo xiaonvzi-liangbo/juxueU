@@ -1,0 +1,166 @@
+import requestUrl from '../../../utils/request.js'
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    member:[],
+    id:'', //认证表id
+    isSuccess:'', //认证区别
+    my:'',
+    colonel:'',
+    colonels:''
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.setData({
+      id:options.id,
+      isSuccess: options.isSuccess,
+    })
+    this.getMember()
+    console.log(options,'4jfoid')
+    console.log(options.commander)
+  },
+  //社团成员详情
+  personage(e) {
+    console.log(e)
+    wx.navigateTo({
+      url: '/pages/universityCircle/myPost/myPost?id=' + e.currentTarget.dataset.id,
+    })
+  },
+  //获取成员列表
+  getMember(){
+    let that =this;
+    let userid = wx.getStorageSync('userid');
+    wx.request({
+      url: requestUrl.requestUrl+'/jXAssociationApp/findByAutoByPeople',
+      method:'get',
+      data:{
+        associationId: that.data.id,
+        isSuccess:'2',
+        userId: userid,
+      },
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res){
+        console.log(res,'查看这个返回的值的')
+        if(res.data.code==200){
+          for(let i=0;i<res.data.data.length;i++){
+            if (res.data.data[i].myType == "0") {
+              that.setData({
+                my: res.data.data[i]
+              })
+            } else if (res.data.data[i].myType == '1'){
+              that.setData({
+                colonel: res.data.data[i]
+              })
+            } else if (res.data.data[i].myType == '3'){
+              that.setData({
+                colonels: res.data.data[i]
+              })
+            }
+          }
+          that.setData({
+            member:res.data.data
+          })
+          console.log(that.data.member,'124861268428123465')
+        }else{
+          wx.showToast({
+            title: '获取失败，请重试！',
+            icon:'none',
+            duration:2000
+          })
+        }
+      }
+    })
+  },
+  //删除成员点击事件
+  delete(e){
+    let that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除这个成员吗？',
+      success(res) {
+        if (res.confirm) {
+          wx.request({
+            url: requestUrl.requestUrl +'/jXAssociationApp/deleteByIdandUserIdS',
+            method:'get',
+            data:{
+              associationId: e.currentTarget.dataset.rzid,
+              id: e.currentTarget.dataset.tyid,
+              userId: e.currentTarget.dataset.tzid
+            },
+            header:{
+              'content-type': 'application/json',
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            success(res){
+              if(res.data.code==200){
+                wx.showToast({
+                  title: '删除成功',
+                  icon:'none',
+                  duration:2000
+                })
+                that.getMember()
+              }else{
+                wx.showToast({
+                  title: '删除失败，请重试！',
+                  icon: 'none',
+                  duration: 2000
+                })
+              }
+            }
+          })
+        }
+      }
+    })
+  },
+  //关注点击事件
+  concern(e){
+    let that = this;
+    let userid = wx.getStorageSync('userid');
+    wx.request({
+      url: requestUrl.requestUrl +'/jXFollowApp/findByAuto',
+      method:'post',
+      data:{
+        followType:'用户',
+        userId: userid,
+        followId: e.currentTarget.dataset.tyid
+      },
+      header:{
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res){
+        if(res.data.code==200){
+          console.log(res,'查看这个的值的')
+          that.getMember();
+          wx.showToast({
+            title: '关注成功！',
+            icon:'none',
+            duration:2000
+          })
+        }else{
+          wx.showToast({
+            title: '关注失败，请重试！',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    })
+  },
+  //群发点击事件
+  mass(e){
+    console.log(e)
+    wx.navigateTo({
+      url: '/pages/hotspot/massTexting/massTexting?tzid='+e.currentTarget.dataset.tzid+'&&stid='+e.currentTarget.dataset.stid
+    })
+  }
+})

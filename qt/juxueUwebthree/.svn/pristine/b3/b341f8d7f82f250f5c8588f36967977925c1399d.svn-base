@@ -1,0 +1,42 @@
+/* pages/tztopics/topics/topics.wxss */
+
+.topics {
+  width: 100%;
+  display: flex;
+  padding: 0 20rpx 30rpx 50rpx;
+  background-color: #fff;
+}
+
+.left_img {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 20rpx;
+}
+
+.name {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.num {
+  width: 260rpx;
+  display: flex;
+  margin-top: 24rpx;
+  font-size: 22rpx;
+  color: #808080;
+  justify-content: space-between;
+}
+
+.next {
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  right: 20rpx;
+  margin-top: 10rpx;
+}
+
+.entrance {
+  width: 12rpx;
+  height: 24rpx;
+  margin: 40rpx 0 0 50rpx;
+}

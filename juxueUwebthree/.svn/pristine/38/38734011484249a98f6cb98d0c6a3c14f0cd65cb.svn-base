@@ -1,0 +1,78 @@
+<scroll-view scroll-y bindscrolltolower="strike" style="height:92%; ">
+  <view class="martop">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="true" interval="{{interval}}" duration="{{duration}}" circular="true" indicator-active-color="#F2F2F2" style="height:300rpx;">
+      <block wx:for="{{imgUrls}}" wx:key="index">
+        <swiper-item class="slideshow">
+          <image src="{{item.imgUrl}}" mode="scaleToFill" class="image"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="nav_slideshow">
+      <view class="navigation">
+        <view class="details" wx:for="{{navOneUrl}}" wx:key="item.id">
+          <image src="{{item.url}}" mode="aspectFit" style="width:90rpx;height:90rpx;" bindtap="navpage" data-linkurl="{{item.linkUrl}}"></image>
+          <view style="font-size:25rpx;">{{item.title}}</view>
+        </view>
+      </view>
+      <view class="navigation">
+        <view class="details" wx:for="{{navTneUrl}}" wx:key="item.id">
+          <image src="{{item.url}}" mode="aspectFit" style="width:90rpx;height:90rpx;" data-linkurl="{{item.linkUrl}}" bindtap="navpage"></image>
+          <view style="font-size:25rpx;">{{item.title}}</view>
+        </view>
+      </view>
+    </view>
+     <button wx:if="{{logbut}}" class='login' open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+  </view>
+  <view class="marbotton">
+    <view class="view_top">
+      <view class="view_img">
+        <image src="../images/school_hot.png" mode="aspectFit" style="width:50rpx;height:50rpx;"></image>
+        <view class="view_title size36">校园热点</view>
+      </view>
+      <!-- <view class="more">更多</view> -->
+    </view>
+    <view wx:for="{{article}}" wx:key="index">
+      <view class="hot_cont">
+        <!-- <view class="hot_portrait"></view> -->
+        <view bindtap="personage" data-id="{{item.userId}}">
+          <image src="{{item.userLogo}}" mode="scaleToFill" style="height:50rpx;width:50rpx;" class="hot_portrait"></image>
+          <image src="{{item.associationImg}}" class="mass"></image>
+        </view>
+        <view class="hot_title">{{item.title?item.title:item.context}}</view>
+      </view>
+      <view bindtap="particulars" data-id="{{item.id}}">
+        <image src="{{item.jxCollagePostsFroms[0].imgUrl}}" mode="scaleToFill" class="hot_images"></image>
+        <view class="hot_down">
+          <view class="hot_down_row">
+            <view class="hot_down_row">
+              <view class="hot_fontsize">{{item.visitNumber}}</view>
+              <view class="hot_fontsize">浏览</view>
+              <view class="dian"></view>
+            </view>
+            <view class="hot_down_row">
+              <view class="hot_fontsize">{{item.commentNumber}}</view>
+               <view class="hot_fontsize">评论</view>
+                <view class="dian"></view>
+            </view>
+            <view class="hot_down_row">
+              <view class="hot_fontsize">{{item.collageName}}</view>
+            </view>
+          </view>
+          <view class="hot_down_row">
+            <!-- <image src="../images/time.png" mode="aspectFit" class="hot_icon"></image> -->
+            <view class="hot_fontsize" style="margin-right:10rpx;">{{item.createTime}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<!--为了满足个性化table，使用自定义table,会导致隐藏一部分，解决隐藏的部分-->
+<!-- <view style="height:48px;"></view> -->
+<i-tab-bar current="{{ current }}" color="#62AFD9" bindchange="handleChange" fixed="true">
+  <i-tab-bar-item key="index"  current-img='/pages/images/index_checked.png'img='/pages/images/index_unselected.png' title="首页"></i-tab-bar-item>
+  <i-tab-bar-item key="hotspot"  current-img='/pages/images/icon_Friends2.png'img='/pages/images/icon_Friends.png' title="社团"></i-tab-bar-item>
+  <i-tab-bar-item key="announce"  current-img='/pages/images/announce.png'img='/pages/images/announce.png' ></i-tab-bar-item>
+   <i-tab-bar-item key="news"  current-img='/pages/images/news_check.png'img='/pages/images/news.png' title="消息"></i-tab-bar-item>
+  <i-tab-bar-item key="mine"  current-img='/pages/images/my_checked.png'img='/pages/images/my_unselected.png' title="我的"></i-tab-bar-item>
+</i-tab-bar>

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "navigation": "/pages/index/navigation/navigation",
+    "modal": "/pages/components/model2/index",
+    "canvas-share": "/pages/components/my/canvas-share/canvasshare"
+  }
+}

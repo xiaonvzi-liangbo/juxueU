@@ -1,0 +1,29 @@
+.banner{
+  width: 95%;
+  margin: auto;
+  margin-top: 30rpx;
+  margin-bottom: 40rpx;
+}
+.widt{
+  display: inline-block;
+  width: 44%;
+  margin: 0 20rpx 30rpx 20rpx;
+}
+.widt_title{
+  margin-left: 5rpx;
+  font-size: 30rpx;
+  font-weight: 550;
+  height: 80rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden; 
+}
+.widt_num{
+  margin-right: 20rpx;
+  text-align: right;
+  font-size: 25rpx;
+  color: #B3B3B3;
+  position: relative;
+  top: 5rpx;
+}

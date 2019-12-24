@@ -1,0 +1,51 @@
+<!--pages/uActivities/uActivities.wxml-->
+<scroll-view scroll-y bindscrolltolower="strike" style="height:100%;background-color:#fff;">
+  <view class="martop">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="true" interval="{{interval}}" duration="{{duration}}" circular="true" indicator-active-color="#F2F2F2" style="height:300rpx;">
+      <block wx:for="{{imgUrls}}" wx:key="index">
+        <swiper-item class="slideshow">
+          <image style="width:710rpx;height:300rpx;" src="{{item.imgUrl}}" mode="scaleToFill" class="image"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="heards">
+    <view class="search_top">
+      <input style="height: 60rpx;width:90%" placeholder="搜索高校活动" type="text" confirm-type="搜索" value="{{searinput}}" bindinput="commun" bindconfirm="community"></input>
+      <image src="/pages/images/search.png" bindtap="community" class="search"></image>
+    </view>
+    <view class="cleans" bindtap="quxiao" wx:if="{{clean}}">取消</view>
+  </view>
+  <view  wx:if="{{!clean}}" class='pagebar'>
+    <image bindtap="navigate" data-url="/pages/uActivities/myActivities/myActivities" class='barimage' src="/pages/images/release_event.png"></image>
+    <image bindtap="navigate" data-url="/pages/uActivities/collect/collect" class='barimage' src="/pages/images/u_collect.png"></image>
+    <image bindtap="navigate" data-url="/pages/uActivities/browse/browse" class='barimage' src="/pages/images/browsing_history.png"></image>
+  </view>
+  <view  wx:if="{{!clean}}" class='hotacts' style="margin-left:20rpx;">
+    <view class="hot_title">
+      <view style="font-size:40rpx;font-weight: bold;margin:60rpx 0 40rpx 0">热门活动</view>
+      <view class="hot_title_text" bindtap="navigate" data-url="/pages/uActivities/allAcyivities/allAcyivities" >更多</view>
+    </view>
+
+    <hotact id="hotact"></hotact>
+  </view>
+
+
+   <view wx:if="{{clean}}" style="padding-top:20rpx;" wx:for="{{result}}" wx:key="index">
+      <view slot="content">
+        <navigator url="/pages/uActivities/details/details?id= {{item.id}}" hover-class="navigator-hover">
+          <view class="entire">
+            <view>
+              <image src=" {{item.img}} " class="logo"></image>
+            </view>
+            <view class="entireRight">
+              <view class="cont_title">{{item.theme}}</view>
+              <button class="cont_con " style="{{item.activityState==4?'background-image: linear-gradient(to left, #D30000 , #FF3F3F);':'background-image: linear-gradient(to left, #D0D000 , #E8E865);'}}">{{item.activityState=='1'?"报名中":(item.activityState=='3'?"进行中":(item.activityState=='4'?"已结束":""))}}</button>
+              <view class="cont_time ">{{item.collageName}}</view>
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+</scroll-view>
+<view style="height:48px;"></view>

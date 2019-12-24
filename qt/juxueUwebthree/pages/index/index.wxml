@@ -1,0 +1,30 @@
+<!--pages/home/home.wxml-->
+<navigation back="{{back}}" dome="{{title}}" wx:if="{{show}}"></navigation>
+<scroll-view class="gun" scroll-y scroll-left='hide' style="height:calc(100vh - {{navHeight}}px);">
+  <index wx:if="{{current=='index'}}"></index>
+  <hotspot id="hotspot" wx:if="{{current=='hotspot'}}"></hotspot>
+  <announce id="aiticle" attentionId="{{attentionId}}" attentionName="{{attentionName}}" topicsId="{{topicsID}}" topicsName="{{topicsName}}" associationId="{{associationId}}" upload="{{upload}}" wx:if="{{current=='announce'}}"></announce>
+  <uActivities id="uActivities" wx:if="{{current=='uActivities'}}"></uActivities>
+  <my id="mine" wx:if="{{current=='mine'}}"></my>
+</scroll-view>
+<view wx:if="{{current=='uActivities'}}" bindtap="navpage" data-linkurl="/pages/uActivities/signUp/signUp" class="signUp">报名活动</view>
+
+<view class="cu-bar tabbar bg-white barnav">
+  <view class="action" style="color:{{current=='index'?'#2f6eef':'gray'}}" bindtap="handleChange" data-key="index">
+    <view class="{{current=='index'?'cuIcon-homefill':'cuIcon-home'}}"></view> 首页
+  </view>
+  <view class="action" style="color:{{current=='hotspot'?'#2f6eef':'gray'}}" bindtap="handleChange" data-key="hotspot">
+    <view class="{{current=='hotspot'?'cuIcon-friendfill':'cuIcon-friend'}}"></view> 社团
+  </view>
+  <view class="action  add-action" bindtap="handleChange" data-key="announce">
+    <button class="cu-btn cuIcon-add shadow add"  style="background-color: #2f6eef;color:#fff"></button>
+    <!-- 发布 -->
+  </view>
+  <view class="action" style="color:{{current=='uActivities'?'#2f6eef':'gray'}}" bindtap="handleChange" data-key="uActivities">
+    <view class="{{current=='uActivities'?'cuIcon-discoverfill':'cuIcon-discover'}}"> </view>
+    U活动
+  </view>
+  <view class="action" style="color:{{current=='mine'?'#2f6eef':'gray'}}" bindtap="handleChange" data-key="mine">
+    <view class="{{current=='mine'?'cuIcon-myfill':'cuIcon-my'}}"> </view>我的
+  </view>
+</view>

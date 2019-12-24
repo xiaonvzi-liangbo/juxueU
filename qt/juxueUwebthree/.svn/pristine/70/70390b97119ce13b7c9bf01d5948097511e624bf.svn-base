@@ -1,0 +1,36 @@
+<navigations title="聚学U社区公约"></navigations>
+<view class="base">
+  <!-- <view class="path">
+    <image src="/pages/images/safety.png" class="titleImg"></image>
+    <view>账号与安全</view>
+    <image src="/pages/images/right.png" class="rightImg"></image>
+  </view>
+</view>
+<view>
+  <view class="path">
+    <image src="/pages/images/refresh.png" class="titleImg"></image>
+    <view>内容自动刷新</view>
+    <view class="switch"><switch class="size"></switch></view>
+  </view>
+</view>
+<view> -->
+  <view class="path">
+    <image src="/pages/images/treaty.png" class="titleImg"></image>
+    <view>聚学U社区公约</view>
+    <image src="/pages/images/right.png" class="rightImg"></image>
+  </view>
+</view>
+<view>
+  <view class="path">
+    <image src="/pages/images/agreement.png" class="titleImg"></image>
+    <view>用户协议</view>
+    <image src="/pages/images/right.png" class="rightImg"></image>
+  </view>
+</view>
+<view>
+  <view class="path">
+    <image src="/pages/images/privacy.png" class="titleImg"></image>
+    <view>隐私政策</view>
+    <image src="/pages/images/right.png" class="rightImg"></image>
+  </view>
+</view>

@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "navigation": "/pages/index/navigation/navigation",
+    "i-swipeout": "/pages/components/swipeout/index",
+      "attention": "/pages/components/news/attention/attention",
+      "comment": "/pages/components/news/comment/comment",
+      "private":"/pages/components/news/private/private"
+    }
+}

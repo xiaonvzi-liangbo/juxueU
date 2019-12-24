@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "navigation": "/pages/index/navigation/navigation",
+    "attention": "/pages/components/attention/attention",
+    "boutique": "/pages/components/boutique/boutique",
+    "newest": "/pages/components/newest/newest",
+    "topics": "/pages/tztopics/topics/topics",
+    "club": "/pages/components/club/club",
+    "search":"/pages/components/search/search"
+  }
+}

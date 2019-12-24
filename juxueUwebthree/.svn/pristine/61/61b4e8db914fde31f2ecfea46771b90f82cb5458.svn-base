@@ -1,0 +1,188 @@
+import requestUrl from '../../../utils/request.js'
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    checkedNum: '',
+    img: '',
+    mine: [],
+    collageName:''
+  },
+  //获取我的信息
+  getMy() {
+    let that = this;
+    let userid = wx.getStorageSync('userid')
+    wx.request({
+      url: requestUrl.requestUrl + '/jXUserApp/findByMy',
+      method: 'get',
+      data: {
+        id: userid
+      },
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        if (res.data.code == '200') {
+          that.setData({
+            mine: res.data.data,
+          });
+          if (res.data.data.collageName == null) {
+            that.setData({
+              collageName: "尚未认证"
+            })
+          } else {
+            that.setData({
+              collageName: res.data.data.collageName + '-' + res.data.data.collageCampus
+            })
+          }
+
+        }
+      }
+    })
+  },
+  //子组件调用父组件的值
+  checkNum(e) {
+    this.setData({
+      checkedNum: e.detail.checkedNum,
+    })
+  },
+  //图片上传点击事件
+  upload() {
+    let that = this;
+    wx.chooseImage({
+      count: 1, //最多可以选择的图片总数
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function(res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        let tempFilePaths = res.tempFilePaths;
+        //启动上传等待中...
+        wx.showToast({
+          title: '正在上传...',
+          icon: 'loading',
+          mask: true,
+          duration: 10000
+        })
+        // let uploadImgCount = 0;
+        for (let i = 0; i < tempFilePaths.length; i++) {
+          setTimeout(res => {
+            that.jcImage(tempFilePaths[i])
+            if (i == tempFilePaths.length - 1) {
+              wx.hideLoading()
+            }
+          }, 1000 * i)
+        }
+      }
+    });
+  },
+  // 涂片检测
+  jcImage(imgurl) {
+    let that = this;
+    let access_token = wx.getStorageSync('access_token')
+    wx.uploadFile({
+      url: 'https://api.weixin.qq.com/wxa/img_sec_check',
+      filePath: imgurl,
+      name: "formData",
+      formData: {
+        access_token: access_token
+      },
+      header: {
+        "Content-Type": "multipart/form-data"
+      },
+      success(res) {
+        that.upImgs(imgurl)
+      }
+    })
+  },
+  //文件上传服务器
+  upImgs(imgurl) {
+    let that = this;
+    wx.uploadFile({
+      url: 'https://staticfile.xlcwx.com/api/modalupload/image',
+      filePath: imgurl,
+      name: 'upload',
+      header: {
+        "Content-Type": "multipart/form-data"
+      },
+      success: function(res) {
+        let arr = res.data.split('"');
+        let str = arr[3].replace(/^(\s|")+|(\s|ab)+$/g, '');
+        that.setData({
+          img: str
+        });
+        wx.hideToast();
+        wx.showToast({
+          title: '上传成功！',
+          icon: 'none',
+          duration: 2000
+        })
+      },
+      fail: function(res) {
+        wx.hideToast();
+        wx.showModal({
+          title: '错误提示',
+          content: '上传图片失败',
+          showCancel: false,
+          success: function(res) {}
+        })
+      }
+    });
+  },
+  //保存点击事件
+  formSubmit(e) {
+    let that = this;
+    let err = true;
+    let conter = '';
+    let userid = wx.getStorageSync('userid');
+      err = false;
+      wx.request({
+        url: requestUrl.requestUrl + '/jXUserApp/update',
+        method: 'post',
+        data: {
+          nickName: e.detail.value.name,
+          autograph: e.detail.value.js,
+          collageId: that.data.checkedNum,
+          majorId: e.detail.value.zy,
+          id: userid,
+          logo: that.data.img
+        },
+        header: {
+          'content-type': 'application/json',
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success(res) {
+          if (res.data.code == '200') {
+            wx.setStorageSync('nickName', e.detail.value.name);
+            wx.setStorageSync('logo', that.data.img);
+            let page = getCurrentPages();
+            // page[page.length - 2].getMy()
+            wx.navigateBack({
+              delta: 1
+            })
+          } else {
+            wx.showToast({
+              title: res.data.data,
+              icon: 'none',
+              duration: 2000
+            })
+          }
+        }
+      });
+      if (err) {
+        wx.showToast({
+          title: conter,
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    
+  },
+  onLoad(options) {
+    this.getMy()
+    this.setData({
+      img: options.img
+    })
+  }
+})

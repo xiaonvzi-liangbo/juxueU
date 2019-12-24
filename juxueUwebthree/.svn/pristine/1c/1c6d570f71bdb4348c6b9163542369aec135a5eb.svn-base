@@ -1,0 +1,25 @@
+<navigations title="职业兴趣测试"></navigations>
+<view>
+  <view class="situation">
+    <image src="https://staticfile.xlcwx.com/userfiles/201909/20190917110711.png" mode="aspectFit" class="bannerimg"></image>
+    <text class="text">霍兰德职业兴趣自测(Self-Directed Search)是由美国职业指导专家霍兰德(John Holland)根据他本人大量的职业咨询经验及其职业类型理论编制的测评工具。霍兰德认为，个人职业兴趣特性与职业之间应有一种内在的对应关系。根据兴趣的不同，人格可分为研究型(I)、艺术型(A)、社会型(S)、企业型(E)、传统型(C)、现实型(R)六个维度，每个人的性格都是这六个维度的不同程度组合。</text>
+  </view>
+  <view class="content">
+    <view class="title">介绍测试</view>
+    <view class="con_text">
+      <text>
+        1 个体之间在人格方面存在着本质差异
+        2 个体具有不同的类型;
+        3 当工作环境与人格类型协调一致时，会产生更高的工作满意度和更低的离职可能性。
+      </text>
+      <text>
+        业兴趣是职业选择中最重要的因素，是一种强大的精神力量职业兴趣测验可以帮助个体明确自己的主观性向，从而能得到最适宜的活动情境并给予最大的能力投入。根据霍兰德的理论，个体的职业兴趣可以影响其对职业的满意程度
+      </text>
+    </view>
+  </view>
+  <view class="bot_but">
+    <button class="button" style="background-color: #2997CC;">进入28题测试</button>
+    <button class="button" style="background-color: #CC2A28;">进入93题测试</button>
+  </view>
+  <view style="height:140rpx;"></view>
+</view>

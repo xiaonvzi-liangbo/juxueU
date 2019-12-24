@@ -1,0 +1,36 @@
+<navigation dome="社团认证"></navigation>
+<view style="margin:0 55rpx">
+  <form style="width: 100%;" bindsubmit="accessToken" data-fun="formSubmit">
+    <view class="title">*姓名</view>
+    <input value="{{nickName}}"  disabled="{{true}}" placeholder-style="color:#000" class="input" name="name"></input>
+    <view class="title">*学校</view>
+    <view class="input">
+      <pickers college="{{collageName}}" disabled="{{true}}" bind:traCheckedNum="checkNum"></pickers>
+    </view>
+    <view class="title">*社团名称</view>
+    <input placeholder="请填写社团名称"  placeholder-style="color:#ccc" class="input" name="zy"></input>
+    <view class="title">*社团介绍</view>
+    <input class="input" placeholder="简单介绍一下社团" placeholder-style="color:#ccc" name="text"></input>
+
+    <view class="img">
+      <view style="font-size:30rpx;" class="title">*社团LOGO</view>
+      <view wx:if="{{logo}}" class="view">
+        <image src="/pages/images/msnui.png" class="dele" bindtap="delect"></image>
+        <image src="{{logo}}" style=" border-radius: 50%"  mode='aspectFill' class="upload"></image>
+      </view>
+      <image src="/pages/images/invite.png" class="upload" bindtap="accessToken" data-fun="upload" wx:else></image>
+    </view>
+    <view class="img">
+      <view class="img_flex title">
+        <view style="font-size:30rpx;" >*社团风采</view>
+        <view style="font-size: 22rpx;color:#808080;margin:6rpx 0 0 30rpx;">请上传不少于三张图片</view>
+      </view>
+      <view class="view1" wx:if="{{picture.length}}" wx:for="{{picture}}" wx:key="index">
+        <image src="/pages/images/msnui.png" class="dele" bindtap="delects" data-id="{{index}}"></image>
+        <image style=" width: 180rpx;height: 180rpx;" src="{{item}}" class="upload"></image>
+      </view>
+      <image style=" width: 180rpx;height: 180rpx;" src="/pages/images/uploading.png" class="upload" bindtap="accessToken" data-fun="uploads" wx:if="{{picture.length<9}}"></image>
+    </view>
+    <button class="subim" formType="submit">提交</button>
+  </form>
+</view>

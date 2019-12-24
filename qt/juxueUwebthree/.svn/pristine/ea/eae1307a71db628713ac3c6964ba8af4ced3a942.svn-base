@@ -1,0 +1,102 @@
+<view class="my">
+  <view class="backcolor">
+    <view class="flex" wx:if="{{loginshow}}">
+      <image src="{{ log }}" class="txImg"></image>
+      <view class="name">
+        <view class="nickname">{{ niname }}</view>
+        <image src="{{mine.associationImg?mine.associationImg:''}}" class="mass"></image>
+        <picker class="heard_tz" bindchange="bindPickerChange" value="{{poindex}}" range="{{switchingtxt}}">
+          <view class="picker">{{mine.associationName?mine.associationName:'尚未认证'}} </view>
+        </picker>
+      </view>
+      <view class="xiugai" bindtap="compile" data-img="{{mine.logo}}">
+        <image src="../images/entrance.png" class="entrance"></image>
+      </view>
+    </view>
+    <view wx:else>
+      <image src="{{touxiang}}" class="txImg" style="margin:150rpx 0 0 50rpx"></image>
+      <button class='login' open-type="getUserInfo" bindgetuserinfo="getUserInfo">立即登录</button>
+    </view>
+
+    <view style="height:300rpx;"></view>
+    <view class="information" wx:if="{{showCom}}">
+      <view class="auto" bindtap="fans">
+        <view>{{limits==false?'0':mine.fansNumber}}</view>
+        <view>粉丝</view>
+      </view>
+      <view class="auto" bindtap="focus">
+        <view>{{limits==false?'0':mine.followNumber}}</view>
+        <view>关注</view>
+      </view>
+      <view class="auto" bindtap="exchange">
+        <view>{{limits==false?'0':mine.integralNumber}}</view>
+        <view>积分</view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="modularity">
+    <view class="center" bindtap="signIn">
+      <view class="time">第{{mine.singIn}}天</view>
+      <image src="../images/signIn.png" class="icons"></image>
+      <view>签到</view>
+    </view>
+    <view class="center" bindtap="exchange">
+      <view class="red_dot" wx:if="{{mine.isPrivate}}"></view>
+      <image src="../images/conversion.png" class="icons"></image>
+      <view>兑换</view>
+    </view>
+    <view class="center" bindtap="private">
+     <view class="" wx:if="{{mine.isPrivate=='1'}}"></view>
+      <image src="../images/integral.png" class="icons"></image>
+      <view>私信</view>
+    </view>
+    <view class="center" bindtap="footprint">
+      <image src="../images/footprint.png" class="icons"></image>
+      <view>足迹</view>
+    </view>
+  </view>
+  <view class="base">
+    <canvas-share id='share' bindclose="close" visible="{{visible}}" />
+    <getphone class="myphone" wx:if="{{getphone}}"></getphone>
+    <view class="path" bindtap="shower">
+      <image src="{{navigations[0].icon}}" class="titleImg"></image>
+      <view>{{navigations[0].title}}</view>
+      <image src="../images/right.png" class="rightImg"></image>
+    </view>
+    <view class="path" bindtap="leaveFor" data-url="{{navigations[1].linkUrl}}">
+      <image src="{{navigations[1].icon}}" class="titleImg"></image>
+      <view>{{navigations[1].title}}</view>
+      <image src="../images/right.png" class="rightImg"></image>
+    </view>
+    <view class="path" bindtap="leaveFor" data-url="{{navigations[2].linkUrl}}">
+      <image src="{{navigations[2].icon}}" class="titleImg"></image>
+      <view>{{navigations[2].title}}</view>
+      <image src="../images/right.png" class="rightImg"></image>
+    </view>
+    <view class="path" bindtap="leaveFor" data-url="{{navigations[3].linkUrl}}">
+      <image src="{{navigations[3].icon}}" class="titleImg"></image>
+      <view>{{navigations[3].title}}</view>
+      <image src="../images/right.png" class="rightImg"></image>
+    </view>
+    <view class="path" bindtap="leaveFor" data-url="{{navigations[4].linkUrl}}">
+      <image src="{{navigations[4].icon}}" class="titleImg"></image>
+      <view>{{navigations[4].title}}</view>
+      <image src="../images/right.png" class="rightImg"></image>
+    </view>
+    <view open-type="contact" class="path" bindtap="leaveFor">
+      <image src="{{navigations[5].icon}}" class="titleImg"></image>
+      <view>{{navigations[5].title}}</view>
+      <image src="../images/right.png" class="rightImg"></image>
+      <button open-type="contact" class="but"></button>
+    </view>
+
+    <view class="path" bindtap="leaveFor" data-url="{{navigations[6].linkUrl}}">
+      <image src="{{navigations[6].icon}}" class="titleImg"></image>
+      <view>{{navigations[6].title}}</view>
+      <image src="../images/right.png" class="rightImg"></image>
+    </view>
+
+  </view>
+</view>
+<view style="height:48px;"></view>

@@ -1,0 +1,37 @@
+<view clsss="mypo">
+  <view wx:for="{{article}}" wx:key="index" bindtap="particulars" data-id="{{item.id}}">
+    <view class="hot_cont">
+      <view>
+        <image src="{{item.userLogo}}" mode="scaleToFill" class="hot_portrait"></image>
+      </view>
+
+      <view class="hot_title size30">
+        <rich-text nodes="{{item.title==null?' ':item.title}}"> </rich-text>
+      </view>
+    </view>
+    <view>
+      <view class="hot_title size20" style="margin-bottom:15rpx">{{item.context}}</view>
+      <image src="{{item.imgUrl?item.imgUrl:''}}" class="hot_images"></image>
+      <view class="hot_down">
+        <view class="hot_down_row">
+          <view class="hot_down_row">
+            <image src="../../../images/browse.png" mode="aspectFit" class="hot_icon"></image>
+            <view class="hot_fontsize">{{item.visitNumber}}浏览</view>
+          </view>
+          <view class="hot_down_row">
+            <image src="../../../images/comment.png" mode="aspectFit" class="hot_icon"></image>
+            <view class="hot_fontsize">{{item.commentNumber}}评论</view>
+          </view>
+          <view class="hot_down_row">
+            <image src="../../../images/adress.png" mode="aspectFit" class="hot_icon"></image>
+            <view class="hot_fontsize">{{item.collageName==null?' 学校尚未认证':item.collageName}}</view>
+          </view>
+        </view>
+        <view class="hot_down_row">
+          <image src="../../../images/time.png" mode="aspectFit" class="hot_icon"></image>
+          <view class="hot_fontsize" style="margin-right:10rpx;">{{item.createTime}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

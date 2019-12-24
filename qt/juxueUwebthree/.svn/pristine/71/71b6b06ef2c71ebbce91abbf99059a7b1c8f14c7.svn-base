@@ -1,0 +1,400 @@
+const requestUrl = require('../../../utils/request.js')
+const number = require('../../../utils/quantity.js')
+Page({
+  data: {
+    showReply: false,
+    showNegative: false, //是否是问答
+    postData: [],
+    postCritic: [],
+    showCritic: false,
+    tzid: '',
+    number: 1,
+    replyData: [],
+    commentId: '',
+    stair: '', //一级评论的内容
+    second: '', //二级评论的内容
+    collageName: '',
+    imgs:[],
+  },
+  onLoad(options) {
+    console.log(options)
+    if (options.id == '3') {
+      this.setData({
+        showNegative: true
+      })
+    };
+    this.setData({
+      tzid: options.tzid
+    })
+    this.getData(this.data.tzid);
+    this.getCritic(this.data.tzid);
+  },
+  //发帖人详情
+  personage(e) {
+    console.log(e)
+    wx.navigateTo({
+      url: '/pages/universityCircle/myPost/myPost?id=' + e.currentTarget.dataset.id,
+    })
+  },
+  //获取帖子详情
+  getData() {
+    let that = this;
+    let userid = wx.getStorageSync('userid');
+    wx.request({
+      url: requestUrl.requestUrl + '/jXCollagePostsApp/findById',
+      data: {
+        id: that.data.tzid,
+        followUserId: userid
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        if (res.data.data.code == '200') {
+          that.setData({
+            postData: res.data.data.data
+          })
+     
+          if (res.data.data.data.collageName == null) {
+            that.setData({
+              collageName: "尚未认证"
+            })
+          } else {
+            that.setData({
+              collageName: res.data.data.data.collageName
+            })
+          }
+        } else {
+          wx.showToast({
+            title: '获取帖子失败，请重试！',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    })
+  },
+  //图片放大事件
+  amplify(e) {
+    let that = this
+    // console.log(that.data.postData.jxCollagePostsFroms);
+    var id = e.currentTarget.dataset.id;
+    var url = e.currentTarget.dataset.url;
+    var previewImgArr = [];
+    //通过循环在数据链里面找到和这个id相同的这一组数据，然后再取出这一组数据当中的图片
+    var data = that.data.postData.jxCollagePostsFroms;
+    for (var i in data) {
+      if (id == data[i].id) {
+        previewImgArr = previewImgArr.concat(data[i].imgUrl) 
+      }
+    }
+    wx.previewImage({
+      current: url, // 当前显示图片的http链接
+      urls: previewImgArr // 需要预览的图片http链接列表
+    })
+  },
+
+  //获取评论详情
+  getCritic() {
+    let that = this;
+    let userid = wx.getStorageSync('userid');
+    wx.request({
+      url: requestUrl.requestUrl + '/jXPostsCommentApp/findByAuto',
+      data: {
+        postsId: that.data.tzid,
+        pageSize: '10',
+        pageNum: that.data.number,
+        userId: userid
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        if (res.data.rows) {
+          that.setData({
+            postCritic: res.data.rows
+          })
+        } else {
+          that.setData({
+            showCritic: true
+          })
+        }
+      }
+    })
+  },
+  //关注点击事件
+  attention(e) {
+    let that = this;
+    let userid = wx.getStorageSync('userid')
+    wx.request({
+      url: requestUrl.requestUrl + '/jXFollowApp/findByAuto',
+      data: {
+        followType: '用户',
+        userId: userid,
+        followId: e.currentTarget.dataset.followid
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        if (res.data.code == 200) {
+          wx.showToast({
+            title: '关注成功!',
+            icon: 'none',
+            duration: 2000
+          })
+          that.getData(that.data.tzid);
+   
+        } else {
+          wx.showToast({
+            title: '关注失败，请重试!',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    })
+  },
+  //消息回复点击事件
+  reply(e) {
+    this.setData({
+      commentId: e.currentTarget.dataset.reid
+    });
+    this.write()
+  },
+  write() {
+    let that = this;
+    let userid = wx.getStorageSync('userid')
+    wx.request({
+      url: requestUrl.requestUrl + '/jXPostsCommentTwoApp/getList',
+      data: {
+        commentId: that.data.commentId,
+        userId: userid,
+        pageNum: '1',
+        pageSize: '10'
+      },
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        that.setData({
+          replyData: res.data.rows
+        })
+      }
+    })
+    that.setData({
+      showReply: true
+    })
+  },
+  //点赞点击事件 
+  praise(e) {
+    let that = this;
+    console.log(e.currentTarget.dataset.id, '156165')
+    let userid = wx.getStorageSync('userid');
+    wx.request({
+      url: requestUrl.requestUrl + '/jXFabulousApp/addDel',
+      method: 'post',
+      data: {
+        fabulousType: e.currentTarget.dataset.type,
+        userId: userid,
+        fabulousId: e.currentTarget.dataset.id
+      },
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        if (res.data.code == '200') {
+          console.log(e.currentTarget.dataset.type, '查看这个的值的内容')
+          if (e.currentTarget.dataset.type == '帖子') {
+            that.getData()
+          } else if (e.currentTarget.dataset.type == '一级点赞') {
+            that.getCritic()
+          } else if (e.currentTarget.dataset.type == '二级点赞') {
+            that.write()
+          }
+        }
+
+      }
+    })
+  },
+  //差评点击事件
+  negative(e) {
+    let that = this;
+    let userid = wx.getStorageSync('userid');
+    wx.request({
+      url: requestUrl.requestUrl + '/jXDifferenceApp/findByAuto',
+      method: 'post',
+      data: {
+        differenceType: e.currentTarget.dataset.type,
+        userId: userid,
+        differenceId: e.currentTarget.dataset.id
+      },
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        if (res.data.code == '200') {
+          if (e.currentTarget.dataset.type == '一级评论') {
+            that.getCritic()
+          } else if (e.currentTarget.dataset.type == '帖子') {
+            that.getData()
+          }
+        }
+      }
+    })
+  },
+  //收藏点击事件
+  collect(e) {
+    let that = this;
+    let userid = wx.getStorageSync('userid');
+    wx.request({
+      url: requestUrl.requestUrl + '/jXCollectionApp/findByAuto',
+      method: 'post',
+      data: {
+        collectionType: '帖子',
+        userId: userid,
+        collectionId: e.currentTarget.dataset.id
+      },
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        if (res.data.code == '200') {
+          that.getData()
+        }
+      }
+    })
+  },
+  /**
+   * 用户分享自定义
+   */
+  onShareAppMessage: function(ops) {
+    let userid = wx.getStorageInfo('userid');
+    if (ops.from === 'button') {
+      console.log('来自页面的转发')
+      // 来自页面内转发按钮
+      console.log(ops.target)
+    }
+    return {
+      title: ops.target.dataset.title,
+      path: '/pages/universityCircle/information/information?id=' + ops.target.dataset.id,
+      success: function(res) {
+        wx.request({
+          url: requestUrl.requestUrl + '/jXShareApp/add',
+          shareId: ops.target.dataset.id,
+          userId: userid,
+          header: {
+            'content-type': 'application/json',
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          success(res) {
+            if (res.data.code) {
+              console.log('转发成功！')
+            }
+          }
+        })
+      },
+      fail: function(res) {
+        console.log('转发失败')
+        // 转发失败
+        console.log("转发失败:" + JSON.stringify(res));
+      }
+    }
+  },
+  //消息回复关闭点击事件
+  close() {
+    this.setData({
+      showReply: false
+    })
+  },
+  //监听用户上拉加载
+  onReachBottom() {
+    let that = this;
+    this.data.number++;
+    wx.request({
+      url: requestUrl.requestUrl + '/jXPostsCommentApp/findByAuto',
+      data: {
+        postsId: that.data.tzid,
+        pageSize: '10',
+        pageNum: that.data.number
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        if (res.data.rows) {
+          that.setData({
+            postCritic: that.data.postCritic.concat(res.data.rows)
+          })
+          console.log(that.data.postCritic, '48949498764*/9')
+        } else {
+          that.setData({
+            showCritic: true
+          })
+        }
+      }
+    })
+  },
+  //发送一级评论
+  critic(e) {
+    let that = this;
+    let userid = wx.getStorageSync('userid');
+    wx.request({
+      url: requestUrl.requestUrl + '/jXPostsCommentApp/add',
+      method: 'post',
+      data: {
+        userId: userid,
+        postsId: e.currentTarget.dataset.id,
+        info: e.detail.value
+      },
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        if (res.data.code == '200') {
+          that.setData({
+            stair: ''
+          })
+          that.getCritic();
+        }
+      }
+    })
+  },
+  //发送二级评论
+  level(e) {
+    let that = this;
+    let userid = wx.getStorageSync('userid');
+    wx.request({
+      url: requestUrl.requestUrl + '/jXPostsCommentTwoApp/add',
+      method: 'post',
+      data: {
+        commentId: that.data.commentId,
+        userId: userid,
+        info: e.detail.value
+      },
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        that.setData({
+          second: ''
+        })
+        that.write()
+      }
+    })
+  }
+})

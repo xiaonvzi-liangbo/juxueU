@@ -1,0 +1,36 @@
+<navigation dome="发布"></navigation>
+<view style="padding: 0 20rpx;">
+<form bindsubmit="accessToken" data-fun="release">
+  <view style="margin:0 10rpx">
+   <text class="txt" >*承办方</text>
+    <input class="int" name='undertake' placeholder="请输入" placeholder-style="color:#ccc"></input>
+    <text class="txt">*主办方</text>
+    <input class="int" placeholder="请输入" placeholder-style="color:#ccc" name='host'></input>
+    <text class="txt">*活动详细地点</text>
+    <input class="int" placeholder="请输入" placeholder-style="color:#ccc" name='activity_address'></input>
+    <text class="txt">*起止时间</text>
+    <view class="int">
+    <pickerYMDHM class="int_time" placeholder = "开始时间" date = "{{startDate}}" disabled = "{{disabled}}" bind:onPickerChange="startTime" startDate="{{startDate}}" endDate="{{endDate}}">  </pickerYMDHM>
+   ——
+    <pickerYMDHM class="int_time" placeholder = "结束时间" date = "{{startDate}}" disabled = "{{disabled}}" bind:onPickerChange="endTime" startDate="{{startDate}}" endDate="{{endDate}}">
+  </pickerYMDHM>
+    </view>
+    <text class="txt">*报名详细地点</text>
+    <input class="int" placeholder="请输入"  placeholder-style="color:#ccc" name='enlistAddress'></input>
+    <text class="txt">*报名联系人</text>
+    <view class="int">
+    <input class="int_text" style="width:100rpx;" placeholder="联系人" name='people' placeholder-style="color:#ccc"></input>
+    ——
+    <input  class="int_text" maxlength="11"  placeholder="联系方式" name='phone' bindinput='blurPhone' placeholder-style="color:#ccc"></input>
+    </view>
+    
+    <text class="txt">*报名截止时间</text>
+    <view class="int">
+     <pickerYMDHM class="int_time" placeholder = "截止时间"  date = "{{startDate}}" disabled = "{{disabled}}" bind:onPickerChange="enlistTime" startDate="{{startDate}}" endDate="{{endDate}}">
+  </pickerYMDHM></view>
+    <text class="txt">*活动详情</text>
+    <input class="int" name='info' value='' placeholder="请输入" placeholder-style="color:#ccc"></input>
+  </view>
+   <button class="release_next" formType="submit">发布</button>
+   </form >
+</view>

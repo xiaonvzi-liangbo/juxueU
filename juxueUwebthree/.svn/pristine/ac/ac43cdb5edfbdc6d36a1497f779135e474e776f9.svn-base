@@ -1,0 +1,66 @@
+//app.js
+App({
+  onLaunch: function () {
+    // 展示本地存储能力
+    var logs = wx.getStorageSync('logs') || []
+    logs.unshift(Date.now())
+    wx.setStorageSync('logs', logs)
+
+    // 登录
+    wx.login({
+      success: res => {
+        if (res.code) {
+          //发起网络请求
+          wx.request({
+            url: 'https://test.com/onLogin',
+            data: {
+              code: res.code
+            }
+          })
+          // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          wx.request({
+            url: 'https://api.weixin.qq.com/sns/jscode2session',
+            method: 'POST',
+            data: {
+              appid: 'wx2d6f7f4096390ffe',
+              secret: '0848d53d48b0a196883dfdcad43b7353',
+              js_code: res.code,
+              grant_type: 'authorization_code'
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+              'Accept': 'application/json'
+            },
+            success: function (res) {
+              //首页授权没有 用户为1
+              // wx.setStorageSync('userid', '1');
+              wx.setStorageSync('openid', res.data.openid)
+              wx.setStorageSync('sessionKey', res.data.session_key)
+            }
+          }),
+          wx.request({
+            url: 'https://api.weixin.qq.com/cgi-bin/token',
+            method:"get",
+            data: {
+              appid: 'wx2d6f7f4096390ffe',
+              secret: '0848d53d48b0a196883dfdcad43b7353',
+              grant_type: "client_credential",
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+              'Accept': 'application/json'
+            },
+            success(res){
+              console.log(res,":access_token")
+            }
+          },6000)
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
+  },
+  globalData: {
+    userInfo: null
+  }
+})

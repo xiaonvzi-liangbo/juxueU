@@ -1,0 +1,199 @@
+import requestUrl from '../../../utils/request.js'
+import myPlugin from '../../plugin/index.js'
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    teachersDetails: [],
+    title: '',
+    til:'',
+    definitionsKey: {
+      'same': '原画',
+      '720p': '超清',
+      '480p': '高清',
+      '360p': '标清',
+      'a': '纯音频'
+    },
+    msg: '',
+    timeMsg: '',
+    currentTime: '0',
+    screenStatus: '',
+    showSource: false,
+    showLine: false,
+    options: {
+      account: '',
+      app_key: '',
+      roomid: '',
+      signedat: '',
+      sign: '',
+      username: '',
+    },
+    selectType: 'other',
+    videoUrl: '',
+    showTool: false,
+    playInfo: {
+      sourceInfo: {
+        lineTypes: ['线路1', '线路2'],
+        qualiTypes: ['same', 'a', '720p', '480p', '360p']
+      },
+      currentLineIndex: 0,
+      currentQuality: 'same'
+    },
+    liveshow: {}
+  },
+
+
+  /** * 生命周期函数--监听页面加载*/
+  onLoad: function(options) {
+    console.log("生命周期函数1：" + options)
+    this.details(options.id)
+    this.setData({
+      title: options.title
+    })
+    // this.onReady();
+    // this.footprint(options.id)
+  },
+  /** * 页面相关事件处理函数*/
+  getPlaySource(source) {
+    let playInfo = source.detail;
+    playInfo.sourceInfo.qualiTypes.sort().reverse();
+    this.setData({
+      playInfo: playInfo
+    });
+    this.setData({
+      msg: JSON.stringify(playInfo)
+    });
+  },
+  errorFn(e) {
+    console.error(e.detail);
+    wx.showToast({
+      title: e.detail.msg,
+      icon: 'none',
+      duration: 2000
+    });
+    this.setData({
+      msg: JSON.stringify(e.detail)
+    });
+  },
+  screenChange(e) {
+    console.log(e.detail);
+    this.setData({
+      msg: JSON.stringify(e.detail)
+    });
+  },
+  waiting(e) {
+    /* 直播时不会调用此函数 */
+    this.setData({
+      msg: JSON.stringify(e.detail)
+    });
+  },
+  playUpdate(e) {
+    /* 播放进度变化时触发, 直播时不会调用此函数 */
+    this.setData({
+      currentTime: e.detail.currentTime,
+      timeMsg: JSON.stringify(e.detail)
+    });
+  },
+
+  playStatus(msg) {
+    console.log('---------------当前播放状态---------------');
+    console.log(msg.detail);
+  },
+  onGetMessage(msg) {
+    console.log('收到sdk通知消息');
+    console.log(msg.detail);
+    this.setData({
+      msg: JSON.stringify(msg.detail)
+    });
+    let contentMsg = '';
+    switch (msg.detail.type) {
+      case 'start':
+        contentMsg = '直播开始,进入直播';
+        break;
+      case 'over':
+        contentMsg = '直播结束';
+        break;
+      case 'kickout':
+        contentMsg = '直播被踢出';
+        break;
+      case 'kickoutRestore':
+        contentMsg = '恢复踢出';
+        break;
+    }
+    let that = this;
+    wx.showModal({
+      title: '提示',
+      content: contentMsg,
+      success: function(res) {
+        if (res.confirm) {
+          console.log('用户点击确定');
+          if (msg.detail.type == 'start') {
+            myPlugin.setOptions(that.data.options);
+          }
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
+
+  //获取课程详情
+  details(id) {
+    let that = this;
+    let userid = wx.getStorageSync('userid');
+    wx.request({
+      url: requestUrl.courseUrl + '/api/Course/free/live/' + id,
+      method: 'GET',
+      data: {
+        id: id
+      },
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        console.log(res.data, '：这个值得内容')
+        that.setData({
+          teachersDetails: res.data,
+          til: res.data.title
+        })
+        that.footprint(id)
+      }
+    })
+  },
+  footprint(id){
+    let that=this
+    console.log(that.data.til, '128525vhnoi')
+    // that.details(id)
+    let userid = wx.getStorageSync('userid');
+    
+    wx.request({
+      url: requestUrl.requestUrl + '/jXFootprint/findByUserId',
+      method: 'post',
+      data: {
+        footprintType: "公开课",
+        userId: userid,
+        footprintId: id,
+        title: that.data.teachersDetails.title
+      },
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        if (res.data.code == '200') {
+          console.log("足迹添加成功！")
+        }
+
+      }
+    })
+  },
+  //了解一下点击事件
+  getPhoneNumber(e) {
+    console.log(e)
+  },
+  onReady(res) {},
+
+})

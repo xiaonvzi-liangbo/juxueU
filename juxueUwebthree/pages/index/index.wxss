@@ -1,0 +1,23 @@
+/* pages/home/home.wxss */
+@import '/colorui/icon.wxss';
+@import '/colorui/main.wxss';
+page {
+  background-color: #fff;
+} 
+ 
+
+.announce image {
+  width: 96rpx;
+  height: 96rpx;
+  border: 6rpx #fff solid;
+  margin-bottom: 24rpx;
+  border-radius: 50%;
+}
+.barnav{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+.img{
+  width: 70rpx;
+}

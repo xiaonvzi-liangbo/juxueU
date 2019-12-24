@@ -1,0 +1,36 @@
+import requestUrl from '../../../utils/request.js'
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    id:'4'
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+  },
+  //获取成员列表
+  getList(){
+    let that = this;
+    wx.request({
+      url: requestUrl.requestUrl +'/jXAssociationApp/findByAutoByPeople',
+      method:'get',
+      data:{
+        associationId:that.data.id,
+        isSuccess:'2'
+      },
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res){
+
+      }
+    })
+  }
+})

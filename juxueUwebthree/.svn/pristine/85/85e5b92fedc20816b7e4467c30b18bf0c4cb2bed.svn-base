@@ -1,0 +1,19 @@
+<!--pages/tztopics/topics/topics.wxml-->
+<view class="topics" wx:for="{{topics}}" wx:key="index">
+  <view class="left">
+    <image class="left_img" src="{{item.img}}"></image>
+  </view>
+  <view class="header_right" style="margin-left:24rpx">
+    <view class="name">{{item.name}}</view>
+    <view class="num">
+      <view>
+        <image style="height:24rpx;width:18rpx;margin-right:5rpx;" src="/pages/images/school_hot.png"></image>
+        <text>{{item.visitNumber}}万热度</text>
+      </view>
+      <view>{{item.fabulousNumber}}万观看 </view>
+    </view>
+  </view>
+  <view class="next" bindtap="navigate" data-topid="{{item.id}}">
+    <image src="/pages/images/right.png" class="entrance"></image>
+  </view>
+</view>

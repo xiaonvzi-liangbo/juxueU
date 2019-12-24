@@ -1,0 +1,60 @@
+{
+  "pages": [
+    
+    "pages/index/index",
+    "pages/home/home",
+    "pages/my/footprint/footprint",
+    "pages/my/my",
+    "pages/my/fans/fans",
+    "pages/my/focus/focus",
+    "pages/my/private/private",
+    "pages/my/feedback/feedback",
+    "pages/hotspot/myCommunity/myCommunity",
+    "pages/hotspot/member/member",
+    "pages/universityCircle/myPost/myPost",
+    "pages/my/set/set",
+    "pages/my/myInvitation/myInvitation",
+    "pages/my/collect/collect",
+    "pages/announce/announce",
+    "pages/my/record/record",
+    "pages/openClass/curriculum/curriculum",
+    "pages/my/personage/personage",
+    "pages/prospects/Jobanalysis/Jobanalysis",
+    "pages/universityCircle/search/search",
+    "pages/openClass/topTeacher/topTeacher",
+    "pages/hotspot/organization/organization",
+    "pages/universityCircle/invitation/invitation",
+    "pages/education/appointment/appointment",
+    "pages/news/news",
+    "pages/my/amend/amend",
+    "pages/my/conversion/conversion",
+    "pages/universityCircle/information/information",
+    "pages/education/promote/promote",
+    "pages/my/authentication/authentication",
+    "pages/my/chat/chat",
+    "pages/my/signIn/signIn",
+    "pages/hotspot/activity/activity",
+    "pages/hotspot/hotspot",
+    "pages/universityCircle/issue/issue",
+    "pages/my/stApprove/stApprove",
+    "pages/my/grApprove/grApprove",
+    "pages/hotspot/chengyuan/chengyuan",
+    "pages/hotspot/massTexting/massTexting",
+    "pages/appraisal/occupation/occupation",
+    "pages/appraisal/measurement/measurement",
+    "pages/prospects/welfare/welfare",
+    "pages/DetailsActivities/DetailsActivities",
+    "pages/CourseActivities/CourseActivities"
+  ],
+  "usingComponents": {
+    "navigations": "/pages/components/navigation/navigation"
+  },
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light"
+  },
+
+  "sitemapLocation": "sitemap.json"
+}

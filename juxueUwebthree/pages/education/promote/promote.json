@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "navigation": "/pages/index/navigation/navigation",
+    "i-notice-bar": "../../components/notice-bar/index",
+    "education":"/pages/components/education/education",
+    "career":"/pages/components/career/career"
+  }
+}

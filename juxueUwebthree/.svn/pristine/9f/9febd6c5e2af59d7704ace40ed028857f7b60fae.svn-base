@@ -1,0 +1,57 @@
+/* pages/openClass/topTeacher/topTeacher.wxss */
+page{
+  height: 100%;
+  overflow: hidden;
+  font-size: 33rpx;
+}
+.top{
+  width: 95%;
+  margin: auto;
+}
+.search{
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #E6E6E6;
+  font-size: 30rpx;
+  padding: 8rpx 30rpx;
+  border-radius: 50rpx;
+}
+.place{
+  font-size: 30rpx;
+  color: #C4C4C4;
+}
+.scroll{
+  white-space:nowrap;
+  height: 80rpx;
+  width: 100%;
+}
+.conceal{
+  margin-top: 20rpx;
+  width: 90%;
+  height: 70rpx;
+  overflow: hidden;
+}
+.navig_title{
+  margin-left: 10rpx;
+  margin-right: 30rpx;
+  display:inline-block;
+}
+.underline{
+  font-size: 36rpx;
+  font-weight: 900;
+  color: #2996cc;
+}
+.flex{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.img{
+  width: 40rpx;
+  height: 40rpx;
+  position: relative;
+  top: 0rpx;
+}

@@ -1,0 +1,10 @@
+<navigation dome="积分明细"></navigation>
+<scroll-view scroll-y style="height:100%;" bindscrolltolower="tolower">
+<view class="record" wx:for="{{mingxi}}" wx:key="index">
+  <view >
+    <view class="reco_title">{{item.integralType}}</view>
+    <view class="reco_time"> {{item.createTime}}</view>
+  </view>
+  <view class="reco_result">+{{item.integralNumber}}</view>
+</view>
+</scroll-view>

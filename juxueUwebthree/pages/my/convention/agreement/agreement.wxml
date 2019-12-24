@@ -1,0 +1,56 @@
+<navigation dome="聚学U-大学生"></navigation> 
+<scroll-view scroll-y style="height:100%;">
+  <view class="header">聚学U-用户协议</view>
+  <view class="introduction">{{xyintroduction}}
+  </view>
+  <view class="title_one">使用规则</view>
+  <view class="title_content" wx:for="{{xycontent}}" wx:key="index">
+    <view class="title_two">{{item.twotitle}}</view>
+    <view class="title_two_content" wx:for="{{item.twocontent}}" wx:key="index">
+      <view class="hollow"></view>
+      <view class="content_text">{{item.text}}</view>
+    </view>
+  </view>
+  <view class="title_one">知识产权</view>
+  <view class="introduction">{{propertytext}} </view>
+  <view class="title_content" wx:for="{{property}}" wx:key="index">
+    <view class="title_two">{{item.twotitle}}</view>
+    <view class="title_two_content" wx:for="{{item.twocontent}}" wx:key="index">
+      <view class="hollow"></view>
+      <view class="content_text">{{item.text}}</view>
+    </view>
+  </view>
+  <view class="title_one">个人隐私</view>
+  <view class="introduction">{{propertytext}} </view>
+
+  <view class="title_one">免责申明</view>
+  <view class="title_content" wx:for="{{Disclaimer}}" wx:key="index">
+    <view class="title_two">{{item.twotitle}}</view>
+  </view>
+  <view class="title_one">协议修改</view>
+  <view class="title_content" wx:for="{{modify}}" wx:key="index">
+    <view class="title_two">{{item.twotitle}}</view>
+  </view>
+
+
+
+  <view class="header">聚学U-大学生社区管理规</view>
+  <view class="introduction">{{introduction}}
+  </view>
+  <view class="title_one">违规行为界定</view>
+  <view class="title_content" wx:for="{{content}}" wx:key="index">
+    <view class="title_two">{{item.twotitle}}</view>
+    <view class="title_two_content" wx:for="{{item.twocontent}}" wx:key="index">
+      <view class="hollow"></view>
+      <view class="content_text">{{item.text}}</view>
+      <view class="text_two" wx:for="{{item.twotext}}" wx:key="index">
+        <view class="solid"></view>
+        <view>{{item.twotext}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="title_one">违规行为处理流程</view>
+  <view class="title_content">{{process}}</view>
+  <view class="title_one">违规帐号处罚</view>
+  <view class="title_content">{{punishment}}</view>
+</scroll-view>

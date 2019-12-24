@@ -1,0 +1,7 @@
+{
+
+  "usingComponents": {
+    "model":"/pages/components/model2/index",
+    "navigation": "/pages/index/navigation/navigation"
+  }
+}

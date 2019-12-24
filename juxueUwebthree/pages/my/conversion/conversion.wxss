@@ -1,0 +1,184 @@
+.background {
+  width: 100%;
+  height: 340rpx;
+}
+
+.posi {
+  position: relative;
+}
+
+.banner {
+  position: absolute;
+  top: 40rpx;
+  left: 100rpx;
+  color: #fafcfe;
+  font-size: 30rpx;
+  right: 80rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.integral {
+  display: flex;
+  flex-direction: column;
+}
+
+.inte_num {
+  font-size: 100rpx;
+  font-weight: 900;
+}
+
+.detail {
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 10rpx;
+}
+
+.money {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-left: 10rpx;
+  padding-top: 100rpx;
+}
+
+.mone_num {
+  background-color: #bfdcff;
+  color: #2e79dc;
+  padding: 6rpx 20rpx;
+  border-radius: 15rpx;
+  font-size: 25rpx;
+  margin-top: 15rpx;
+  width: 150rpx;
+}
+
+.mone_sjx {
+  width: 20rpx;
+  height: 20rpx;
+  position: absolute;
+  bottom: 60rpx;
+  font-size: 60rpx;
+  color: #bfdcff;
+}
+
+.conv_bor {
+  margin: 20rpx 0 0 25rpx;
+  width: 29%;
+  height: 140rpx;
+  background-color: #e6e6e6;
+  display: inline-block;
+  border-radius: 10rpx;
+  text-align: center;
+}
+
+.center {
+  position: relative;
+  top: 45rpx;
+}
+
+.conv_tj {
+  font-size: 25rpx;
+  background-color: #e42626;
+  padding: 5rpx 19rpx;
+  position: absolute;
+  border-radius: 0 10rpx 0 10rpx;
+  color: #fff; 
+}
+
+.conv_back {
+  background-image: linear-gradient(to bottom right, #44caf0, #27b0d6);
+  color: #fff;
+}
+
+.withdraw {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 40rpx;
+}
+
+.with_tx {
+  width: 360rpx;
+  height: 86rpx;
+  line-height: 86rpx;
+  text-align: center;
+  background-image: linear-gradient(to bottom right, #7590f2, #2b6cef);
+  border-radius: 50rpx;
+  position: relative;
+  left: 28%;
+  color: #fff;
+}
+
+.with_txjl {
+  font-size: 24rpx;
+  position: absolute;
+  right: 40rpx;
+  color: #2f6eef;
+}
+
+.rule {
+  width: 95%;
+  margin: auto;
+  margin-top: 100rpx;
+}
+
+.rule_title {
+  text-align: center;
+  font-size: 33rpx;
+  font-weight: 550;
+}
+
+.shadow {
+  width: 180rpx;
+  height: 25rpx;
+  margin: auto;
+  background-color: #b0cbeb;
+  border-radius: 50rpx;
+  position: relative;
+  top: -18rpx;
+  z-index: -99;
+}
+
+.rule_conter {
+  margin: 10rpx;
+  font-size: 28rpx;
+  color: #8e8d8d;
+  line-height: 45rpx;
+}
+
+.mo_title {
+  font-size: 36rpx;
+  font-weight: 900;
+  color: #2996cc;
+  margin-bottom: 25rpx;
+  position: relative;
+  left: 20rpx;
+}
+
+.mo_tetx {
+  font-size: 25rpx;
+  margin-top: 10rpx;
+  margin-bottom: 30rpx;
+}
+
+.color {
+  font-weight: 550;
+  color: #327edf;
+}
+
+.hint_conter {
+  font-size: 30rpx;
+}
+
+.hint_but {
+  font-size: 30rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 40rpx;
+}
+
+.hint_auto {
+  flex: auto;
+}

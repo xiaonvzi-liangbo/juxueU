@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+   "hotact": "/pages/components/uActivities/hotact/hotact"
+  }
+}

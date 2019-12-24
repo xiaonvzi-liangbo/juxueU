@@ -1,0 +1,22 @@
+/* pages/home/home.wxss */
+page{
+  background-color: #fff
+}
+
+.gun {
+  position: relative;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+/*隐藏滚动条*/
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+  display: none;
+}
+.announce image{
+   width: 76rpx;
+  height: 76rpx;
+}

@@ -1,0 +1,21 @@
+<view>
+  <view style="height:10rpx;"></view>
+  <view class="card" wx:for="{{getEducation}}" wx:key="index">
+    <view>
+      <image src="{{item.proImgUrl}}" style="width:250rpx;height:200rpx;border-radius:12rpx 0 0 12rpx;" mode="aspectFill"></image>
+    </view>
+    <view class="conter">
+      <view class="con_left">
+        <view class="con_title">{{item.proTitle}}</view>
+        <view class="con_time">预约截止时间：
+          <text>{{item.proDate}}</text>
+        </view>
+        <view class="con_num">已有
+          <text style="color:red;">{{item.proCount==null?0:item.proCount}}</text>人预约</view>
+      </view>
+      <view class="com_make" bindtap="appointment" data-id="{{item.proId}}">立即预约</view>
+    </view>
+       <getphone class="com_make_phone" wx:if="{{getphone}}"></getphone>
+  </view>
+  <view style="height:230rpx;"></view>
+</view>

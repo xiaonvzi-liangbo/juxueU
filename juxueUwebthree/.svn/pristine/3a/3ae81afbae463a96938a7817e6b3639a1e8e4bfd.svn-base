@@ -1,0 +1,35 @@
+<view class="modul">
+  <view style="background-color: #fff;margin-top:10rpx;" wx:for="{{information}}" wx:key="index">
+    <view class="back" bindtap="particulars" data-id="{{item.id}}">
+      <view class="left_size">
+        <view class="mod_row">
+          <view class="aligning"  bindtap="personage" data-id="{{item.userId}}">
+            <image src="{{item.userLogo}}" class="img_tx" ></image>
+            <image src="{{item.associationImg}}" class="img_icon"></image>
+            <view>
+              <text class="school_title">{{item.userName}}</text>
+            <view class="school">{{item.associationImg =='https://staticfile.xlcwx.com/userfiles/201910/20191009145821.png'?item.associationName:item.collageName}}</view>
+
+            </view>
+          </view>
+        </view>
+        <view class="mod_title"><tetx>{{item.title?item.title:item.context}}</tetx></view>
+        <view class="mod_row">
+          <view class="mod_bottom">
+            <image src="../../images/browse.png" style="width:24rpx;height:24rpx;"></image>
+            <view class="mod_text">{{item.visitNumber}}</view>
+            <image src="../../images/comment.png" class="com_image"></image>
+            <view>{{item.commentNumber}}</view>
+            <image src="../../images/adress.png" class="com_image" style="margin-left:30rpx;"></image>
+            <view>{{item.collageName==null?'学校尚未认证':item.collageName}}</view>
+          </view>
+          <view class="mod_time">{{item.createTime}}</view>
+        </view>
+      </view>
+      <view>
+        <image src="{{item.jxCollagePostsFroms[0].imgUrl}}" class="img_size"></image>
+      </view>
+    </view>
+  </view>
+</view>
+<view style="height:5%;"></view>

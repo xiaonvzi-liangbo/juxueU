@@ -1,0 +1,28 @@
+/**app.wxss**/
+.size30{
+  font-size: 30rpx;
+  color: #4B4A4A;
+}
+.size36{
+  font-size: 36rpx;
+  font-weight: 550;
+  color: #595959;
+}
+.size33{
+  font-size: 33rpx;
+  color: #1B1B1B;
+}
+.size25{
+  font-size: 25rpx;
+  color: #ACACAC;
+}
+.size20{
+  font-size: 15rpx;
+  color: #ACACAC;
+}
+/*隐藏滚动条*/
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}

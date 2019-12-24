@@ -1,0 +1,162 @@
+.background{
+  width: 100%;
+  height: 340rpx;
+}
+.posi{
+  position: relative;
+}
+.banner{
+  position: absolute;
+  top: 40rpx;
+  left: 100rpx;
+  color: #FAFCFE;
+  font-size: 30rpx;
+}
+.integral{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.inte_num{
+  font-size: 100rpx;
+  font-weight: 900;
+}
+.detail{
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 10rpx;
+}
+.inte_detail{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  right: -300rpx;
+  font-size: 30rpx;
+}
+.money{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10rpx;
+}
+.mone_num{
+  background-color: #BFDCFF;
+  color: #2E79DC;
+  padding: 6rpx 20rpx;
+  border-radius: 15rpx;
+  font-size: 25rpx;
+  margin-top: 15rpx;
+}
+.mone_chance{
+  margin-top: 10rpx;
+  position: absolute;
+  right: -305rpx;
+}
+.mone_sjx{
+  width: 20rpx;
+  height: 20rpx;
+  position: absolute;
+  bottom: 42rpx;
+}
+.conv_bor{
+  margin:20rpx 0 0 25rpx;
+  width: 29%;
+  height: 140rpx;
+  background-color: #E6E6E6;
+  display: inline-block;
+  border-radius: 10rpx;
+  text-align: center;
+}
+.center{
+  position: relative;
+  top: 45rpx;
+}
+.conv_tj{
+  font-size: 25rpx;
+  background-color: #E42626;
+  padding: 5rpx 19rpx;
+  position: absolute;
+  border-radius: 0 10rpx 0 10rpx;
+  color: #FFFFFF;
+}
+.conv_back{
+  background-color: #41C8EE;
+  color: #FFFFFF;
+}
+.withdraw{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 40rpx;
+}
+.with_tx{
+  padding: 25rpx 130rpx;
+  background-color: #2896CC;
+  border-radius: 50rpx;
+  position: relative;
+  left: 28%;
+  color: #FFFFFF;
+}
+.with_txjl{
+  font-size: 30rpx;
+  position: absolute;
+  right: 40rpx;
+  color: #2B97CC;
+}
+.rule{
+  width: 95%;
+  margin: auto;
+  margin-top: 100rpx;
+}
+.rule_title{
+  text-align: center;
+  font-size: 33rpx;
+  font-weight: 550;
+}
+.shadow{
+  width: 180rpx;
+  height: 25rpx;
+  margin: auto;
+  background-color: #B0CBEB;
+  border-radius: 50rpx;
+  position: relative;
+  top: -18rpx;
+  z-index: -99;
+}
+.rule_conter{
+  margin: 10rpx;
+  font-size: 28rpx;
+  color: #8E8D8D;
+  line-height: 45rpx;
+}
+.mo_title{
+  font-size: 36rpx;
+  font-weight: 900;
+  color: #2996CC;
+  margin-bottom: 25rpx;
+  position: relative;
+  left: 20rpx;
+}
+.mo_tetx{
+  font-size: 25rpx;
+  margin-top: 10rpx;
+  margin-bottom: 30rpx;
+}
+.color{
+  font-weight: 550;
+  color: #327EDF;
+}
+.hint_conter{
+  font-size: 30rpx;
+}
+.hint_but{
+  font-size: 30rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 40rpx;
+}
+.hint_auto{
+  flex: auto;
+}

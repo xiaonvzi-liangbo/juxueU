@@ -1,0 +1,292 @@
+.heard_img {
+  width: 100%;
+  height: 300rpx;
+}
+
+.conter {
+  width: 95%;
+  margin: auto;
+}
+
+.renshu {
+  width: 20rpx;
+  height: 20rpx;
+  align-content: center;
+  position: absolute;
+  top: 5rpx;
+  left: 20rpx;
+}
+.personsName {
+  width: 100rpx;
+  height: 30rpx;
+  background-color: #fff;
+  opacity: 0.6;
+  color: #fff;
+  border: 1rpx rgb(230, 225, 225)6CA solid;
+  border-radius: 15rpx; 
+  position: absolute;
+  bottom: 0rpx;
+  left: 200rpx;
+  box-shadow: 0 0 5rpx #c3c6ca;
+  align-content: center;
+  text-align: center;
+  font-size: 20rpx;
+  line-height: 30rpx;
+  padding-left: 20rpx;
+}
+.title {
+  display: flex;
+  flex-direction: row;
+  font-size: 38rpx;
+  color: #fff;
+  position: relative;
+  top: -130rpx;
+  left: 10rpx;
+  text-shadow:2px 2px 2px rgba(0, 0, 0, 0.555);
+}
+.images {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-bottom: 10rpx;
+}
+
+.img_size {
+  width: 225rpx;
+  height: 150rpx;
+  border-radius: 15rpx;
+}
+.number {
+  font-size: 20rpx;
+}
+
+.signature {
+  text-indent: 55rpx;
+  font-size: 26rpx;
+  line-height: 38rpx;
+  border-radius: 10rpx;
+  padding: 26rpx 30rpx 50rpx 30rpx;
+  box-shadow: 0 0 10rpx #c3c6ca;
+  position: relative;
+  top: -110rpx;
+  background-color: #fff;
+}
+
+.fabu {
+  width: 28rpx;
+  height: 28rpx;
+  position: absolute;
+  right: 20rpx;
+  bottom: 15rpx;
+}
+.fabutex {
+  width: 28rpx;
+  height: 28rpx;
+  position: absolute;
+  right: 20rpx; 
+}
+
+.relation_block {
+  height: 30rpx;
+  width: 8rpx;
+  background-color: #2996cc;
+  margin-right: 18rpx;
+}
+
+.relation_title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.relation {
+  border-radius: 10rpx;
+  padding: 26rpx 30rpx;
+  box-shadow: 0 0 10rpx #c3c6ca;
+  position: relative;
+  top: -80rpx;
+}
+
+.relation_lx {
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.relation_com {
+  font-size: 24rpx;
+  color: #ec1f1f;
+  position: absolute;
+  right: 50rpx;
+}
+
+.relation_wary {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 24rpx;
+  margin-top: 25rpx;
+}
+
+.relation_distance {
+  margin-left: 50rpx;
+}
+
+.relation_del {
+  margin-left: 70rpx;
+  color: #ec1f1f;
+}
+
+.mien {
+  border-radius: 10rpx;
+  padding: 26rpx 0 0 0;
+  box-shadow: 0 0 10rpx #c3c6ca;
+  position: relative;
+  top: -50rpx;
+}
+
+.fcimg {
+  width: 100%;
+
+  /* height: 500rpx;
+ object-fit:fill */
+}
+
+.popularizes {
+  position: fixed;
+  bottom: 160rpx;
+  right: 30rpx;
+  width: 100rpx;
+  height: 100rpx;
+  /* background-color: #2996cc; */
+   background-image: linear-gradient(to bottom right, #7590F2, #2B6CEF);
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+}
+
+.potxt {
+  position: absolute;
+  left: 6rpx;
+  top: 15rpx;
+  font-size: 26rpx;
+  line-height:35rpx;
+  letter-spacing: 6rpx;
+}
+
+.dynamic {
+  border-radius: 10rpx;
+  padding: 26rpx 20rpx;
+  box-shadow: 0 0 10rpx #c3c6ca;
+  position: relative;
+  top: -20rpx;
+}
+
+
+.dyna_card {
+  margin:20rpx 0;
+  display: flex;
+  flex-direction: row; 
+  width: 100%;
+}
+
+.card_img {
+  width: 160rpx;
+  height: 190rpx;
+  border-radius: 10rpx;
+}
+
+.card_conter {
+  padding: 10rpx 0;
+  width: 100%;
+
+}
+
+.card_text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  font-size: 30rpx;
+  text-align: 25rpx;
+  /* height: 120rpx; */
+  margin-bottom: 20rpx;
+  letter-spacing: 2rpx;
+}
+
+.card_bom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 22rpx;
+  color: #808080ff;
+  margin-top: 20rpx;
+}
+
+.card_imgs {
+  width: 20rpx;
+  height: 18rpx;
+  margin-right: 5rpx;
+}
+
+.comment {
+  margin-left: 40rpx;
+}
+
+.card_time {
+  position: absolute;
+  right: 60rpx;
+}
+
+.textarea {
+  width: 100%;
+  max-height: 246rpx;
+}
+
+.save {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  right: 20rpx;
+  bottom: 15rpx;
+  font-size: 20rpx;
+  color: #8ddfa5;
+}
+
+.form {
+  text-align: center;
+  padding: 20rpx;
+}
+
+.form_in {
+  border: 1rpx solid #030000;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 20rpx;
+  text-align: left;
+  padding: 5rpx 20rpx;
+  font-size: 24rpx;
+}
+
+.model_save {
+  /* padding: 15rpx 30rpx; */
+  background-color: #2996cc;
+  width: 136rpx;
+  margin: auto;
+  border-radius: 50rpx;
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.del {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  right: 5rpx;
+  bottom: 0rpx;
+}
+.dian{
+  border: 2px #a8a8a8 solid;
+  border-radius: 50%;
+  margin:0 10rpx;
+}

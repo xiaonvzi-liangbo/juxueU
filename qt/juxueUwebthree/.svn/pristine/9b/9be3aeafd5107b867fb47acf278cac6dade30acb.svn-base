@@ -1,0 +1,23 @@
+<view wx:if="{{!privatedata}}"  style=" width: 100%;height: 100%; overflow: hidden">
+  <image style="width: 100%;height:100%" mode="aspectFill" src="/pages/images/new.jpg"></image>
+</view>
+<view wx:if="{{privatedata}}" style="padding-top:20rpx;" wx:for="{{privatedata}}" wx:key="index">
+  <i-swipeout bind:change="deldata" id="{{item.id}}" actions="{{actions}}">
+    <view slot="content">
+      <view class="entire">
+        <view>
+          <image src=" {{item.fLogo}} " class="logo"></image>
+          <image src="{{item.fImg}}" class="img_icon"></image>
+          <view class="red_dot" wx:if="{{item.isRead=='0'}}"></view>
+        </view>
+        <navigator url="/pages/my/chat/chat?transferid= {{item.id}}&fauserId={{item.userId}}" hover-class="navigator-hover">
+          <view class="name">{{item.fName}}</view>
+          <view class="cont_con ">
+            <tetx>{{item.context}}</tetx>
+          </view>
+          <view class="cont_time ">{{item.createTime}}</view>
+        </navigator>
+      </view>
+    </view>
+  </i-swipeout>
+</view>

@@ -1,0 +1,27 @@
+.overall{
+  padding-top: 100rpx;
+  width: 95%;
+  margin: auto;
+  z-index: 6000
+}
+.hint{
+  font-size: 24rpx;
+  text-align: center;
+}
+.input{
+  border: 1rpx solid #2996CC;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  width: 70%;
+  margin: auto;
+  padding: 15rpx 20rpx;
+  margin-top: 40rpx;
+}
+.subim{
+  width: 260rpx;
+  background-color: #2996CC;
+  color: #fff;
+  margin-top: 100rpx;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+}

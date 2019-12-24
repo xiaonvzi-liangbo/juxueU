@@ -1,0 +1,73 @@
+<view style="width:100%">
+  <view class="heard_img_box">
+    <image src="{{organ.img?organ.img:'/pages/images/stbgimg.jpg'}}" class="heard_img" bindtap="accessToken" data-fun="{{commander?'bgupload':''}}"></image>
+  </view>
+  <view class="heards">
+    <view>
+      <image src="{{organ.headImg}}" class="heard_tx" bindtap="accessToken" data-fun="{{commander?'upload':''}}"></image>
+    </view>
+    <view>
+      <view class="heards_title">{{organ.associationName}}</view>
+      <view class="heards_bom">
+        <view class="auto">
+          <image src="/pages/images/xr.png" class="bom_img"></image>
+          <text style="margin-right:20rpx;">社团成员</text>{{organ.associationNumber}}</view>
+        <view class="auto" style="margin-left:80rpx;">
+          <image src="/pages/images/adress1.png" class="bom_img"></image>{{organ.collageName}}-{{organ.collageCampus}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="navi">
+    <view class="navi_view" bindtap="member">
+      <image src="/pages/images/chengyuan.png" class="navi_img"></image>
+      <view>社团成员</view>
+    </view>
+    <view class="navi_view" bindtap="organizatiuon" data-stid="{{organ.id}}">
+      <image src="/pages/images/guanyuwomen.png" class="navi_img"></image>
+      <view>关于社团</view>
+    </view>
+    <view wx:if="{{commander}}" class="navi_view" bindtap="chengyuan" data-stid="{{organ.id}}">
+      <view class="hd" wx:if="{{commander&&organ.unread=='0'}}"></view>
+      <image src="/pages/images/shenqing.png" class="navi_img"></image>
+      <view>申请列表</view>
+    </view>
+    <view class="navi_view" bindtap="quit" data-id="{{organ.id}}" data-tzid="{{organ.userId}}">
+      <image src="/pages/images/tuichu.png" class="navi_img"></image>
+      <view>退出社团</view>
+    </view>
+  </view>
+  <view class="dynamic">
+    <view class="dyna">社团动态</view>
+    <view wx:if="{{!stdynamic[0]}}" style=" width: 100%;height: calc(50vh - 15px); overflow: hidden">
+      <image style="width: 100%;height:100%" mode="aspectFill" src="/pages/images/content.jpg"></image>
+    </view>
+    <view wx:if="{{stdynamic[0]}}" class="dyna_card" wx:for="{{stdynamic}}" wx:key="index">
+      <view class="card_conter" bindtap="particulars" data-id="{{item.id}}">
+        <view class="card_text">{{item.title}}</view>
+        <view bindtap="particulars" class="images" data-id="{{item.id}}">
+          <image src="{{item.postsImgs[0]}}" class="img_size"></image>
+          <image src="{{item.postsImgs[1]}}" class="img_size"></image>
+          <image src="{{item.postsImgs[2]}}" class="img_size"></image>
+        </view>
+        <view class="card_bom">
+          <view class="card_time">{{item.createTime}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="but" wx:if="{{commander}}" bindtap="issue">
+  <image src="/pages/images/fabu.png" class="fabu"></image>
+</view>
+<modal showModal="{{showmodal}}" width="70%">
+  <view>
+    <view class="modal_title">团长需委任一位团长才可退团</view>
+    <view wx:for="{{cyList}}" wx:key="index" class="modal_conter">
+      <view>
+        <image src="{{item.userLogo}}" class="modal_img"></image>
+      </view>
+      <view class="modal_name">{{item.userName}}</view>
+      <view class="modal_but" bindtap="appoint" data-cyid="{{item.userId}}" data-cybid="{{item.id}}" data-tzid="{{item.associationUserId}}">委任</view>
+    </view>
+  </view>
+</modal>

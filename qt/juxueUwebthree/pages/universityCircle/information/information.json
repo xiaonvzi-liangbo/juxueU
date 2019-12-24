@@ -1,0 +1,6 @@
+{
+"usingComponents": {
+  "navigation": "/pages/index/navigation/navigation",
+    "i-action-sheet": "../../components/action-sheet/index"
+  }
+}

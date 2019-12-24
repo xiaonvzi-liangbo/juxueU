@@ -1,0 +1,7 @@
+{
+  "navigationStyle":"default",
+  "navigationBarTitleText":"编辑资料",
+  "usingComponents": {
+    "picker":"/pages/components/picker/picker"
+  }
+}

@@ -1,0 +1,19 @@
+.tubiao{
+  width: 322rpx;
+  height: 322rpx;
+}
+.site{
+  text-align: center;
+  padding-top: 300rpx;
+}
+.title{
+  font-size: 30rpx;
+  text-align: center;
+}
+.login{
+  width: 380rpx;
+  background-color: #2996CC;
+  border-radius: 50rpx;
+  margin-top: 150rpx;
+  color: #fff;
+}

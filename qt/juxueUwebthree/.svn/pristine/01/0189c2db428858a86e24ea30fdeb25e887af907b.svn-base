@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText":"",
+  "usingComponents": {
+    "aiticle":"/pages/components/article/article",
+    "mood":"/pages/components/mood/mood",
+    "answer":"/pages/components/answer/answer"
+  }
+}

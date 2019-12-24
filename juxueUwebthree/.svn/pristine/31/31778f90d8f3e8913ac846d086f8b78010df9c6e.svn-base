@@ -1,0 +1,23 @@
+
+<image class="backimage" src="/pages/images/release_back.jpg"></image>
+<view class="model_position">
+  <view class="model_top">
+    <image src="https://staticfile.xlcwx.com/userfiles/201909/20190917091147.png" class="tx_image"></image>
+    <view>Hi，今天是你来到聚学U的第{{mytime?mytime:'0'}}天!</view>
+  </view>
+  <view class="model_bottom">
+    <view class="moddel_promulgator" bindtap="sendBy">
+      <image src="../images/imageText.png" style="width:110rpx;height:80rpx;"></image>
+      <view>发图文</view>
+    </view>
+    <view class="moddel_promulgator1" bindtap="sendMood">
+      <image src="../images/questions.png" style="width:110rpx;height:95rpx;"></image>
+      <view>发心情</view>
+    </view>
+    <view class="moddel_promulgator" bindtap="sendQuestions">
+      <image src="../images/mood.png" style="width:110rpx;height:90rpx;"></image>
+      <view>发问答</view>
+    </view>
+  </view>
+</view>
+<view style="height:48px;"></view>

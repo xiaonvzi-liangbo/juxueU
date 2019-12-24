@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "canvas-share": "/pages/components/my/canvas-share/canvasshare",
+    "getphone":"/pages/guidance/phone/phone"
+  }
+}

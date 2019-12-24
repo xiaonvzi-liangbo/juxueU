@@ -1,0 +1,71 @@
+import requestUrl from "../../../utils/request.js"
+import time from "../../../utils/time.js"
+Component({
+  /**
+   * 组件的属性列表
+   */
+  properties: {
+    
+  },
+
+  /**
+   * 组件的初始数据
+   */
+  data: {
+    number:1,
+    getEducation:[]
+  },
+
+  /**
+   * 组件的方法列表
+   */
+  methods: {
+    education(){
+      let that = this;
+      wx.request({
+        url: requestUrl.requestUrl +'/promoteApp/list',
+        data:{
+          pageNum: that.data.number,
+          pageSize:'10',
+          proType: '1'
+        },
+        method: 'GET',
+        header: {
+          'content-type': 'application/json',
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: function(res) {
+          for (let i = 0; i < res.data.rows.length;i++){
+            res.data.rows[i].proDate = time.cutOut(res.data.rows[i].proDate)
+          }
+          that.setData({
+            getEducation: that.data.getEducation.concat(res.data.rows)
+          })
+          console.log(that.data.getEducation,'查看这个值得内容')
+        },
+      })
+    },
+    //上拉加载点击事件
+    tolower(){
+      this.data.number++;
+      this.education()
+    },
+    //立即预约点击事件
+    appointment(e){
+      console.log(e,'查看这个值的内容是什么')
+      wx.navigateTo({
+        url: '/pages/education/appointment/appointment?proid='+e.currentTarget.dataset.id,
+      })
+    },
+    getPhoneNumber(e){
+      console.log(data,'查看这个大人覅哦对')
+      console.log(e.detail.errMsg)
+      console.log(e.detail.iv)
+      console.log(e.detail.encryptedData)
+    }
+  },
+  attached(){
+    console.log('这里怎么没有调用呢')
+    this.education();
+  }
+})

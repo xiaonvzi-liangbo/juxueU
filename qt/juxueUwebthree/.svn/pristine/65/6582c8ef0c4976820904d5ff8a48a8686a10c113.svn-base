@@ -1,0 +1,18 @@
+<!--pages/home/home.wxml-->
+<scroll-view class="gun" scroll-y scroll-left='hide' style="height:100%;">
+  <!-- <navigation title="{{title}}" wx:if="{{show}}"></navigation> -->
+  <index wx:if="{{current=='index'}}"></index>
+  <hotspot id="hotspot" wx:if="{{current=='hotspot'}}"></hotspot>
+  <announce id="aiticle" attentionId="{{attentionId}}" attentionName="{{attentionName}}" topicsId="{{topicsID}}" topicsName="{{topicsName}}" associationId="{{associationId}}" upload="{{upload}}" wx:if="{{current=='announce'}}"></announce>
+  <uActivities id="uActivities" wx:if="{{current=='uActivities'}}"></uActivities>
+  <my id="mine" wx:if="{{current=='mine'}}"></my>
+</scroll-view>
+<image wx:if="{{current=='index'}}" class="sign" src="/pages/images/sign.png" bindtap="navpage" data-linkUrl='/pages/my/signIn/signIn'></image>
+
+<i-tab-bar current="{{ current }}" color="#2F6EEF" bindchange="handleChange" fixed="true">
+  <i-tab-bar-item key="index" current-img='/pages/images/icon-05.png' img='/pages/images/icon-13.png' title="首页"></i-tab-bar-item>
+  <i-tab-bar-item key="hotspot" current-img='/pages/images/icon-06.png' img='/pages/images/icon-14.png' title="社团"></i-tab-bar-item>
+  <i-tab-bar-item key="announce" class="announce" current-img='/pages/images/announce.jpg' img='/pages/images/announce.jpg' ></i-tab-bar-item>
+  <i-tab-bar-item isread='{{isread}}' key="uActivities" current-img='/pages/images/icon-07.png' img='/pages/images/icon-15.png' title="U活动"></i-tab-bar-item>
+  <i-tab-bar-item key="mine" current-img='/pages/images/icon-08.png' img='/pages/images/icon-16.png' title="我的"></i-tab-bar-item>
+</i-tab-bar>

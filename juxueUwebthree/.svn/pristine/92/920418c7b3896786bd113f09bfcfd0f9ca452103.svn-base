@@ -1,0 +1,46 @@
+<view class="complete">
+  <!-- 我 -->
+  <view class="my" wx:if="{{my}}">
+    <view>
+      <image src="{{my.userLogo}}" bindtap="personage" data-id="{{my.userId}}" class="heards_img"></image>
+      <image src="{{my.associationImg}}" class="heards_img1"></image>
+    </view>
+    <view class="heard_conter">
+      <view class="title">
+        <view class="heard_title">{{my.userName}}</view>
+        <text class="heard_tz">{{myconsole?'团长':'团员'}}</text>
+        <!-- 我即团长 -->
+      </view>
+      <view class="heard_qm">{{my.autograph?my.autograph:'个性签名'}}</view>
+    </view>
+    <view class="texting">
+      <text wx:if="{{myconsole}}" class="anniu" bindtap="mass" data-tzid="{{my.associationUserId}}" data-stid="{{my.associationId}}">新建群发</text>
+    </view>
+  </view>
+  <!-- 分割线 -->
+  <view class="bom_bot"></view>
+  <view style="height:50rpx;"></view>
+<!-- //团成员 -->
+  <block wx:for="{{member}}" wx:key="index">
+    <view class="chengyuan">
+      <view>
+        <image src="{{item.userLogo}}" class="heards_img" bindtap="personage" data-id="{{item.userId}}"></image>
+        <image src="{{item.associationImg}}" class="heards_img1"></image>
+      </view>
+      <view class="heard_conter">
+        <view class="title">
+          <view class="heard_title">{{item.userName?item.userName:'昵称'}}</view>
+          <view class="heard_tz"> {{item.position==0?'团长':'团员'}} </view>
+
+
+        </view>
+        <view class="heard_qm">{{item.autograph?item.autograph:'个性签名'}}</view>
+      </view>
+      <view class="{{myconsole?'texting':'texting1'}}">
+        <text class="{{item.isNull=='1'?'attention':'attention1'}}" bindtap="concern" data-tyid="{{item.userId}}">{{item.isNull=='1'?'关注':'已关注'}}</text>
+      </view>
+
+      <view class="textmy" wx:if="{{myconsole}}" style="color:red;" bindtap="delete" data-rzid="{{item.associationId}}" data-tzid="{{item.associationUserId}}" data-tyid="{{item.userId}}">删除</view>
+    </view>
+  </block>
+</view>

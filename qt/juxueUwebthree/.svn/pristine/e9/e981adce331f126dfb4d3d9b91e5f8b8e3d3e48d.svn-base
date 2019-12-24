@@ -1,0 +1,41 @@
+page{
+  overflow: hidden;
+}
+.entirety{
+  width: 95%;
+  margin: auto;
+}
+.heard_img{
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+}
+.heards{
+  text-align: center;
+  margin-top: 100rpx;
+}
+.inpu{
+  margin-top: 30rpx;
+  font-size: 30rpx;
+}
+.name{
+  margin-top: 10rpx;
+  border-bottom: 1rpx solid #B3B3B3;
+  padding-bottom: 10rpx;
+}
+.top{
+  margin-top: 40rpx;
+}
+.updata{
+  font-size: 20rpx;
+  position: absolute;
+  right: 30rpx;
+  margin-top: 5rpx;
+}
+.save{
+  margin-top: 100rpx;
+  width: 300rpx;
+  border-radius: 50rpx;
+  background-color: #2996CC;
+  color: #fff;
+}

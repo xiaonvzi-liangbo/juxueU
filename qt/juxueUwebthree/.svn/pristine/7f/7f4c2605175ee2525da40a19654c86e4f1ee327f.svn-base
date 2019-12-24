@@ -1,0 +1,56 @@
+<navigations title="成员列表"></navigations>
+<view class="complete">
+  <view class="my" wx:if="{{colonel}}">
+    <view>
+      <image src="{{colonel.userLogo}}" bindtap="personage" data-id="{{colonel.userId}}" class="heards_img"></image>
+      <image src="{{colonel.associationImg}}" class="heards_img1"></image>
+    </view>
+    <view class="heard_conter">
+      <view class="title"><view class="heard_title">{{colonel.userName}}</view><text class="heard_tz">团长</text></view>
+      <view class="heard_qm">{{colonel.autograph}}</view>
+    </view>
+    <view class="texting"><text class="anniu" bindtap="mass" data-tzid="{{colonel.associationUserId}}" data-stid="{{colonel.associationId}}">新建群发</text></view>
+    <view class="textmy">我</view>
+  </view>
+  <view class="my" wx:else>
+    <view>
+      <image src="{{my.userLogo}}" bindtap="personage" data-id="{{my.userId}}" class="heards_img"></image>
+      <image src="{{my.associationImg}}" class="heards_img1"></image>
+    </view>
+      <view class="heard_conter">
+        <view class="title"><view class="heard_title">{{my.userName}}</view></view>
+        <view class="heard_qm">{{my.autograph}}</view>
+      </view>
+      <view class="texting"></view>
+      <view class="textmy">我</view>
+  </view>
+  <view class="bom_bot"></view>
+  <view style="height:50rpx;"></view>
+  <view class="my" wx:if="{{my}}">
+    <view>
+      <image src="{{colonels.userLogo}}" class="heards_img"></image>
+      <image src="{{colonels.associationImg}}" class="heards_img1"></image>
+    </view>
+    <view class="heard_conter">
+      <view class="title"><view class="heard_title">{{colonel.userName}}</view><text class="heard_tz">团长</text></view>
+      <view class="heard_qm">{{colonel.autograph}}</view>
+    </view>
+    <view class="texting1" wx:if="{{colonels.isNull=='1'}}"><text class="attention" bindtap="concern" data-tyid="{{colonels.userId}}">关注</text></view>
+    <view class="{{colonels?'texting':'texting1'}}" wx:if="{{colonels.isNull=='0'}}"><text class="attention1">已关注</text></view>
+  </view>
+  <block wx:for="{{member}}" wx:key="index">
+    <view class="chengyuan" wx:if="{{item.myType=='2'}}">
+      <view>
+        <image src="{{colonel.userLogo}}" class="heards_img"  bindtap="personage" data-id="{{item.userId}}"></image>
+        <image src="{{colonel.associationImg}}" class="heards_img1"></image>
+      </view>
+      <view class="heard_conter">
+        <view class="title"><view class="heard_title">{{colonel.userName}}</view></view>
+        <view class="heard_qm">{{colonel.autograph}}</view>
+      </view>
+      <view class="{{colonel?'texting':'texting1'}}" wx:if="{{item.isNull=='1'}}"><text class="attention" bindtap="concern" data-tyid="{{item.userId}}">关注</text></view>
+      <view class="{{colonel?'texting':'texting1'}}" wx:if="{{item.isNull=='0'}}"><text class="attention1">已关注</text></view>
+      <view class="textmy" style="color:red;" wx:if="{{colonel}}" bindtap="delete" data-rzid="{{item.associationId}}" data-tzid="{{item.associationUserId}}" data-tyid="{{item.userId}}">删除</view>
+    </view>
+  </block>
+</view>

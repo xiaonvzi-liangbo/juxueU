@@ -1,0 +1,54 @@
+import requestUrl from '../../../utils/request.js'
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    foot:[]
+  },
+  onLoad: function (options) {
+    this.getFoot()
+  },
+  //获取足迹
+  getFoot(){
+    let that=this;
+    let userid = wx.getStorageSync('userid');
+    wx.request({
+      url: requestUrl.requestUrl +'/jXFootprint/findByUserId',
+      data:{
+        userId:userid
+      },
+      method:'get',
+      success(res){
+        if(res.data.code=='200'){
+          that.setData({
+            foot:res.data.data
+          })
+        }
+      }
+    })
+  },
+  //点击跳转相应页面
+  instruction(e){
+    if (e.currentTarget.dataset.type=='主页'){
+      wx.navigateTo({
+        url: '/pages/universityCircle/myPost/myPost?id=' + e.currentTarget.dataset.zyid,
+      })
+    } else if (e.currentTarget.dataset.type == '帖子'){
+      wx.navigateTo({
+        url: '/pages/universityCircle/information/information?tzid=' + e.currentTarget.dataset.tzid,
+      })
+    }else if(e.currentTarget.dataset.type == '公开课'){
+      wx.navigateTo({
+        url: '/pages/openClass/curriculum/curriculum?id=' + e.currentTarget.dataset.tzid,
+      })
+    }
+  },
+  //点击头像跳转到详情
+  personage(e) {
+    wx.navigateTo({
+      url: '/pages/universityCircle/myPost/myPost?id=' + e.currentTarget.dataset.id,
+    })
+  },
+})

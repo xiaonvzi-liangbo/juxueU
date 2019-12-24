@@ -1,0 +1,13 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "index": "/pages/home/home",
+    "hotspot": "/pages/hotspot/hotspot",
+    "announce": "/pages/components/article/article",
+    "uActivities": "/pages/uActivities/uActivities",
+    "my": "/pages/my/my",
+    "i-tab-bar": "/pages/components/dist/tab-bar/index",
+    "i-tab-bar-item": "/pages/components/dist/tab-bar-item/index",
+    "navigation":"/pages/index/navigation/navigation"
+  }
+}

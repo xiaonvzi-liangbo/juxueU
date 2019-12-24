@@ -1,0 +1,8 @@
+<!--components/pickerYMDHM/pickerYMDHM.wxml-->
+<view>
+  <picker class="pictime" disabled="{{disabled}}" mode="multiSelector" bindchange="pickerChange" bindcolumnchange="pickerColumnChange" bindcancel ="pickerCancel" value="{{pickerIndex}}" range="{{pickerArray}}" range-key="{{'name'}}">
+    <view class="pictxt" style="color:{{placeholder=='结束时间'||placeholder=='开始时间'||placeholder=='截止时间'?'#ccc':'#000'}}">
+      {{placeholder}}
+    </view>
+  </picker>
+</view>

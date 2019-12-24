@@ -1,0 +1,140 @@
+<scroll-view scroll-y class="hotspot" bindscrolltolower="tolower">
+  <view class="heards">
+    <view class="search_top">
+      <input class="search_input" placeholder="搜索感兴趣的社团" type="text" confirm-type="搜索" value="{{searinput}}" bindinput="commun" bindconfirm="community"></input>
+      <image src="/pages/images/search.png" catchtap='community' class="search"></image>
+    </view>
+    <view class="cleans" bindtap="quxiao" wx:if="{{clean}}">取消</view>
+  </view>
+  <block wx:if="{{!clean}}">
+    <view wx:if="{{mygroup.length>0}}">
+      <view class="title">我加入的</view>
+      <view wx:for="{{mygroup}}" wx:key="index" class="hot_hot">
+        <div class="card" bindtap="entrance" data-id="{{item.id}}">
+          <view>
+            <image src="{{item.headImg}}" class="hot_img"></image>
+          </view>
+          <view class="hot_center">
+            <view>{{item.associationName}}</view>
+            <view class="hot_botm">
+              <view class="hot_con">
+                <image src="/pages/images/renshu.png" class="hot_con_img"></image>
+                <text class="hot_num">{{item.associationNumber}}</text>
+              </view>
+              <view class="hot_con">
+                <image src="/pages/images/adress.png" class="hot_con_img"></image>
+                <text class="hot_num1">{{item.collageName}}-{{item.collageCampus}}</text>
+              </view>
+            </view>
+          </view>
+          <view>
+            <view class="button">进入</view>
+          </view>
+        </div>
+      </view>
+    </view>
+    <view>
+      <view class="title" wx:if="{{mygroup.length>0}}">热门社团</view>
+      <view class='sort-wrap'>
+        <text class="sort-title">排序</text>
+        <view class='sort-btn' bindtap="choosesort1">
+          <text class="{{daindex1=='3'?'':'sort_txt'}}" style="float:left; font-size: 24rpx;">按人数</text>
+          <view class="sort-choose">
+            <view class=" sort-up {{daindex1=='0'?'sort-up-choose':''}}"></view>
+            <view class=" sort-down {{daindex1=='1'?'sort-down-choose':''}}"></view>
+          </view>
+        </view>
+        <view class='sort-btn' bindtap="choosesort2">
+          <text class="{{daindex2=='3'?'':'sort_txt'}}" style="float:left; font-size: 24rpx;">按热度</text>
+          <view class="sort-choose">
+            <view class=" sort-up {{daindex2=='0'?'sort-up-choose':''}}"></view>
+            <view class=" sort-down {{daindex2=='1'?'sort-down-choose':''}}"></view>
+          </view>
+        </view>
+        <view class='sort-btn' bindtap="choosesort3">
+          <text class="{{daindex3=='3'?'':'sort_txt'}}" style="float:left; font-size: 24rpx;">按活跃度</text>
+          <view class="sort-choose">
+            <view class=" sort-up {{daindex3=='0'?'sort-up-choose':''}}"></view>
+            <view class=" sort-down {{daindex3=='1'?'sort-down-choose':''}}"></view>
+          </view>
+        </view>
+      </view>
+      <view wx:for="{{hot}}" wx:key="index" class="hot_hot">
+        <div class="card1">
+          <div class="card_top">
+            <view>
+              <image src="{{item.headImg}}" class="hot_img" bindtap="xiang" data-id="{{item.id}}"></image>
+            </view>
+            <view class="hot_center" bindtap="xiang" data-id="{{item.id}}">
+              <view>{{item.associationName}}</view>
+              <view class="hot_botm">
+                <view class="hot_con">
+                  <image src="/pages/images/renshu.png" class="hot_con_img"></image>
+                  <text class="hot_num">{{item.associationNumber}}</text>
+                </view>
+                <view class="hot_con">
+                  <image src="/pages/images/adress.png" class="hot_con_img"></image>
+                  <text class="hot_num1">{{item.collageName}}-{{item.collageCampus}}</text>
+                </view>
+              </view>
+            </view>
+            <view>
+              <view class="button button_co" bindtap="join" data-rzbid="{{item.id}}">申请加入</view>
+            </view>
+          </div>
+          <div class="hot_dynamic">
+            <div class="dyn_title">最近动态</div>
+            <div class="dyn_conter">
+              <rich-text nodes="{{item.postsContext==null?'暂无动态':item.postsContext}}"></rich-text>
+            </div>
+          </div>
+        </div>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view>
+      <view wx:for="{{result}}" wx:key="index" class="hot_hot">
+        <div class="card1">
+          <div class="card_top">
+            <view>
+              <image src="{{item.headImg}}" class="hot_img"></image>
+            </view>
+            <view class="hot_center">
+              <view>{{item.associationName}}</view>
+              <view class="hot_botm">
+                <view class="hot_con">
+                  <image src="/pages/images/renshu.png" class="hot_con_img"></image>
+                  <text class="hot_num">{{item.associationNumber}}</text>
+                </view>
+                <view class="hot_con">
+                  <image src="/pages/images/adress.png" class="hot_con_img"></image>
+                  <text class="hot_num1">{{item.collageName}}-{{item.collageCampus}}</text>
+                </view>
+              </view>
+            </view>
+            <view>
+              <view class="button button_co" bindtap="join">申请加入</view>
+            </view>
+          </div>
+          <div class="hot_dynamic">
+            <div class="dyn_title">最近动态</div>
+            <div class="dyn_conter">{{item.postsContext==null?'暂无动态':item.postsContext}}</div>
+          </div>
+        </div>
+      </view>
+    </view>
+  </block>
+</scroll-view>
+<modal visible="{{ visible }}" title="入团申请" width='30%'>
+  <form bindsubmit="accessToken" data-fun="formSubmit">
+    <image src="/pages/images/close.png" class="close" bindtap="close"></image>
+    <input placeholder="姓名" name="name" class="border"></input>
+    <view class="border">
+      <pickers bind:traCheckedNum="checkNum" class="pick"></pickers>
+    </view>
+    <input placeholder="专业" name="major" class="border"></input>
+    <input placeholder="个性签名" name="signature" class="border1" auto-height></input>
+    <button class="modal_but" formType="submit">提交申请</button>
+  </form>
+</modal>

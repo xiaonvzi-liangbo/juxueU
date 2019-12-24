@@ -1,0 +1,75 @@
+<navigation dome="积分兑换"></navigation>
+<view class="posi">
+  <image src="/pages/images/background.png" class="background"></image>
+  <view class="banner">
+
+    <view class="integral">
+      <view>总积分</view>
+      <view class="inte_num">{{integral.integralNumber}}</view>
+      <view class="mone_num">
+        <text class="cuIcon-triangleupfill mone_sjx"></text>
+        约 {{integral.mony}}.00 元</view>
+    </view>
+    <view class="money">
+      <view class="inte_detail" bindtap="itemized">
+        <image src="/pages/images/detail.png" class="detail"></image>积分明细</view>
+      <view class="mone_chance">您有 {{integral.presentationNumber==null?0:integral.presentationNumber}} 次提现机会</view>
+    </view>
+  </view>
+</view>
+<view class="conversion">
+  <view class="conv_bor {{number=='1'?' conv_back':''}}" data-number="1" bindtap="money">
+    <tetx class="center">1元</tetx>
+    <text class="conv_tj">推荐</text>
+  </view>
+  <view class="conv_bor {{number=='5'?' conv_back':''}}" data-number="5" bindtap="money">
+    <tetx class="center">5元</tetx>
+  </view>
+  <view class="conv_bor {{number=='10'?' conv_back':''}}" data-number="10" bindtap="money">
+    <tetx class="center">10元</tetx>
+  </view>
+  <view class="conv_bor {{number=='30'?' conv_back':''}}" data-number="30" bindtap="money">
+    <tetx class="center">30元</tetx>
+  </view>
+  <view class="conv_bor {{number=='50'?' conv_back':''}}" data-number="50" bindtap="money">
+    <tetx class="center">50元</tetx>
+  </view>
+  <view class="conv_bor {{number=='100'?' conv_back':''}}" data-number="100" bindtap="money">
+    <tetx class="center">100元</tetx>
+  </view>
+  <view class="withdraw">
+    <view class="with_tx" bindtap="extract">提现</view>
+    <view class="with_txjl" bindtap="record">提现记录</view>
+  </view>
+</view>
+<view class="rule">
+  <view class="rule_title">
+    <view>提现规则</view>
+    <view class="shadow"></view>
+  </view>
+  <view class="rule_conter">
+    <view>1.新用户可立即获得一次提现机会；</view>
+    <view>2.用户每连续签到7天及至少发布3篇帖子可获得一次提现机会(不限金额)；</view>
+    <view>3.积分按照 1000:1 的汇率兑换为零钱提现至你绑定的微信钱包中；</view>
+    <view>4.提现需1-2个工作日，请耐心等待。</view>
+  </view>
+</view>
+<modal id="hint">
+  <view>
+    <view class="mo_title">提交成功！</view>
+    <image src="/pages/images/chenggong.png" style="width:150rpx;height:150rpx;"></image>
+    <view class="mo_tetx">您可以在提现记录中查看进度</view>
+  </view>
+</modal>
+<modal id="hint2" radius="10rpx" width="60%" close="{{close}}">
+  <view class="hint_conter">
+    <view>是否用
+      <text class="color"> {{number}}000 </text>积分兑换
+      <text class="color"> {{number}} </text>元现金</view>
+    <view class="hint_but">
+      <view class="hint_auto">取消</view>
+      <view class="hint_auto" style="color:#D0D0D0;">|</view>
+      <view class="hint_auto" bindtap="confirm">确定</view>
+    </view>
+  </view>
+</modal>

@@ -1,0 +1,63 @@
+.title{
+  text-align: center;
+  padding-top: 30rpx;
+  font-size: 24rpx;
+  margin-bottom: 30rpx;
+}
+.input{
+  border: 1rpx solid #2996CC;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  width: 70%;
+  margin: auto;
+  padding: 15rpx 20rpx;
+  margin-top: 10rpx;
+}
+.input1{
+  border: 1rpx solid #2996CC;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  width: 70%;
+  height: 250rpx;
+  margin: auto;
+  padding: 15rpx 20rpx;
+  margin-top: 10rpx;
+}
+.subim{
+  width: 260rpx;
+  background-color: #2996CC;
+  color: #fff;
+  margin-top: 100rpx;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  margin-bottom: 50rpx;
+}
+.img{
+  width: 80%;
+  margin: auto;
+}
+.upload{
+  position: relative;
+  width: 160rpx;
+  height: 160rpx;
+  margin-top: 30rpx;
+  margin-left: 20rpx;
+}
+.view{
+  position: relative;
+  width: 160rpx;
+}
+.dele{
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: -20rpx;
+  bottom: 0;
+  z-index: 9999;
+}
+.view1{
+  display: inline-block;
+  position: relative;
+  width: 160rpx;
+  margin-right: 20rpx;
+}

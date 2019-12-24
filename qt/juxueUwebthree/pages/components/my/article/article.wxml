@@ -1,0 +1,27 @@
+<view class="modul">
+    <view style="margin-top:10rpx;" wx:for="{{information}}" wx:key="index">
+      <i-swipeout bind:change="deldata" id="{{item.id}}" actions="{{actions}}">
+        <view class="back" slot="content">
+          <view class="left_size">
+            <view class="mod_title" bindtap="particulars" data-id="{{item.id}}">
+              <rich-text nodes="{{item.title?item.title:item.context}}"> </rich-text>
+            </view>
+
+            <view bindtap="particulars" class="images" data-id="{{item.id}}">
+              <image src="{{item.postsImgs[0]}}" class="img_size"></image>
+              <image src="{{item.postsImgs[1]}}" class="img_size"></image>
+              <image src="{{item.postsImgs[2]}}" class="img_size"></image>
+            </view>
+            <view class="mod_row">
+              <view class="mod_bottom"> 
+                <view>{{item.visitNumber}}浏览</view>
+                <view class="dian"></view>
+                <view>{{item.commentNumber}}评论</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </i-swipeout>
+    </view>
+  </view>
+ 

@@ -1,0 +1,152 @@
+const requestUrl = require('../../../utils/request.js')
+const quantity = require('../../../utils/quantity.js')
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    historyData:[],
+    hostData:[],
+    search:'',
+    finish:false,
+    information:[],
+    isSearch:false,
+  },
+  //取消点击事件
+  clear(){
+    wx.navigateBack({
+      delta: 1,
+    })
+  },
+  //监听输入框的输入
+  monitor(e){
+    this.setData({
+      search:e.detail.value
+    })
+  },
+  //点击清楚输入框的内容
+  deleat(){
+    this.setData({
+      search:''
+    })
+  },
+  //获取数据
+  getData() {
+    let that = this;
+    wx.request({
+      url: requestUrl.requestUrl +'/jXCollageApp/findByHotSearch',
+      data:{
+        pageNum:'1',
+        pageSize:'6'
+      },
+      method:'GET',
+      header:{
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res){
+        that.setData({
+          hostData: res.data.rows
+        })
+      }
+    })
+  },
+  //获取历史搜索内容
+  history(){
+    let that = this;
+    let userid = wx.getStorageSync('userid');
+    wx.request({
+      url: requestUrl.requestUrl + '/jXSearchHistoryApp/findByAuto',
+      data: {
+        pageNum: '1',
+        pageSize: '6',
+        userId: userid
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        that.setData({
+          historyData: res.data.rows
+        })
+      }
+    })
+  },
+  //删除历史搜索事件
+  delect(){
+  },
+  //搜索点击事件
+  searchs(){
+    let that = this;
+    wx.request({
+      url: requestUrl.requestUrl + '/jXCollageApp/findByHotSearch',
+      data: {
+        pageNum: '1',
+        pageSize: '50',
+        name: that.data.search
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        let receive = res.data.rows;
+        for (let i = 0; i < receive.length; i++) {
+          //热度的处理
+          receive[i].hotNumber = quantity.number(receive[i].hotNumber);
+          //人数的处理
+          receive[i].peopleNumber = quantity.number(receive[i].peopleNumber);
+          //帖子数
+          receive[i].postsNumber = quantity.number(receive[i].postsNumber);
+        }
+        that.setData({
+          information: receive,
+          isSearch:true
+        });
+        if (!receive) {
+          that.setData({
+            finish: true
+          })
+        }
+      }
+    })
+  },
+  //加入点击事件
+  add(e){
+    let userid = wx.getStorageSync('userid');
+    wx.request({
+      url: requestUrl.requestUrl + '/jXUserCollageApp/add',
+      data: {
+        collageId: e.currentTarget.dataset.id,
+        userId: userid
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/json',
+        "content-type": "application/x-www-form-urlencoded"
+      },
+      success(res) {
+        if (res.data.code == 200) {
+          wx.navigateTo({
+            url: '/pages/universityCircle/invitation/invitation'
+          });
+          wx.setStorageSync('collageid', e.currentTarget.dataset.id)
+        } else if (res.data.code == 500) {
+          wx.showToast({
+            title: '加入失败，请重试',
+            icon: 'none',
+            duration: 2000
+          });
+        }
+      }
+    })
+  },
+  onLoad(){
+    this.getData();
+    this.history();
+  }
+})

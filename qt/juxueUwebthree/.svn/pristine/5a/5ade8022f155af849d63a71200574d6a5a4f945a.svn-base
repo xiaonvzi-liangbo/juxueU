@@ -1,0 +1,5 @@
+{"navigationBarTitleText": "发布",
+  "usingComponents": {
+    "pickerYMDHM": "/pages/components/uActivities/time/time"
+  }
+}

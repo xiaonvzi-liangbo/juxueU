@@ -1,0 +1,8 @@
+<!--pages/components/navigation/navigation.wxml    -->
+<view class="{{show?'subside':''}}">
+  <view class="head" style="background-color:{{backColor}};">
+    <!-- <view bindtap="back" data-url="{{imags}}"><image src="{{imags}}" class="backtrack"></image></view> -->
+    <view class="title" style="color:{{color}}">{{title}}</view>
+  </view>
+</view>
+<!-- <view class="subside" wx:if="{{show}}"></view> -->

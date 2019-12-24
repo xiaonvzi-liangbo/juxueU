@@ -1,0 +1,48 @@
+Component({
+  data: {
+    selected: 0,
+    color: "#7A7E83",
+    selectedColor: "#62AFD9",
+    list: [{
+      "pagePath": "/pages/index/index",
+      "iconPath": "/pages/images/index_unselected.png",
+      "selectedIconPath": "/pages/images/index_checked.png",
+      "text": "首页"
+    },
+      {
+        "iconPath": "/pages/images/icon_Friends.png",
+        "pagePath": "/pages/hotspot/hotspot",
+        "selectedIconPath": "/pages/images/icon_Friends2.png",
+        "text": "社团"
+      },
+      {
+        "selectedIconPath": "/pages/images/announce.png",
+        "iconPath": "/pages/images/announce.png",
+        "pagePath": "/pages/announce/announce"
+      },
+      {
+        "selectedIconPath": "/pages/images/news_check.png",
+        "iconPath": "/pages/images/news.png",
+        "pagePath": "/pages/news/news",
+        "text": "消息"
+      },
+      {
+        "selectedIconPath": "/pages/images/my_checked.png",
+        "iconPath": "/pages/images/my_unselected.png",
+        "pagePath": "/pages/my/my",
+        "text": "我的"
+      }]
+  },
+  attached() {
+  },
+  methods: {
+    switchTab(e) {
+      const data = e.currentTarget.dataset
+      const url = data.path
+      wx.switchTab({url})
+      this.setData({
+        selected: data.index
+      })
+    }
+  }
+})

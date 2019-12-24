@@ -1,0 +1,25 @@
+<scroll-view scroll-y style="height:80%;" bindscrolltolower="tolower">
+  <view class="card" wx:for="{{news}}" wx:key="index">
+    <view><image src="{{item.logo}}" class="logo" bindtap="personage" data-id="{{item.userId}}"></image></view>
+    <image src="{{item.coverUserAssociation}}" class="img_icon"></image>
+    <view bindtap="skips" data-type="{{item.informationType}}" data-id="{{item.id}}">
+      <view>
+        <view class="name">{{item.name}}</view>
+        <view class="middle" wx:if="{{item.informationType=='评论'}}">{{item.info}}</view>
+        <view class="middle" wx:if="{{item.informationType=='点赞'}}"><image src="/pages/images/like2.png" class="like"></image></view>
+        <view class="middle" wx:if="{{item.informationType=='关注'}}">关注了你</view>
+        <view class="time">
+          <view>{{item.createTime}}</view>
+        </view>
+      </view>
+      <view wx:if="{{item.informationType=='关注'}}">
+        <view class="attention" wx:if="{{item.mutualFollow=='0'}}" catchtap="atten" data-id="{{item.coverUserId}}">关注</view>
+        <view class="attention1" wx:else bindtap="atten" data-id="{{item.coverUserId}}">已关注</view>
+      </view>
+      <view class="end" wx:else>
+        {{item.info}}
+      </view>
+    </view>
+    </view>
+  <view style="height:100rpx;"></view>
+</scroll-view>

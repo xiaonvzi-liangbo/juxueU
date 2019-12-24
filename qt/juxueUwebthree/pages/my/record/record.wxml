@@ -1,0 +1,8 @@
+<navigation dome="兑换记录"></navigation>
+<view class="record" wx:for="123123">
+  <view>
+    <view class="reco_title">提现到微信零钱 1 元</view>
+    <view class="reco_time">2019-9-9 08:57</view>
+  </view>
+  <view class="reco_result">审核中</view>
+</view>

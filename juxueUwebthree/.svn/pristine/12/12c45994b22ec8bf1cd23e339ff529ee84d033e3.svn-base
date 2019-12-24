@@ -1,0 +1,38 @@
+//app.js
+import requestUrl from '/utils/request.js'
+App({
+  onLaunch: function () {
+    wx.hideTabBar({})
+    // 展示本地存储能力
+    var logs = wx.getStorageSync('logs') || []
+    logs.unshift(Date.now())
+    wx.setStorageSync('logs', logs)
+
+    wx.login({
+      success: res => {
+        if (res.code) {
+          // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          wx.request({
+            url: requestUrl.requestUrl + '/jj/weChat/getOpenId',
+            method: 'get',
+            data: {
+              jsCode: res.code,
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+              'Accept': 'application/json'
+            },
+            success(res) {
+              wx.setStorageSync('openid', res.data.data.openid)
+              wx.setStorageSync('sessionKey', res.data.data.sessionKey)
+            },
+
+          })
+        }
+      }
+    })
+  },
+  globalData: {
+    userInfo: null,
+  }, 
+})

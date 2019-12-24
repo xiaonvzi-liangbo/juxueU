@@ -1,0 +1,52 @@
+ 
+.title{
+  margin-top: 49rpx;
+}
+.input{
+  border-bottom: 1rpx solid #B3B3B3; 
+  font-size: 28rpx;
+  width: 100%;
+  margin: auto;
+  padding: 15rpx 0;
+}
+
+.subim{
+  width: 360rpx;
+  height: 86rpx;
+  line-height: 86rpx;
+  background-image: linear-gradient(to bottom right, #7590f2, #2b6cef);
+  color: #fff;
+  margin-top: 50rpx;
+  margin-bottom: 100rpx;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+}
+.img{
+  width: 100%;
+}
+.img_flex{
+  display: flex;
+}
+.upload{
+  position: relative;
+  margin-top: 30rpx;
+  margin-left: 20rpx;
+}
+.view{
+  position: relative;
+  width: 160rpx;
+}
+.dele{
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: -20rpx;
+  bottom: 0;
+  z-index: 9999;
+}
+.view1{
+  display: inline-block;
+  position: relative;
+  width: 160rpx;
+  margin-right: 20rpx;
+}

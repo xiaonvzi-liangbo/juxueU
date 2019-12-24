@@ -1,0 +1,45 @@
+.card {
+  width: 95%;
+  margin: auto;
+  margin-top: 30rpx;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.logo {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.conter {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.name {
+  width: 8em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.middle {
+  font-size: 22rpx;
+  margin: 10rpx 0;
+}
+
+.appright {
+  position: absolute;
+  right: 20rpx;
+  margin-top: 10rpx;
+  width: 250rpx;
+  display: flex;
+  justify-content: space-between;
+}

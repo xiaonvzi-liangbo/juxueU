@@ -1,0 +1,26 @@
+<view class="card" wx:for="{{news}}" wx:key="index">
+  <view>
+    <image src="{{item.logo}}" class="logo" bindtap="personage" data-id="{{item.coverUserId}}"></image>
+  </view>
+  <image src="{{item.info}}" class="img_icon"></image>
+  <view class="conright">
+    <view bindtap="skips" data-type="{{item.informationType}}" data-id="{{item.postsId}}">
+      <view class="name">{{item.name?item.name:'无名氏'}}</view>
+      <view class="middle" wx:if="{{item.informationType=='评论'}}">{{item.commentInfo?item.commentInfo:'评论了你'}}</view>
+      <view class="middle" wx:if="{{item.informationType=='点赞'}}">
+        <image src="/pages/images/icon-26.png" class="like"></image>
+      </view>
+      <view class="middle" wx:if="{{item.informationType=='关注'}}">关注了你</view>
+      <view class="time">
+        <view>{{item.createTime}}</view>
+      </view>
+    </view>
+    <view wx:if="{{item.informationType=='关注'}}">
+      <view class="attention {{item.mutualFollow == '0'?'attention':'attention1'}}" bindtap="atten" data-id="{{item.coverUserId}}">{{item.mutualFollow=='0'?'关注':'已关注'}}</view>
+    </view>
+    <view class="end" wx:else bindtap="skips" data-type="{{item.informationType}}" data-id="{{item.postsId}}">
+      <rich-text nodes="{{item.info?item.info:'点赞已取消'}}"> </rich-text>
+    </view>
+  </view>
+</view>
+ 

@@ -1,0 +1,228 @@
+/* pages/uActivities/details/details.wxss */
+
+page {
+}
+
+.content {
+  position: absolute;
+  top: 380rpx;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0rpx 1rpx 14rpx 2rpx #8b8888;
+  border-radius: 20rpx 20rpx 0 0;
+  font-size: 26rpx;
+  font-style: PingFang-SC-Medium;
+  background-color: #fff;
+}
+
+.title {
+  width: 100%;
+  height: 100rpx;
+  text-align: center;
+  font-size: 36rpx;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title_left, .title_right {
+  display: flex;
+  justify-content: center;
+  margin: 20rpx 60rpx 0 60rpx;
+}
+
+.left_img {
+  width: 42rpx;
+  height: 42rpx;
+  padding: 10rpx 30rpx;
+}
+.bottom {
+  width: 64rpx;
+  height: 8rpx;
+  border-radius: 4rpx;
+  background-image: linear-gradient(to bottom right,#7590f2, #2b6cef);
+  margin: 10rpx 0 0 30rpx;
+  position: absolute;
+}
+.nav_underline {
+  color: #2f6eef;
+  font-weight: 900;
+  font-size: 36rpx;
+  padding-bottom: 10rpx;
+}
+
+.content_details {
+  margin: 30rpx 50rpx 0 50rpx;
+  width: 100%;
+}
+
+.details_title {
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.info {
+  width: 70%;
+  height: 556rpx;
+  margin: 42rpx 0;
+  font-size: 26rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tab {
+  font-weight: bold;
+  margin-right: 10rpx
+}
+
+.table {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  
+}
+
+.leave {
+  width: 100%;
+  padding: 30rpx 20rpx;
+  background-color: #fff;
+  box-shadow: 0rpx 1rpx 14rpx 2rpx #8b8888;
+  position: absolute;
+  bottom: 10rpx;
+}
+
+.leave_inp {
+  width: 75%;
+  height: 60rpx;
+  background-color: #d9d9d9;
+  border-radius: 30rpx;
+  float: left;
+}
+
+.leave_but {
+  width: 130rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 30rpx;
+  font-size: 30rpx;
+  color: #fff;
+  padding: auto; background-image: linear-gradient(to bottom right,#7590f2, #2b6cef);
+  margin: 0 40rpx 0 0;
+  float: right;
+}
+
+.com_img_name {
+  margin-top: 20rpx;
+  margin-left: 5rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.com_img {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  border: 1rpx solid gainsboro;
+  margin-right: 15rpx;
+}
+
+.img_icon {
+  width: 20rpx;
+  height: 20rpx;
+  position: relative;
+  top: 20rpx;
+  right: 20rpx;
+}
+
+.com_name {
+  margin-left: 5rpx;
+  font-size: 30rpx;
+}
+
+.com_conter {
+  font-size: 33rpx;
+  margin-top: 10rpx;
+  color: #595959;
+  margin-left: 70rpx;
+  line-height: 40rpx;
+  border-bottom: 1rpx solid #f6f6f6;
+}
+
+.com_text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.com_bet {
+  font-size: 25rpx;
+  color: #b3b3b3;
+  position: absolute;
+  right: 100rpx;
+}
+
+.reply {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.rep_posi {
+  height: 100%;
+  width: 95%;
+  font-size: 33rpx;
+  margin: auto;
+}
+
+.rep_reply {
+  margin: auto;
+  font-size: 36rpx;
+  font-weight: 550;
+  color: #595959;
+}
+
+.rep_conter {
+  overflow: auto;
+  margin-top: 20rpx;
+}
+
+.rep_botom {
+  position: fixed;
+  bottom: 0;
+  height: 100rpx;
+  font-size: 25rpx;
+  border-top: 1rpx solid #d8d8d8;
+  background-color: #fff;
+  width: 100%;
+}
+
+.rep_input {
+  background-color: #ebebeb;
+  width: 89%;
+  margin: auto;
+  padding: 12rpx 20rpx;
+  border-radius: 10rpx;
+  position: relative;
+  top: 20rpx;
+}
+
+.sign_up {
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  bottom: 80rpx;
+  right: 20rpx;
+  border-radius: 50%;
+  color: #fff;
+   background-image: linear-gradient(to bottom right,#7590f2, #2b6cef);
+  font-size: 30rpx;
+  padding: 0;
+  line-height: 100rpx;
+  text-align: center;
+}

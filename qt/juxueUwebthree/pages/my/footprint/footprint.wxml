@@ -1,0 +1,23 @@
+<navigation  dome="我的足迹"></navigation>
+<view class="track" wx:for="{{foot}}" wx:key="index">
+  <view class="conter" bindtap="instruction" data-zyid="{{item.footprintUserId}}" data-type="{{item.footprintType}}" data-tzid="{{item.footprintId}}">
+    <view class="">
+      <image src="{{item.footprintType=='公开课'?'https://staticfile.xlcwx.com/userfiles/201911/20191104170907.png':item.userLogo}}" class="userlogo" catchtap="personage" data-id="{{item.footprintUserId}}"></image>
+      <image src="{{item.associationImg}}" class="rzimg"></image>
+    </view>
+    <view >
+      <view class="cont_title" wx:if="{{item.footprintType=='主页'}}">查看了他的主页</view>
+      <view class="cont_title" wx:if="{{item.footprintType=='帖子'}}">查看了他的帖子</view>
+      <view class="cont_title" wx:if="{{item.footprintType=='公开课'}}">查看的公开课</view>
+      <view class="cont_between">
+        <view class="cont_text">{{item.title?item.title:'  '}}</view>
+        <view>
+           
+          <text class="cuIcon-right image" ></text>
+        </view>
+      </view>
+      <view class="cont_time">{{item.createTime}}</view>
+    </view>
+  </view>
+ 
+</view>

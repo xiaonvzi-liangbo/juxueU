@@ -1,0 +1,60 @@
+.entirety{
+  width: 95%;
+  margin: auto;
+  margin-top: 20rpx;
+}
+.unlind{
+  border-bottom: 1rpx solid #CCCCCC;
+  padding-bottom: 20rpx;
+}
+.top{
+  margin-top: 20rpx;
+}
+.input{
+  padding: 0 20rpx;
+  width: 95%;
+}
+.uploading{
+  width: 200rpx;
+  height: 200rpx;
+  margin-left: 20rpx;
+}
+.img{
+  width: 95%;
+  margin: auto;
+}
+.rad{
+  text-align: center;
+  font-size: 24rpx;
+}
+.radio{
+  transform:scale(0.6);
+}
+.article{
+  width: 95%;
+  margin: auto;
+  text-align: center;
+  background-color: #2996CC;
+  padding: 20rpx 0;
+  color: #fff;
+  margin-top: 10rpx;
+  margin-bottom: 30rpx;
+  border-radius: 10rpx;
+}
+.bom{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  height: 200rpx;
+}
+.images{
+  display: inline-block;
+  position: relative;
+}
+.delect{
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+}

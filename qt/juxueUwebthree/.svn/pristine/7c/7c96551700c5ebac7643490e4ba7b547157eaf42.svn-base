@@ -1,0 +1,17 @@
+<view class="i-modal-mask i-class-mask {{ visible ? 'i-modal-mask-show' : '' }}"></view>
+<view class="i-class i-modal {{ visible ? 'i-modal-show' : '' }}">
+    <view class="i-modal-main">
+        <view class="i-modal-content">
+            <view class="i-modal-title" wx:if="{{ title }}">{{ title }}</view>
+            <view class="i-modal-body"><slot></slot></view>
+       
+        </view>
+    </view>
+</view>
+<template name="button">
+    <i-button long type="ghost" data-index="{{ index }}" bind:click="handleClickItem">
+        <view class="i-modal-btn-loading" wx:if="{{ item.loading }}"></view>
+        <i-icon wx:if="{{ item.icon }}" type="{{ item.icon }}" i-class="i-modal-btn-icon"></i-icon>
+        <view class="i-modal-btn-text" style="{{ item.color ? 'color: ' + item.color : '' }}">{{ item.name }}</view>
+    </i-button>
+</template>

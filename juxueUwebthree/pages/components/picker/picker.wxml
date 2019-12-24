@@ -1,0 +1,20 @@
+<view class="conter">
+  <input placeholder="请选择学校" disabled="{{disabled}}" value="{{college}}" placeholder-style="color:#ccc"  bindinput="monitor"> </input>
+  
+
+  <view scroll-y bindscrolltolower="tolower" class="modal" wx:if="{{show}}">
+    <view class="modalcov">
+      <view wx:if="{{school}}">
+        <view wx:for="{{school}}" wx:key="index" bindtap="choice" data-name="{{item.name}}" data-cam="{{item.collageCampus}}" data-id="{{item.id}}">
+          <view class="collage">{{item.name}}-{{item.collageCampus}}</view>
+        </view>
+      </view>
+      <view wx:if="{{school==''}}">
+        暂无数据！
+      </view>
+
+    </view>
+  </view>
+</view>
+
+

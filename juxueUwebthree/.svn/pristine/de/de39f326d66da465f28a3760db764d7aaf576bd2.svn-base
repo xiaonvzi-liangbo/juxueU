@@ -1,0 +1,23 @@
+.record{
+  border-bottom: 1rpx solid #D4D4D4;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15rpx 25rpx;
+  margin-top: 20rpx;
+}
+.reco_title{
+  font-size: 33rpx;
+  font-weight: 600;
+}
+.reco_time{
+  font-size: 25rpx;
+  color: #A0A0A0;
+  margin-top: 10rpx;
+}
+.reco_result{
+  font-size: 30rpx;
+  position: relative;
+  top: 20rpx;
+  color: red;
+}

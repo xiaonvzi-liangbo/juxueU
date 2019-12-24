@@ -1,0 +1,43 @@
+// pages/universityCircle/issue/issue.js
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    current:'0',
+    upload:'',
+  },
+  //点击导航切换内容事件
+  publish(e){
+    this.setData({
+      current: e.currentTarget.dataset.current,
+      upload: e.currentTarget.dataset.upload
+    })
+  },
+  //滑动点击事件
+  slide(e){
+    this.setData({
+      current: e.detail.current,
+      upload:e.detail.currentItemId
+    })
+  }, 
+  onLoad(options){
+    if (options.id=='0'){
+      this.setData({
+        upload: 'article'
+      })
+    } else if (options.id == '1'){
+      this.setData({
+        upload: 'answer'
+      })
+    } else if (options.id == '2'){
+      this.setData({
+        upload: 'mood'
+      })
+    }
+    this.setData({
+      current: options.id
+    })
+  },
+})

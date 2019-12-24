@@ -1,0 +1,95 @@
+<navigation dome="关于社团"></navigation>
+<view>
+  <image src="{{details.img?details.img:'/pages/images/stbgimg.jpg'}}" class="heard_img"></image>
+  <view class="conter">
+    <view class="title">
+      <view>{{details.associationName}}</view>
+      <view class="personsName" bindtap="perName"> 
+         <text class="cuIcon-friendfill" style="color:#000;margin-right:7rpx"></text>
+        <text class="number">{{details.associationNumber}}</text>
+      </view>
+    </view>
+    <view class="signature">
+      <textarea value="{{text}}" maxlength="100" disabled="{{compile}}" auto-height class="textarea" bindinput="monitor"></textarea>
+      <view>
+        <image src="/pages/images/fabutiezi.png" class="fabu" wx:if="{{commander&&compile}}" bindtap="addition"></image>
+        <view class="save" wx:if="{{!compile}}">
+          <view bindtap="accessToken" data-fun="accomplish">完成</view>
+          <view style="color:#BFBFBF;" bindtap="cancel">取消</view>
+        </view>
+      </view>
+    </view>
+    <view class="relation">
+      <view class="relation_title"> 
+        <view class="relation_lx">联系方式</view>
+        <image src="/pages/images/fabutiezi.png" class="fabutex" wx:if="{{commander&&!editor}}" bindtap="redact"></image>
+        <view class="relation_com" style="color:#2996CC;margin-right:160rpx;" wx:if="{{commander&&editor}}" bindtap="redactcancels">取消</view>
+        <view class="relation_com" wx:if="{{commander&&editor}}" bindtap="redact" style="color:#2996CC;" bindtap="add">添加联系方式</view>
+      </view>
+      <block wx:for="{{details.jxAssociationFroms}}" wx:key="index">
+        <view class="relation_wary" wx:if="{{item.fromType=='1'}}">
+          <view>{{item.titile}}</view>
+          <view class="relation_distance">{{item.phone}}</view>
+          <view class="relation_distance">{{item.remarks}}</view>
+          <view class="relation_del" wx:if="{{editor}}" bindtap="delet" data-id="{{item.id}}">删除</view>
+        </view>
+      </block>
+    </view>
+    <view class="mien">
+      <view class="relation_title" style="  margin-left: 30rpx;">
+ 
+        <view class="relation_lx">社团风采</view>
+        <image src="/pages/images/fabutiezi.png" class="fabutex" wx:if="{{commander&&!elegants}}" bindtap="elegant"></image>
+
+        <view class="relation_com" style="color:#2996CC;margin-right:160rpx;" wx:if="{{commander&&elegants}}" bindtap="cancels">取消</view>
+        <view class="relation_com" style="color:#2996CC;" wx:if="{{commander&&elegants}}" bindtap="accessToken" data-fun="picture">添加图片</view>
+      </view>
+      <swiper autoplay="{{true}}" indicator-dots="{{true}}" class="relation_wary" indicator-active-color="#fff" circular="{{true}}">
+        <block wx:for="{{details.jxAssociationFroms}}" wx:key="index">
+          <swiper-item style=" overflow: hidden" wx:if="{{item.fromType=='2'}}">
+            <image class="fcimg" mode="aspectFill" src="{{item.img}}"></image>
+            <image src="/pages/images/msnui.png" class="del" bindtap="delimg" data-id="{{item.id}}" wx:if="{{commander&&elegants}}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="dynamic">
+      <view class="relation_title" style="padding:0 0 10rpx 30rpx;">
+  
+        <view class="relation_lx">社团动态</view>
+      </view>
+      <!-- <view wx:if="{{!stdynamic[0]}}" style=" width: 100%;height: calc(50vh - 15px);; overflow: hidden">
+        <image style="width: 100%;height:100%" mode="aspectFill" src="/pages/images/content.jpg"></image>
+      </view> -->
+      <view class="dyna_card" wx:for="{{stdynamic}}" wx:key="index">
+
+        <view class="card_conter" bindtap="particulars" data-id="{{item.id}}">
+          <view class="card_text">
+            <rich-text nodes="{{item.context}}"> </rich-text>
+          </view>
+          <view bindtap="particulars" class="images" data-id="{{item.id}}">
+            <image src="{{item.postsImgs[0]}}" class="img_size"></image>
+            <image src="{{item.postsImgs[1]}}" class="img_size"></image>
+            <image src="{{item.postsImgs[2]}}" class="img_size"></image>
+          </view>
+          <view class="card_bom">
+            <view> {{item.visitNumber}}浏览</view>
+            <view class="dian"></view>
+            <view class="comment">{{item.commentNumber}}评论</view>
+            <view class="card_time">{{item.createTime}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<button open-type='share' hover-class="none" bindtap="navpage" style="font-size: 26rpx;" data-linkurl="/pages/uActivities/signUp/signUp" class="signUp">社团推广</button>
+
+<model showModal="{{addition}}" width="60%" radius="0">
+  <form class="form" bindsubmit="accessToken" data-fun="formSubmit">
+    <input placeholder="姓名" name="name" class="form_in"></input>
+    <input placeholder="电话" maxlength="11" name="phone" class="form_in"></input>
+    <input placeholder="备注(选填)" name="bz" class="form_in"></input>
+    <button class="model_save" formType="submit">保存</button>
+  </form>
+</model>

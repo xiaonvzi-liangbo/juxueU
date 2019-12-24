@@ -1,0 +1,46 @@
+<view>
+  <view class="heards">
+    <view class="search_top">
+      <input placeholder="搜索高校活动" type="text" confirm-type="搜索" value="{{searinput}}" bindinput="commun" bindconfirm="community"></input>
+      <image src="/pages/images/search.png" bindtap="community" class="search"></image>
+    </view>
+    <view class="cleans" bindtap="quxiao" wx:if="{{clean}}">取消</view>
+  </view>
+  <scroll-view scroll-y bindscrolltolower="strike" style="height:100%;background-color:#fff;">
+    <!-- <view wx:if="{{eventContent}}" style=" width: 100%;height: 100%; overflow: hidden">
+      <image style="width: 100%;height:100%" mode="aspectFill" src="/pages/images/new.jpg"></image>
+    </view> -->
+    <view wx:if="{{!clean}}" style="padding-top:20rpx;" wx:for="{{eventContent}}" wx:key="index">
+      <view slot="content">
+        <navigator url="/pages/uActivities/details/details?id= {{item.id}}" hover-class="navigator-hover">
+          <view class="entire">
+            <view>
+              <image src=" {{item.img}} " class="logo"></image>
+            </view>
+            <view class="entireRight">
+              <view class="cont_title">{{item.theme}}</view>
+              <button class="cont_con " style="{{item.activityState==4?'background-image: linear-gradient(to left, #D30000 , #FF3F3F);':'background-image: linear-gradient(to left, #D0D000 , #E8E865);'}}">{{item.activityState=='1'?"报名中":(item.activityState=='3'?"进行中":(item.activityState=='4'?"已结束":""))}}</button>
+              <view class="cont_time ">{{item.collageName}}</view>
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+    <view wx:if="{{clean}}" style="padding-top:20rpx;" wx:for="{{result}}" wx:key="index">
+      <view slot="content" bindtap="navpage" data-id='{{item.id}}'>
+        <navigator url="/pages/uActivities/details/details?id= {{item.id}}" hover-class="navigator-hover">
+          <view class="entire">
+            <view>
+              <image src=" {{item.img}} " class="logo"></image>
+            </view>
+            <view class="entireRight">
+              <view class="cont_title">{{item.theme}}</view>
+              <button class="cont_con " style="{{item.activityState==4?'background-image: linear-gradient(to left, #D30000 , #FF3F3F);':'background-image: linear-gradient(to left, #D0D000 , #E8E865);'}}">{{item.activityState=='1'?"报名中":(item.activityState=='3'?"进行中":(item.activityState=='4'?"已结束":""))}}</button>
+              <view class="cont_time ">{{item.collageName}}</view>
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,20 @@
+.modal{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 99999;
+  /* background-color: gainsboro; */
+}
+.modal_conter{
+  /* width: 45%; */
+  text-align: center;
+  margin: auto;
+  position: relative;
+  background-color: #fff;
+  top: 40%;
+  padding: 20rpx;
+  /* border-radius: 30rpx; */
+  box-shadow: 0 0 10rpx #BFBFBF;
+}

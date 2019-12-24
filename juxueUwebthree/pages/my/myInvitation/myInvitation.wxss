@@ -1,0 +1,185 @@
+page {
+   background-color: #ebebeb;
+  overflow: hidden;
+}
+ 
+.head {
+  background-color: #fff;
+}
+
+.head_tx {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.head_tx_tp {
+  margin-top: 30rpx;
+  margin-left: 10rpx;
+}
+
+.head_nc {
+  margin-left: 25rpx;
+}
+
+.head_name {
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.head_signature {
+  font-size: 28rpx;
+  margin-top: 8rpx;
+  color: #cbcbcb;
+  float: left;
+}
+
+.mass {
+  width: 30rpx;
+  height: 30rpx;
+  position: relative;
+  top: 13rpx;
+  right: 3rpx;
+  float: left;
+}
+
+.head_exhibition {
+  margin-top: 30rpx;
+  width: 80%;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  font-size: 33rpx;
+  color: #575757;
+}
+
+.head_auto {
+  flex: auto;
+  margin-bottom: 25rpx;
+}
+
+.conter {
+  margin-top: 10rpx;
+  background-color: #fff;
+  height: 100%;
+}
+
+.con_title {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.con_tetx {
+  margin-top: 25rpx;
+  width: 150rpx;
+}
+
+.con_tetx_check {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #648fd3;
+}
+
+.con_swiper {
+  margin-top: 40rpx;
+  height: 75%;
+}
+
+.bottom {
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+  bottom: 20rpx;
+  text-align: center;
+}
+
+.img {
+  width: 96rpx;
+  height: 96rpx;
+  margin: 15rpx 0;
+  border-radius: 50%;
+}
+
+/*从底部升起的模态框*/
+
+.top_image {
+  text-align: center;
+}
+
+.down_img {
+  width: 100rpx;
+  height: 60rpx;
+  margin-top: 90rpx;
+}
+
+.model_position {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 55%;
+}
+
+.model_top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.tx_image {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  margin-left: 80rpx;
+  margin-right: 30rpx;
+}
+
+.model_bottom {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.moddel_promulgator {
+  flex: auto;
+  margin-top: 100rpx;
+}
+
+.moddel_promulgator1 {
+  flex: auto;
+  margin-top: 90rpx;
+}
+
+.backimg {
+
+  height: 100%;
+  padding-top: 60rpx;
+  position: fixed;
+  width: 100%;
+  z-index: 99999999999999999999;
+}
+
+.issue {
+  width: 96rpx;
+  height: 96rpx;
+  position: fixed;
+  bottom: 46rpx;
+  left: 45%;
+}
+.backimage{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -10;
+}

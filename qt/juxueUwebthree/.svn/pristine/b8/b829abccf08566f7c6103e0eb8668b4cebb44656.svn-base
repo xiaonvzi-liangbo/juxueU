@@ -1,0 +1,23 @@
+Component({
+  pageLifetimes: {
+    show() {
+      if (typeof this.getTabBar === 'function' &&
+        this.getTabBar()) {
+        this.getTabBar().setData({
+          selected: 3
+        })
+      }
+    }
+  },
+  data: {
+    currenTable: '0'
+  },
+  methods: {
+    //点击切换页面事件
+    switchPage(e){
+      this.setData({
+        currenTable: e.currentTarget.dataset.table
+      })
+    }
+  }
+})

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "签到",
+  "usingComponents": {
+    "modal": "/pages/components/model2/index",
+    "i-action-sheet": "/pages/components/action-sheet/index",
+    "canvas-share": "/pages/components/my/canvas-share/canvasshare"
+  }
+}

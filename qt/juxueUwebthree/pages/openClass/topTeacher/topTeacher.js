@@ -1,0 +1,81 @@
+// pages/openClass/topTeacher/topTeacher.js
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    navigTitle: [{
+      id: '0',
+      title: '推荐'
+    }, {
+      id: '1',
+      title: '自考专升本'
+    }, {
+      id: '2',
+      title: '普通专升本'
+    }, {
+      id: '3',
+      title: '专业考研辅导'
+    }, {
+      id: '4',
+      title: '教师资格证'
+    }],
+    currenbTable: '0',
+    furls: false
+  },
+  //点击切换页面事件
+  switchPage(e) {
+    let that = this;
+    that.setData({
+      currenbTable: e.currentTarget.dataset.id,
+    })
+  },
+  //上拉触底加载
+  scrolltolower() {
+    let that = this;
+    let num = that.data.currenbTable;
+    if (num == '0') {
+      that.selectComponent('#recommend').getClass('')
+    } else if (num == '1') {
+      that.selectComponent('#zk').getClass('2')
+    } else if (num == '2') {
+      that.selectComponent('#pt').getClass('3')
+    } else if (num == '3') {
+      that.selectComponent('#ky').getClass('7')
+    } else if (num == '4') {
+      that.selectComponent('#js').getClass('6')
+    }
+  },
+  //getphone
+  getphone() {
+    let that = this
+    let phone = wx.getStorageSync('phone')
+    if (phone == 'undefined') {
+      that.setData({
+        getphone: true
+      })
+    } else {
+      that.setData({
+        getphone: false
+      })
+    }
+
+  },
+  //展开导航栏
+  unfurls() {
+    let that = this
+    if (that.data.furls == false) {
+      that.setData({
+        furls: true
+      })
+    } else {
+      that.setData({
+        furls: false
+      })
+    }
+  },
+  onLoad() {
+    this.getphone()
+  }
+})

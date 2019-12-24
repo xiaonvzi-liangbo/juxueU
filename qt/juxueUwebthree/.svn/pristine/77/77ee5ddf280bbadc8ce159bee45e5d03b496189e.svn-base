@@ -1,0 +1,25 @@
+
+<view wx:if="{{!details[0]}}" style=" width: 100%;height: 100%; overflow: hidden">
+  <image style="width: 100%;height:100%" mode="aspectFill" src="/pages/images/attention.jpg"></image>
+</view>
+<scroll-view wx:if="{{details[0]}}" scroll-y style="height:100%;" bindscrolltolower="tolower">
+  <view class="card" wx:for="{{details}}" wx:key="index">
+    <view bindtap="personage" data-id="{{item.followId}}">
+      <image src="{{item.logo}}" class="logo" ></image>
+    </view>
+
+    <view bindtap="personage" data-id="{{item.followId}}">
+      <view>
+        <view class="name">{{item.nickName}}</view>
+
+        <view class="middle">{{item.autograph}}</view>
+        <view class="time">
+          <view>{{item.createTime}}</view>
+        </view>
+      </view>
+      <view>
+        <view class="atten'" catchtap="atten" data-id="{{item.followId}}">取消关注</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

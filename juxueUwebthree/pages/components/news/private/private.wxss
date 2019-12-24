@@ -1,0 +1,43 @@
+.entire {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.logo{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.name {
+  font-size: 22rpx;
+}
+
+.cont_con {
+  width: 90%;
+  font-size: 34rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cont_time {
+  font-size: 22rpx;
+  color: #808080;
+  margin-top: 10rpx;
+}
+
+.red_dot {
+  width: 20rpx;
+  height: 20rpx;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  top: 24rpx;
+  left: 120rpx;
+}
+.img_icon{
+  width: 30rpx;
+  height: 30rpx;
+  position: relative;
+  right: 30rpx;
+}

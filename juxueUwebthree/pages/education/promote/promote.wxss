@@ -1,0 +1,111 @@
+page {
+  height: 100%;
+  margin: auto;
+  color: #1b1b1b;
+  font-size: 33rpx;
+  overflow: hidden;
+}
+
+.bannerImg {
+  width: 100%;
+  height: 300rpx;
+  margin-bottom: 20rpx;
+}
+
+.switch {
+  height: 100%;
+  width: 100%;
+  margin-top: 20rpx;
+  margin: auto;
+}
+
+.title {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: #000;
+  font-size: 34rpx;
+  font-weight: bold;
+  margin-top: 25rpx;
+}
+
+.checked {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #2f6eef;
+}
+
+.bottom {
+  width: 64rpx;
+  height: 8rpx;
+  background-image: linear-gradient(to bottom right,#7590f2, #2b6cef);
+  margin: 10rpx 0 0 30rpx;
+  position: absolute;
+}
+
+.card {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 0 12rpx 12rpx 0;
+  box-shadow: 0 0 10rpx #e4e4e4;
+  margin-bottom: 20rpx;
+}
+
+.conter {
+  width: 60%;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.con_left {
+  padding: 5rpx 2rpx 10rpx 0rpx;
+}
+
+.con_title {
+  font-size: 36rpx;
+  font-weight: 550;
+}
+
+.con_time {
+  font-size: 28rpx;
+  color: #252525;
+  margin: 30rpx 0;
+}
+
+.con_num {
+  font-size: 25rpx;
+  color: #a7a7a7;
+}
+
+.com_make {
+  display: flex;
+  flex-direction: column-reverse;
+  position: absolute;
+  right: 25rpx;
+  margin-top: 135rpx;
+  border-radius: 0 0 12rpx 0;
+  background-color: #2896cc;
+  color: #fff;
+  font-size: 28rpx;
+  padding: 10rpx 30rpx;
+}
+
+.swip {
+  width: 100%;
+  margin-top: 25rpx;
+  margin-right: 4rpx;
+  margin-left: 4rpx;
+  height: 100%;
+}
+
+.scroll {
+  height: 65%;
+}

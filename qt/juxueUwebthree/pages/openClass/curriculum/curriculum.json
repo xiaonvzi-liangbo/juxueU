@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "navigation": "/pages/index/navigation/navigation",
+    "vhall": "/pages/plugin/components/vhall/vhall",
+    "vhallDoc": "/pages/plugin/components/doc/doc"
+  }
+}

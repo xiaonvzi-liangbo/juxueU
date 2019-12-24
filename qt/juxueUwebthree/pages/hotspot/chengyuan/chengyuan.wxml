@@ -1,0 +1,21 @@
+<navigation dome="申请列表"></navigation>
+<view class="entirety">
+  <view class="conter" wx:for="{{listfile}}" wx:key="index">
+    <view>
+      <image src="{{item.userLogo}}" class="hear_img" bindtap="personage" data-id="{{item.userId}}"></image>
+      <image src="{{item.associationImg}}" class="hear_icon"></image>
+    </view>
+    <view class="name">
+      <view class="hear_title">{{item.userName}}</view>
+      <view class="hear_autograph">{{item.autograph}}</view>
+    </view>
+    <view class="select">
+      <view class="consent" bindtap="consent" data-id="{{item.id}}">同意</view>
+      <view class="lose" bindtap="ignore" data-id="{{item.id}}">忽略</view>
+    </view>
+  </view>
+</view>
+<view class="wu" wx:if="{{listfile.length==0}}">
+  <image src="/pages/images/zanwu.png" class="zanwu"></image>
+  <view class="wu_text">暂时没有申请哦</view>
+</view>

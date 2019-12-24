@@ -1,0 +1,126 @@
+<!--pages/universityCircle/information/information.wxml-->
+<view class="all">
+  <view class="top">
+    <view class="row"  bindtap="personage" data-id="{{postData.userId}}">
+      <image src="{{postData.userLogo}}" class="img_tx"></image>
+      <image src="{{postData.associationImg}}" class="img_icon"></image>
+      <view>
+        <text class="sma_title">{{postData.userName}}</text>
+        <view class="small">{{collageName}}</view>
+      </view>
+    </view>
+    <view class="attention" bindtap="attention" wx:if="{{postData.isFollow=='0'}}" data-followid="{{postData.userId}}">关注</view>
+    <view class="attention1" bindtap="attention" wx:if="{{postData.isFollow=='1'}}"  data-followid="{{postData.userId}}">已关注</view>
+  </view>
+  <view style="margin-left:10rpx;">
+    <view class="pos_title">{{postData.title==null?' ':postData.title}}</view>
+    <text class="text">{{postData.context}}</text>
+  </view>
+  <view wx:for="{{postData.jxCollagePostsFroms}}" wx:key="index" >
+    <image src="{{item.imgUrl}}" class="kindimg"  data-id='{{item.id}}' data-url="{{item.imgUrl}}" bindtap="amplify"></image>
+  </view>
+
+  <view class="issue_time">发布于 {{postData.createTime}}</view>
+  <view>
+    <view class="comment">
+      <view class="comment_block"></view><text class="com_comment">评论</text><text>{{postData.commentNumber}}</text>
+    </view>
+    <block wx:for="{{postCritic}}" wx:key="index">
+      <view class="com_img_name">
+        <image src="{{item.userLogo}}" class="com_img" bindtap="personage" data-id="{{postData.userId}}"></image>
+        <text class="com_name">{{item.userName}}</text>
+      </view>
+      <view class="com_conter">
+        <view><text class="com_text">{{item.info}}</text></view>
+        <view class="com_bet">
+          <view>{{item.createTime}}</view>
+          <view class="com_row">
+            <view class="com_row" bindtap="praise" data-id="{{item.id}}" data-type="一级点赞">
+              <image src="../../images/like1.png" style="width:30rpx;height:30rpx;" wx:if="{{item.isFabulous=='0'}}"></image>
+              <image src="../../images/like2.png" style="width:30rpx;height:30rpx;" wx:if="{{item.isFabulous=='1'}}"></image>
+              <text class="text_line">{{item.fabulousNumber}}</text>
+            </view>
+            <view class="com_row" wx:if="{{showNegative}}" bindtap="negative" data-type="一级评论" data-id="{{item.id}}">
+              <image src="../../images/negative3.png" style="width:30rpx;height:30rpx;" wx:if="{{item.isDifference=='0'}}"></image>
+              <image src="../../images/negative4.png" style="width:30rpx;height:30rpx;" wx:if="{{item.isDifference=='1'}}"></image>
+              <text class="text_line">{{item.differenceNumber}}</text>
+            </view>
+            <view class="com_row" bindtap="reply" data-reid="{{item.id}}">
+              <image src="../../images/pl.png" style="width:30rpx;height:30rpx;"></image>
+              <text class="text_line">{{item.commentNumber}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+<!--底部的固定区-->
+<view style="height:100rpx;"></view>
+<view class="bottom">
+  <view style="width:70%;"><input placeholder="添加评论..." value="{{stair}}" class="bot_input" cursor-spacing="10" confirm-type="send" bindconfirm="critic" data-id="{{postData.id}}"></input></view>
+  <view class="bot_right">
+    <view class="flex_auto" bindtap="praise" data-id="{{postData.id}}" data-type="帖子">
+      <image src="../../images/like3.png" style="width:34rpx;height:34rpx;" wx:if="{{postData.isFabulous=='0'}}" ></image>
+      <image src="../../images/like2.png" style="width:34rpx;height:34rpx;" wx:if="{{postData.isFabulous=='1'}}"></image>
+      <view class="number">{{postData.fabulousNumber==null?0:postData.fabulousNumber}}</view>
+    </view>
+    <view class="flex_auto" wx:if="{{showNegative}}" bindtap="negative" data-id="{{postData.id}}" data-type="帖子">
+      <image src="../../images/negative3.png" style="width:34rpx;height:34rpx;" wx:if="{{postData.isDifference=='0'}}"></image>
+      <image src="../../images/negative4.png" style="width:34rpx;height:34rpx;" wx:if="{{postData.isDifference=='1'}}"></image>
+      <view class="number">{{postData.differenceNumber==null?0:postData.differenceNumber}}</view>
+    </view>
+    <view class="flex_auto" wx:else>
+      <image src="../../images/pl.png" style="width:34rpx;height:34rpx;"></image>
+      <view class="number">{{postData.commentNumber==null?0:postData.commentNumber}}</view>
+    </view>
+    <view class="flex_auto" bindtap="collect" data-id="{{postData.id}}">
+      <image src="../../images/collect1.png" style="width:34rpx;height:34rpx;" wx:if="{{postData.isCollection=='0'}}"></image>
+      <image src="../../images/collect.png" style="width:34rpx;height:34rpx;" wx:if="{{postData.isCollection=='1'}}"></image>
+      <view class="number">{{postData.collectionNumber==null?0:postData.collectionNumber}}</view>
+    </view>
+    <view class="flex_auto" open-type="share" data-title="{{postData.title}}" data-id="{{postData.id}}">
+      <image src="../../images/transmit.png" style="width:34rpx;height:34rpx;" ></image>
+      <view class="number">{{postData.shareNumber==null?0:postData.shareNumber}}</view>
+      <button open-type='share' class="button"></button>
+    </view>
+  </view>
+</view>
+<!--回复-->
+<i-action-sheet visible="{{showReply}}" mask-closable="true" bind:cancel="close">
+  <view slot="header">
+    <view class="reply" catchtouchmove="true" animation='{{animationData}}'>
+      <view class="rep_posi">
+        <view class="row">
+          <image src="../../images/close.png" style="width:47rpx;height:47rpx;" bindtap="close"></image>
+          <view class="rep_reply">回复详情</view>
+        </view>
+        <scroll-view class="rep_conter" scroll-y="true" style="height: 84%;">
+          <block wx:for="{{replyData}}" wx:key="index">
+            <view class="com_img_name">
+              <image src="{{item.userLogo}}" class="com_img"></image>
+              <text class="com_name">{{item.userName}}</text>
+            </view>
+            <view class="com_conter">
+              <view><text class="com_text">{{item.info}}</text></view>
+              <view class="com_bet">
+                <view>{{item.createTime}}</view>
+                <view class="com_row">
+                  <view class="com_row" bindtap="praise" data-id="{{item.id}}" data-type="二级点赞">
+                    <image src="../../images/like1.png" style="width:30rpx;height:30rpx;" wx:if="{{item.isFabulous=='0'}}"></image>
+                    <image src="../../images/like2.png" style="width:30rpx;height:30rpx;" wx:if="{{item.isFabulous=='1'}}"></image>
+                    <text class="text_line">{{item.fabulousNumber}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block>
+          <view style="height:40rpx;"></view>
+        </scroll-view>
+      </view>
+    </view>
+    <view class="rep_botom">
+      <input placeholder="回复 评论昵称" value="{{second}}" class="rep_input" cursor-spacing="10" confirm-type="send" bindconfirm="level"></input>
+    </view>
+  </view>
+</i-action-sheet>

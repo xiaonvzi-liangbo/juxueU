@@ -1,0 +1,22 @@
+<scroll-view scroll-y style="height:100%;" bindscrolltolower="tolower">
+  <view class="head">
+    <view class="head_tx">
+      <view class="head_tx_tp">
+        <image src="{{userdata.logo}}" style="width:120rpx;height:120rpx;  border-radius: 50%;"></image>
+      </view>
+      <view class="head_nc">
+        <view class="head_name">{{userdata.nickName}}</view>
+        <image src="{{userdata.associationImg}}" class="mass"></image>
+        <view class="head_signature">{{associationName}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="conter">
+    <view class="con_title">
+      <article id="article"></article>
+    </view>
+    <view class="bottom">
+      <image src="/pages/images/announce.jpg" class="img" bindtap="post"></image>
+    </view>
+  </view>
+</scroll-view>

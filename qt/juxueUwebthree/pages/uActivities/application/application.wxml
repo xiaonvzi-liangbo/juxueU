@@ -1,0 +1,36 @@
+<navigation dome="报名用户"></navigation>
+ 
+<scroll-view scroll-y style="height:100%;" bindscrolltolower="tolower">
+  <view class="card" wx:for="{{details}}" wx:key="index">
+    <view bindtap="personage" data-id="{{item.userId}}">
+      <image src="{{item.userLogo}}" class="logo"></image>
+    </view>
+    <view bindtap="personage" data-id="{{item.userId}}">
+      <view class="conter">
+        <view class="name">{{item.userName}}</view>
+        <view class="middle">{{item.userAutograph}}</view>
+      </view>
+
+    </view>
+    <view class="appright" >
+      <view class="little" bindtap="ok" data-id="{{item.id}}">同意</view>
+      <view class="litnot" bindtap="refuse" data-id="{{item.id}}" style="color:#fff;background-image: linear-gradient(to bottom right, #f27575, #ef2b2b);">拒绝</view>
+    </view>
+  </view>
+  <view class="card" wx:for="{{agree}}" wx:key="index">
+    <view bindtap="personage" data-id="{{item.userId}}">
+      <image src="{{item.userLogo}}" class="logo"></image>
+    </view>
+    <view bindtap="personage" data-id="{{item.userId}}">
+      <view class="conter">
+        <view class="name">{{item.userName}}</view>
+        <view class="middle">{{item.userAutograph}}</view>
+      </view>
+
+    </view>
+    <view class="appright" >
+    <view></view>
+      <view class="litnot">已同意</view>
+    </view>
+  </view>
+</scroll-view>

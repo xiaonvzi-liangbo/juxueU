@@ -1,0 +1,43 @@
+<navigation dome="校园帖子" bottom="0rpx"></navigation>
+
+<view class="entirety" bindtap="{{show==true?'':''}}">
+  <view class="navigation" >
+    <view wx:for="{{nav}}" wx:key="index" bindtap="attention" data-number="{{item.id}}">
+      <view wx:if="{{!show}}" class="{{currentTab==item.id?'little':'litnot'}}">
+        <text class="nav_underline ">{{item.text}}</text>
+      </view>
+    </view> 
+
+    <view class="{{show==true?'heards':''}}">
+      <view class="{{show==true?'search_top':'nav_search'}}">
+        <input wx:if="{{show}}" style="line-height: 60rpx;height:60rpx;width:100%" placeholder="搜索帖子" type="text" confirm-type="搜索" value="{{searinput}}" bindinput="commun" bindconfirm="community"></input>
+        <text class="cuIcon-search search" catchtap='search'></text>
+      </view>
+      <view class="cleans" bindtap="quxiao" wx:if="{{show}}">取消</view>
+    </view>
+  </view>
+  <view wx:if="{{!show}}" class="switch_page">
+    <scroll-view scroll-y style="height:calc(100vh - 100rpx)" bindscrolltolower="tolower">
+      <view wx:if="{{currentTab=='0'}}">
+        <attention id="attention"></attention>
+      </view>
+      <view wx:if="{{currentTab=='1'}}">
+        <boutique id="boutique"></boutique>
+      </view>
+      <view wx:if="{{currentTab=='2'}}">
+        <newest id="newest"></newest>
+      </view>
+      <view wx:if="{{currentTab=='4'}}">
+        <topics id="topics"></topics>
+      </view>
+      <view wx:if="{{currentTab=='3'}}">
+        <club id="club"></club>
+      </view>
+    </scroll-view>
+  </view>
+  <view wx:if="{{show}}" class="switch_page">
+    <scroll-view scroll-y style="height:95%;" bindscrolltolower="tolower">
+      <search id="search" searinput="{{searinput}}"></search>
+    </scroll-view>
+  </view>
+</view>

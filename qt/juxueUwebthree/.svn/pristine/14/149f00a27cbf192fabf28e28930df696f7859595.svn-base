@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText":"学历提升",
+  "usingComponents": {
+    "i-notice-bar": "../../components/notice-bar/index",
+    "education":"/pages/components/education/education",
+    "career":"/pages/components/career/career"
+  }
+}

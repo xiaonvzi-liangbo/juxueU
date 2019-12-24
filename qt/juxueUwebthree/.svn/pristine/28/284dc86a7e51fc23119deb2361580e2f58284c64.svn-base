@@ -1,0 +1,7 @@
+{
+  "navigationStyle": "default",
+  "navigationBarTitleText": "关于社团",
+  "usingComponents": {
+    "model":"/pages/components/model2/index"
+  }
+}

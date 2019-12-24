@@ -1,0 +1,25 @@
+<view class="conter">
+  <view class="banner">
+    <image src="https://staticfile.xlcwx.com/userfiles/201909/20190917110754.png" mode="aspectFit" class="ban_img"></image>
+  </view>
+  <view class="card"  wx:for="{{cardData}}" wx:key="{{item.id}}" bindtap="careertest">
+    <view class="card_images"><image src="{{item.cardImg}}" class="card_images"></image></view>
+    <view class="card_text">
+      <view class="card_top">
+        <view class="card_title">{{item.title}}</view>
+        <view class="card_num">28552人测试过</view>
+      </view>
+      <view class="card_nr">
+        {{item.conter}}
+      </view>
+    </view>
+  </view>
+  <view style="height:100rpx"></view>
+  <view class="fixation" bindtap="occupa">
+    <view class="fix_conter">
+      <image src="../../images/test.png" mode="aspectFit" class="fix_img"></image>
+      <view>我的检测报告</view>
+      <image src="../../images/right.png" mode="aspectFit" class="fix_img_zx"></image>
+    </view>
+  </view>
+</view>

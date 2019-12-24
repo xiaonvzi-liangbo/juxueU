@@ -1,0 +1,5 @@
+@import 'colorui/icon.wxss';
+@import 'colorui/main.wxss';
+.abc{
+  background-color: red;
+}

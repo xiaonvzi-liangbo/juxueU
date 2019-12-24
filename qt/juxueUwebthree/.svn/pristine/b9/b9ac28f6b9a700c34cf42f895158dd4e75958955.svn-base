@@ -1,0 +1,153 @@
+const requestUrl = require('../../../../utils/request.js')
+const number = require('../../../../utils/quantity.js')
+const time = require('../../../../utils/time.js')
+Component({
+  /**
+   * 组件的属性列表
+   */
+  properties: {
+
+  },
+
+  /**
+   * 组件的初始数据
+   */
+  data: {
+    information: [],
+    pageNum: 0
+  },
+  pageLifetimes: {
+    show() {
+      if (typeof this.getTabBar === 'function' &&
+        this.getTabBar()) {
+        this.getTabBar().setData({
+          selected: 0
+        })
+      }
+    }
+  },
+  /**
+   * 组件的方法列表
+   */
+  methods: {
+    //详情点击事件
+    particulars(e) {
+      wx.navigateTo({
+        url: '/pages/universityCircle/information/information?tzid=' + e.currentTarget.dataset.id,
+      })
+    },
+    //发帖人详情
+    personage(e) {
+      console.log(e)
+      wx.navigateTo({
+        url: '/pages/universityCircle/myPost/myPost?id=' + e.currentTarget.dataset.id,
+      })
+    },
+    //获取帖子文章的数据
+    getData() {
+      let that = this;
+      let userid = wx.getStorageSync('userid');
+      wx.request({
+        url: requestUrl.requestUrl + '/jXCollagePostsApp/getList',
+        data: {
+          pageNum: that.data.pageNum,
+          pageSize: 10,
+          isDraft: '0',
+          postsType: '图文',
+          userId: userid //用户id
+        },
+        header: {
+          'content-type': 'application/json',
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success(res) {
+          console.log(res, '查看这个返回的值的内容')
+          let date = res.data.rows;
+          for (let i = 0; i < date.length; i++) {
+            //时间处理
+            date[i].createTime = time.getDateDiff(date[i].createTime);
+            //数量处理
+            // date[i].commentNumber = quantity.number(date[i].commentNumber);
+            // date[i].visitNumber = quantity.number(date[i].visitNumber)
+          };
+          that.setData({
+            information: that.data.information.concat(date)
+          })
+          that.data.pageNum++
+        }
+      })
+    },
+    //上拉加载
+    tolower() {
+      this.data.pageNum++;
+      this.getData()
+    },
+    //删除收藏的wz
+    deldata(e) {
+      console.log(e)
+      let that = this;
+      wx.request({
+        url: requestUrl.requestUrl + '/jXCollagePostsApp/deleteUpdatae',
+        data: {
+          id: e.currentTarget.id
+        },
+
+        method: 'post',
+        header: {
+          'content-type': 'application/json',
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success(res) {
+          if (res.data.code == '200') {
+            wx.showToast({
+              title: '删除成功！',
+              icon: 'none',
+              duration: 2000
+            });
+            that.delgetData(),
+            console.log("删除成功")
+            let pages = getCurrentPages();
+            pages[pages.length - 1].userdata(); //异步同步
+          }
+        },
+      })
+    },
+    delgetData() {
+      let that = this;
+      let userid = wx.getStorageSync('userid');
+      wx.request({
+        url: requestUrl.requestUrl + '/jXCollagePostsApp/getList',
+        data: {
+          pageNum: that.data.pageNum,
+          pageSize: 10,
+          isDraft: '0',
+          postsType: '图文',
+          userId: userid //用户id
+        },
+        header: {
+          'content-type': 'application/json',
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success(res) {
+          console.log(res, '查看这个返回的值的内容')
+          let date = res.data.rows;
+          for (let i = 0; i < date.length; i++) {
+            //时间处理
+            date[i].createTime = time.getDateDiff(date[i].createTime);
+            //数量处理
+            // date[i].commentNumber = quantity.number(date[i].commentNumber);
+            // date[i].visitNumber = quantity.number(date[i].visitNumber)
+          };
+          that.setData({
+            information: date
+          })
+        }
+      })
+    },
+  },
+  attached() {
+    this.data.pageNum++;
+    this.getData()
+  },
+
+})

@@ -1,0 +1,11 @@
+<view class="tabs">
+  <view class="center {{currenTable=='0'?'center_size':''}}" bindtap="switchPage" data-table="0">消息</view>
+  <view class="center {{currenTable=='1'?'center_size':''}}" bindtap="switchPage" data-table="1">私信</view>
+  <view class="center {{currenTable=='2'?'center_size':''}}" bindtap="switchPage" data-table="2">系统通知</view>
+
+</view>
+<scroll-view scroll-y style="height:90%;" bindscrolltolower="tolower">
+  <attention id="attention" wx:if="{{currenTable=='0'}}"></attention>
+  <comment id="comment" wx:if="{{currenTable=='2'}}"></comment>
+  <private id="private" wx:if="{{currenTable=='1'}}"></private>
+</scroll-view>

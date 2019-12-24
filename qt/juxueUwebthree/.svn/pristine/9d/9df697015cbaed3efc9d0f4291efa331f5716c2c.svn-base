@@ -1,0 +1,49 @@
+//app.js
+// const requestUrl = require('../../../utils/request.js')
+App({
+  onLaunch: function () {
+    wx.hideTabBar({})
+    // 展示本地存储能力
+    var logs = wx.getStorageSync('logs') || []
+    logs.unshift(Date.now())
+    wx.setStorageSync('logs', logs)
+    // 登录
+    wx.login({
+      success: res => {
+        if (res.code) {
+          //发起网络请求
+          wx.request({
+            url: 'https://test.com/onLogin',
+            data: {
+              code: res.code
+            }
+          })
+          // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          wx.request({
+            url: 'https://api.weixin.qq.com/sns/jscode2session',
+            method: 'POST',
+            data: {
+              appid: 'wx2d6f7f4096390ffe',
+              secret: '0848d53d48b0a196883dfdcad43b7353',
+              js_code: res.code,
+              grant_type: 'authorization_code'
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+              'Accept': 'application/json'
+            },
+            
+            success: function (res) {
+              wx.setStorageSync('openid', res.data.openid)
+              wx.setStorageSync('sessionKey', res.data.session_key)
+            }
+          })
+        }
+      }
+    })
+  },
+  globalData: {
+    userInfo: null
+  },
+
+})

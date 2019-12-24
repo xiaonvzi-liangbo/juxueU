@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "getphone": "/pages/guidance/phone/phone"
+  }
+}

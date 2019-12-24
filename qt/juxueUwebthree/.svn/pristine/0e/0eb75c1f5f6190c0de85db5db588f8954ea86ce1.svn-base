@@ -1,0 +1,23 @@
+<view wx:for="{{mygroup}}" wx:key="index" class="hot_hot">
+  <div class="card">
+    <view>
+      <image src="{{item.headImg}}" class="hot_img"></image>
+    </view>
+    <view class="hot_center">
+      <view>{{item.associationName}}</view>
+      <view class="hot_botm">
+        <view class="hot_con">
+          <image src="/pages/images/renshu.png" class="hot_con_img"></image>
+          <text class="hot_num">{{item.associationNumber}}</text>
+        </view>
+        <view class="hot_con">
+          <image src="/pages/images/adress.png" class="hot_con_img"></image>
+          <text class="hot_num1">{{item.collageName}}-{{item.collageCampus}}</text>
+        </view>
+      </view>
+    </view>
+    <view>
+      <view class="button" bindtap="entrance" data-id="{{item.id}}">进入</view>
+    </view>
+  </div>
+</view>

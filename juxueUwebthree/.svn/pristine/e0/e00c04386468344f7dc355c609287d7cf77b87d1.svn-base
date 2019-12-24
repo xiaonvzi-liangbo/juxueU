@@ -1,0 +1,161 @@
+.hot_hot {
+  width: 98%;
+  margin: auto;
+  margin-top: 30rpx;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0 0 10rpx #a3a3a3;
+  border-radius: 10rpx;
+  padding: 20rpx 30rpx;
+}
+
+.card1 {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 10rpx #a3a3a3;
+  border-radius: 10rpx;
+  padding: 20rpx 30rpx;
+}
+
+.card_top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.button {
+  text-align: center;
+  width: 120rpx;
+  height: 48rpx;
+  background-image: linear-gradient(to bottom right, #f27575, #ef2b2b);
+  font-size: 24rpx;
+  line-height: 48rpx;
+  color: #fff;
+  border-radius: 24rpx;
+}
+
+.hot_center {
+  width: 60%;
+  margin: 0 20rpx;
+  font-size: 30rpx;
+}
+
+.button_co {
+  background-color: #2996cc;
+}
+
+.hot_img {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  border: 1rpx solid #2996cc;
+}
+
+.hot_botm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 15rpx;
+}
+
+.hot_con {
+  flex: auto;
+}
+
+.hot_con_img {
+  width: 22rpx;
+  height: 22rpx;
+}
+
+.hot_num {
+  font-size: 20rpx;
+  color: #999;
+  margin-left: 10rpx;
+}
+
+.hot_num1 {
+  font-size: 20rpx;
+  color: #999;
+  margin-left: 10rpx;
+  position: relative;
+  top: -2rpx;
+}
+
+.hot_dynamic {
+  background-color: #e6e6e6;
+  padding: 10rpx 20rpx;
+  margin-top: 20rpx;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.dyn_title {
+  font-size: 22rpx;
+  color: #000;
+}
+
+.dyn_conter {
+  font-size: 22rpx;
+  color: #000;
+  margin-top: 10rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.border {
+  width: 60%;
+  height: 70rpx;
+  margin: auto;
+  border: 1rpx solid #9f9e7e !important;
+  margin-bottom: 20rpx;
+  text-align: left;
+  padding: 0 30rpx;
+}
+
+.border1 {
+  width: 60%;
+  margin: auto;
+  border: 1rpx solid #9f9e7e !important;
+  margin-bottom: 20rpx;
+  text-align: left;
+  padding: 20rpx 30rpx;
+}
+
+.close {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+}
+
+.modal_but {
+  margin-top: 70rpx;
+  width: 300rpx;
+  background-color: #2996cc;
+  color: #fff;
+}
+
+.heards {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cleans {
+  width: 100rpx;
+  margin-left: 20rpx;
+  color: #2996cc;
+}
+
+.pick {
+  /* position: relative; */
+  top: 10rpx;
+}

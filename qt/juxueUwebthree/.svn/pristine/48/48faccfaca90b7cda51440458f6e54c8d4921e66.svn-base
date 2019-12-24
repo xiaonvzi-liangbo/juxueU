@@ -1,0 +1,52 @@
+// pages/appraisal/occupation/occupation.js
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    cardData:[
+      { id: '0', cardImg:"https://staticfile.xlcwx.com/userfiles/201909/20190917110844.png",title:'MBTI性格测试',conter:'MBTI模型被用以衡量和描述人们在获取信息、做出决策、对待生活等方面的心理活动规律和性格类型。'},
+      { id: '1', cardImg: "https://staticfile.xlcwx.com/userfiles/201909/20190917110815.png", title: 'DISC性格测评', conter: 'DISC理论认为人有四种基本的性向因子，这些性向因子以复杂的方式组合在一起，构成了每个人独特的性格。'},
+      { id: '2', cardImg: "	https://staticfile.xlcwx.com/userfiles/201909/20190917111025.png", title: '霍兰德职业兴趣测试', conter: '霍兰德职业兴趣理论从兴趣的角度出发来探索职业指导的问题。你的兴趣点可以做一些什么职业。'},
+      { id: '3', cardImg: "https://staticfile.xlcwx.com/userfiles/201909/20190917111050.png", title: '卡特尔16PF测验', conter: '卡特尔16PF测验是世界上最完善的心理测试工具之一，用以测量人们16种基本的性格特质。'},
+      { id: '4', cardImg: "https://staticfile.xlcwx.com/userfiles/201909/20190917111000.png", title: '国际标椎情商测试', conter: '美国心理学家认为：在人的成功的诸多主观因素里面，智商因素大约占20%，而情商则占80%左右。'},
+      { id: '5', cardImg: "https://staticfile.xlcwx.com/userfiles/201909/20190917110907.png", title: 'WVI职业价值观测评', conter: '美国心理学家认为：在人的成功的诸多主观因素里面，智商因素大约占20%，而情商则占80%左右。'}
+    ]
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+  //我的检测报告点击事件
+  occupa(){
+    wx.showToast({
+      title: '正在开发中，敬请等待！',
+      icon:'none',
+      duration: 2000
+    })
+    // wx.navigateTo({
+    //   url: '/pages/appraisal/report/report',
+    // })
+  },
+  //测试详情点击事件
+  careertest(){
+    wx.showToast({
+      title: '正在开发中，敬请等待！',
+      icon: 'none',
+      duration: 2000
+    })
+    // wx.navigateTo({
+    //   url: '/pages/appraisal/measurement/measurement',
+    // })
+  }
+})

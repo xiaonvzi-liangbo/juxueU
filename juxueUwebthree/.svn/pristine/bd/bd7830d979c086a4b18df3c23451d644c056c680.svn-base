@@ -1,0 +1,184 @@
+import requestUrl from '../../utils/request.js'
+const time = require('../../utils/time.js')
+const quantity = require('../../utils/quantity.js')
+Component({
+  pageLifetimes: {
+    show() {
+      if (typeof this.getTabBar === 'function' &&this.getTabBar()) {
+        this.getTabBar().setData({
+          selected: 4
+        });
+        this.getMy()
+      }
+    }
+  },
+
+  data: {
+    navigations: [{
+        id: '0',
+        icon: '../images/Extension_code.png',
+        title: '专属推广码'
+      },
+      {
+        id: '1',
+        icon: '../images/v.png',
+        title: '认证中心',
+        linkUrl: '/pages/my/authentication/authentication'
+      },
+      {
+        id: '2',
+        icon: '../images/invitation.png',
+        title: '我的帖子',
+        linkUrl: '/pages/my/myInvitation/myInvitation'
+      },
+      {
+        id: '3',
+        icon: '../images/myCollect.png',
+        title: '我的收藏',
+        linkUrl: '/pages/my/collect/collect'
+      },
+      {
+        id: '4',
+        icon: '../images/feedback.png',
+        title: '意见反馈',
+        linkUrl: '/pages/my/feedback/feedback'
+      },
+      {
+        id: '5',
+        icon: '../images/service.png',
+        title: '联系客服',
+        linkUrl: ''
+      },
+      {
+        id: '6',
+        icon: '../images/shequ.png',
+        title: '用户须知',
+        linkUrl: '/pages/my/convention/agreement/agreement'
+      },
+    ],
+    twoDimension: '',
+    visible: false,
+    mine: [],
+    collageName: '',
+    showCom: true
+  },
+
+  methods: {
+    
+
+    //获取我的信息
+    getMy() {
+      let that = this;
+      let userid = wx.getStorageSync('userid')
+      wx.request({
+        url: requestUrl.requestUrl + '/jXUserApp/findByMy',
+        method: 'get',
+        data: {
+          id: userid
+        },
+        header: {
+          'content-type': 'application/json',
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success(res) {
+          if (res.data.code == '200') {
+            that.setData({
+              mine: res.data.data,
+            });
+            if (res.data.data.collageName == null) {
+              that.setData({
+                collageName: "尚未认证"
+              })
+            } else {
+              that.setData({
+                collageName: res.data.data.collageName
+              })
+            }
+          }
+        }
+      })
+    },
+    //前往页面点击事件
+    leaveFor(e) {
+      let quanxian = wx.getStorageSync('quanxian');
+      let that = this
+      if (that.data.navigations.id == 2) {
+        if (quanxian) {
+          wx.navigateTo({
+            url: 'e.currentTarget.dataset.url'
+          })
+        } else {
+          wx.showToast({
+            title: '请先去 "我的-认证中心" 进行认证',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      } else {
+        wx.navigateTo({
+          url: e.currentTarget.dataset.url,
+        })
+      }
+
+
+    },
+    //签到点击事件
+    signIn() {
+      wx.navigateTo({
+        url: '/pages/my/signIn/signIn',
+      })
+    },
+    //兑换点击事件
+    exchange() {
+      wx.navigateTo({
+        url: '/pages/my/conversion/conversion',
+      })
+    },
+    //私信点击事件
+    private() {
+      wx.navigateTo({
+        url: '/pages/my/private/private',
+      })
+    },
+    //足迹点击事件
+    footprint() {
+      wx.navigateTo({
+        url: '/pages/my/footprint/footprint',
+      })
+    },
+    //粉丝点击事件
+    fans() {
+      wx.navigateTo({
+        url: '/pages/my/fans/fans',
+      })
+    },
+    //关注点击
+    focus() {
+      wx.navigateTo({
+        url: '/pages/my/focus/focus',
+      })
+    },
+    //修改资料点击事件 
+    compile(e) {
+      wx.navigateTo({
+        url: '/pages/my/amend/amend?img=' + e.currentTarget.dataset.img,
+      })
+    },
+
+    //分享图片事件处理
+    shower: function() {
+      this.setData({
+        visible: true
+      })
+      this.selectComponent("#share").getMy();
+    },
+    close: function() {
+      this.setData({
+        visible: false
+      })
+    },
+  },
+  attached() {
+    this.getMy()
+  }
+})

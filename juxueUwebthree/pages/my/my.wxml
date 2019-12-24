@@ -1,0 +1,56 @@
+<view class="my">
+  <view class="backcolor ">
+    <view class="flex" wx:if="{{loginshow}}">
+      <image src="{{ mine.logo }}" class="txImg"></image>
+      <view class="name">
+        <view class="nickname">{{ mine.nickName }}</view>
+        <image src="{{mine.associationImg?mine.associationImg:''}}" class="mass"></image>
+        <picker class="heard_tz" bindchange="bindPickerChange" value="{{poindex}}" range="{{switchingtxt}}">
+          <view class="picker">{{mine.associationName?mine.associationName:'尚未认证'}} </view>
+        </picker>
+      </view>
+      <view class="xiugai" bindtap="compile" data-img="{{mine.logo}}">
+        <text class="cuIcon-right entrance"></text>
+      </view>
+    </view>
+    <view wx:else>
+      <image src="{{touxiang}}" class="txImg txposition"></image>
+      <button class='cu-btn round bg-olive bnt bg-gradual-orange' open-type="getUserInfo" bindgetuserinfo="getUserInfo">立即登录</button>
+    </view>
+    <view style="height:300rpx;"></view>
+    <view class="information" wx:if="{{showCom}}">
+      <view class="auto" data-url="/pages/my/fans/fans" bindtap="leaveFor">
+        <view style="font-size: 26rpx;">{{limits==false?'0':mine.fansNumber}}</view>
+        <view>粉丝</view>
+      </view>
+      <view class="auto" data-url="/pages/my/focus/focus" bindtap="leaveFor">
+        <view style="font-size: 26rpx;">{{limits==false?'0':mine.followNumber}}</view>
+        <view>关注</view>
+      </view>
+      <view class="auto" data-url="/pages/my/conversion/conversion" bindtap="leaveFor">
+        <view style="font-size: 26rpx;">{{limits==false?'0':mine.integralNumber}}</view>
+        <view>积分</view>
+      </view>
+    </view>
+  </view>
+  <view class="modularity">
+    <view class="center" wx:for="{{navcontent}}" wx:key="index">
+      <view data-url="{{item.url}}" bindtap="leaveFor">
+        <image src="{{item.img}}" class="icons"></image>
+        <view wx:if="{{item.id=='0'}}" class="time">第{{mine.singIn}}天</view>
+        <view wx:if="{{item.id=='2'}}"  wx:if="{{mine.isPrivate}}" class="red_dot" ></view>
+        <view style="font-size: 24rpx;">{{item.text}}</view>
+      </view>
+    </view>
+
+  </view>
+  <view class="base" wx:for="{{navigations}}" wx:key="index">
+    <canvas-share id='share' bindclose="close" visible="{{visible}}" />
+    <view class="path" bindtap="{{index=='0'?'shower':'leaveFor'}}" data-url="{{item.linkUrl}}">
+      <text class="titleImg {{item.icon}}" style="color:{{item.color}}"></text>
+      <view>{{item.title}}</view>
+      <text class="cuIcon-right rightImg"></text>
+      <button wx:if="{{index=='5'}}" open-type="contact" class="but"></button>
+    </view>
+  </view>
+</view>

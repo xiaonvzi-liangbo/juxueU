@@ -1,0 +1,78 @@
+.page {
+  height: 100%;
+}
+
+.card {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 0 12rpx 12rpx 0;
+  box-shadow: 0 0 10rpx #e4e4e4;
+  margin-bottom: 20rpx;
+}
+
+.conter {
+width: 67%;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+
+.con_title {
+  font-size: 36rpx; 
+}
+
+.con_time {
+  font-size: 22rpx;
+  color: #000;
+  margin: 30rpx 0;
+}
+
+.con_num {
+  font-size: 22rpx;
+  color: #808080;
+}
+
+.com_make {
+  display: flex;
+  flex-direction: column-reverse;
+  position: absolute;
+  right: 35rpx;
+  margin-top: 115rpx;
+  
+}
+
+.com_but {
+  border-radius: 25rpx; 
+  color: #fff;
+  font-size: 28rpx;
+  background-image: linear-gradient(to bottom right,#7590f2, #2b6cef);
+
+  width: 170rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+text-align: center;
+}
+
+.com_make_phone {
+  position: absolute;
+  display: flex;
+  right: 35;
+  top: 0rpx;
+  width: 170rpx;
+  height: 100rpx;
+  z-index: 10 !important;
+}
+
+.swip {
+  width: 100%;
+  margin-top: 25rpx;
+  margin-right: 4rpx;
+  margin-left: 4rpx;
+  height: 100%;
+}

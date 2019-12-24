@@ -1,0 +1,48 @@
+@import 'colorui/icon.wxss';
+@import 'colorui/main.wxss';
+
+.abc {
+  background-color: red;
+}
+
+page {
+  background-color: #fff;
+}
+/*隐藏滚动条*/
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+  display: none;
+}
+.little {
+  height: 46rpx !important;
+  line-height: 46rpx !important;
+  border-radius: 33rpx;
+  color: #fff;
+  padding: 0rpx 26rpx;
+  text-align: center;
+  background-image: linear-gradient(to bottom right, #7590f2, #2b6cef);
+}
+
+.litnot {
+  height: 46rpx;
+  border-radius: 33rpx;
+  color: #000;
+  padding:0rpx 26rpx;
+  text-align: center;
+}
+
+.signUp {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  line-height: 30rpx;
+  padding: 20rpx;
+  background-image: linear-gradient(to right bottom, #7590f2, #2b6cef);
+  position: fixed;
+ bottom: 200rpx;
+ right: 20rpx;
+}

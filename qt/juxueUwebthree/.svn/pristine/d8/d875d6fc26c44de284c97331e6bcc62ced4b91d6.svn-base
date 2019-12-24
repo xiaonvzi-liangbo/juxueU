@@ -1,0 +1,56 @@
+.conter{
+  width: 95%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 30rpx;
+  margin-top: 50rpx;
+}
+.cont_between{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.cont_title{
+  font-size: 26rpx;
+  color: #595959;
+}
+.cont_text{
+  width: 85%;
+  font-weight: 550;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:1;
+  overflow: hidden;
+}
+.cont_time{
+  font-size: 25rpx;
+  color: #B9B9B9;
+}
+.writ{
+  border-top: 1rpx solid #CDCDCD;
+  margin-top: 30rpx;
+  width: 80%;
+  position: absolute;
+  right: 0;
+}
+.image{
+  width: 25rpx;
+  height: 40rpx;
+  position: absolute;
+  right: 40rpx;
+}
+.rzimg{
+  width: 40rpx;
+  height: 40rpx;
+  position: relative;
+  right: 40rpx;
+}
+.userlogo{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}

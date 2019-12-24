@@ -1,0 +1,5 @@
+<view class="modal" bindtap="close" wx:if="{{showModal}}">
+  <view class="modal_conter" style="width:{{width}};border-radius:{{radius}}">
+    <view catchtap="hold"><slot></slot></view>
+  </view>
+</view>

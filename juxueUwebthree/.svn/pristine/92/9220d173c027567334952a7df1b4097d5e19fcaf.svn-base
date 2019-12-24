@@ -1,0 +1,62 @@
+import requestUrl from '../../../utils/request.js'
+Component({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    button: true,
+    userinfo: ''
+  },
+  methods: {
+    //手机号授权
+    phonenumber(e) {
+      let that = this;
+      let session = wx.getStorageSync('sessionKey');
+      let userid = wx.getStorageSync('userid');
+      wx.request({
+        url: requestUrl.requestUrl + '/jj/weChat/jm',
+        method: 'POST',
+        data: {
+          encryptedData: e.detail.encryptedData,
+          errMsg: session,
+          iv: e.detail.iv
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json'
+        },
+        success(res) {
+          if (res.data.phoneNumber == undefined) {
+            that.setData({
+              button: true
+            })
+          } else {
+            that.setData({
+              button: false
+            })
+          }
+          wx.setStorageSync('phone', res.data.phoneNumber)
+          wx.request({
+            url: requestUrl.requestUrl + '/jXUserApp/update',
+            method: 'POST',
+            data: {
+              id: userid,
+              phone: res.data.phoneNumber
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+              'Accept': 'application/json'
+            },
+            success() {
+              pages[pages.length - 1].getMy(); //异步同步
+              pages[pages.length - 1].accredit()
+            }
+          })
+         
+        },
+      })
+    }
+  }
+
+})

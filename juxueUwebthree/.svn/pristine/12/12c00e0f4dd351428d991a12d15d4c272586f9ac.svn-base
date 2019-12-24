@@ -1,0 +1,72 @@
+<!--> 因为微信小程序的限制问题 无法直接将本地图片设置为背景图片  此处的背景图片为img图片   后期可以将图片设置为背景图片 此处全部为定位布局 -->
+<navigations title="立即领取" backColor="" show="{{show}}" imags="/pages/images/ht.png" color="#fff"></navigations>
+<view class="all">
+  <image src="https://staticfile.xlcwx.com/userfiles/201909/20190917114628.png" class="backimg" mode="scaleToFill"></image>
+  <!-- <view class="fhan" bindtap="navback">
+    <image src="../../images/ht.png" class="banht"></image>
+    <text class="fh_text">限时福利</text>
+  </view> -->
+  <view class="content">
+    <view class="con_head">
+      <view class="head_img">
+        <view class="head_invite">
+          <image src="https://staticfile.xlcwx.com/userfiles/201909/20190917091147.png" mode="scaleToFill" style="width:130rpx;height:130rpx;" class="circle"></image>
+          <view class="head_text">团长</view>
+        </view>
+        <view class="head_invite">
+          <image src="../../images/invite.png" style="width:130rpx;height:130rpx;"></image>
+        </view>
+        <view class="head_invite">
+          <image src="../../images/invite.png" style="width:130rpx;height:130rpx;"></image>
+        </view>
+        <view class="head_invite">
+          <image src="../../images/invite.png" style="width:130rpx;height:130rpx;"></image>
+        </view>
+      </view>
+    </view>
+    <bloak wx:if="{{show}}">
+      <view class="con_numb">还剩三人即可开启资料包</view>
+      <view class="con_time">23:40:17 后结束</view>
+      <view class="con_but" bindtap="transmit">
+        <image src="../../images/wx.png" style="width:50rpx;height:40rpx;"></image>
+        <view class="con_text">邀请微信好友一起领取</view>
+      </view>
+    </bloak>
+    <bloak wx:if="{{!show}}">
+      <view class="con_succes">已有3人参加，<text style="color:red;font-weight: 900;">组团成功！</text></view>
+      <view class="con_but" bindtap="draw">
+        <image src="../../images/wx.png" style="width:50rpx;height:40rpx;"></image>
+        <view class="con_text">立即领取</view>
+      </view>
+    </bloak>
+  </view>
+    <view class="activity">
+      <view class="img_position">
+        <image src="../../images/hdbackimg.png" mode="aspectFit" style="width:70%;height:100%;"></image>
+        <view class="bot_header">
+          <text class="bot_line"></text>
+          <text class="bot_text">活动规则</text>
+          <text class="bot_line"></text>
+        </view>
+      </view>
+      <view class="act_text">
+        <text class="act_cont">
+          1、邀请三位好友拼团成功，每人都可领取专属分析报告；
+          2、所邀请好友也可以邀请好友拼团，助力拿报告；
+          3、开团后超出24小时未集齐4人则拼团失败；
+          4、拼团成功后，分析报告会在24小时内发送至邮箱；
+          5、聚学U保留此次活动的解释权
+        </text>
+      </view>
+    </view>
+    <i-modal title="请完善领取信息" visible="{{showModel}}" show-cancel="{{cancel}}" show-ok="{{cancel}}">
+      <image src="/pages/images/close.png" class="close" bindtap="occlude"></image>
+      <view class="modal_xhx"></view>
+      <view class="modal"><input placeholder="请输入姓名" class="modal_input"></input></view>
+      <view class="modal"><input placeholder="请输入所学专业" class="modal_input"></input></view>
+      <view class="modal"><input placeholder="请输入手机号" class="modal_input"></input></view>
+      <view class="modal"><input placeholder="请输入电子邮箱" class="modal_input"></input></view>
+      <view class="modal_text">提交成功后，分析报告会在24小时内发送至您的电子邮箱，请注意查收！</view>
+      <button class="model_but" bindtap="close">立即领取</button>
+    </i-modal>
+</view>

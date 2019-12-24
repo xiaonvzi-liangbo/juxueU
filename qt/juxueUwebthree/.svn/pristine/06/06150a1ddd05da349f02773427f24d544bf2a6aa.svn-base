@@ -1,0 +1,31 @@
+<scroll-view scroll-y style="height:100%;">
+  <view class="modul">
+    <view style="background-color: #fff;margin-top:10rpx;" wx:for="{{information}}" wx:key="index">
+      <view class="back">
+        <view class="left_size">
+          <view class="mod_row">
+            <view class="aligning" >
+              <image src="{{item.userLogo}}" class="img_tx"  bindtap="personage" data-id="{{item.userId}}"></image>
+              <text class="ali_name"  bindtap="personage" data-id="{{item.userId}}">{{item.userName}}</text>
+              <image bindtap="deldata" data-delid="{{item.collectionId}}" src="../../../../images/delect.png" class="delect"></image>
+            </view>
+          </view>
+          <view class="mod_title"  bindtap="particulars" data-id="{{item.id}}">{{item.context}}</view>
+          <view class="mod_row"  bindtap="particulars" data-id="{{item.id}}">
+            <view class="mod_bottom">
+              <image src="../../../../images/browse.png" style="width:24rpx;height:24rpx;"></image>
+              <view class="mod_text">{{item.visitNumber}}</view>
+              <image src="../../../../images/pl.png" class="com_image"></image>
+              <view>{{item.commentNumber}}</view>
+            </view>
+            <view class="mod_time">{{item.createTime}}</view>
+          </view>
+        </view>
+        <view>
+          <image src="{{item.img}}" class="img_size"></image>
+        </view>
+      </view>
+    </view>
+    <view style="height:200rpx;background-color:#fff;"></view>
+  </view>
+</scroll-view>

@@ -1,0 +1,5 @@
+{ 
+  "usingComponents": {
+"navigation": "/pages/index/navigation/navigation"
+  }
+}

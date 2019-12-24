@@ -1,0 +1,17 @@
+<!--pages/CourseActivities/CourseActivities.wxml-->
+<view class="CourseActivities">
+  <scroll-view scroll-y bindscrolltolower="bindDownLoad" style="height:100%;">
+    <view class="details" wx:for="{{details}}" wx:key="item.id">
+      <image style="width:100%;height:428rpx; border-radius: 0;" src="{{item.img}}"></image>
+      <view detailsFoot>
+        <view class="txt">
+          <view style="float:left;">已有</view>
+          <view style="float:left; color:red;margin:0 4rpx;">{{item.number}}</view>
+          <view style="float:left;">人参加活动</view>
+        </view>
+        <button class="participation" bindtap="navpage" data-transferid="{{item.id}}">立即参与</button>
+
+      </view>
+    </view>
+  </scroll-view>
+</view>

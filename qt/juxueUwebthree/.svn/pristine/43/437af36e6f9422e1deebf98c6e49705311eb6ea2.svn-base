@@ -1,0 +1,17 @@
+<!--pages/components/uActivities/hotact/hotact.wxml-->
+<view style="padding-top:20rpx;" wx:for="{{eventContent}}" wx:key="index">
+   <view slot="content">
+      <navigator url="/pages/my/chat/chat?transferid= {{item.id}}" hover-class="navigator-hover">
+        <view class="entire">
+          <view>
+            <image src=" {{item.img}} " class="logo"></image> 
+          </view>
+           <view class="entireRight">
+            <view class="cont_title">{{item.theme}}</view>
+              <button class="cont_con " style="{{item.activityState==4?'background-image: linear-gradient(to left, #D30000 , #FF3F3F);':'background-image: linear-gradient(to left, #D0D000 , #E8E865);'}}">{{item.activityState=='1'?"报名中":(item.activityState=='3'?"进行中":(item.activityState=='4'?"已结束":""))}}</button>
+            <view class="cont_time ">{{item.collageName}}</view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+</view>

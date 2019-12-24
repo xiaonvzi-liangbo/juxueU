@@ -1,0 +1,103 @@
+/* pages/components/universityCircle/myPost/myPost.wxss */
+
+.mypo {
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 20rpx;
+}
+
+.view_top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.view_img {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.view_title {
+  margin-left: 10rpx;
+  font-weight: 550;
+}
+
+.hot_cont {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.hot_portrait {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  /* background-color: red; */
+  margin-left: 10rpx;
+}
+
+.hot_title {
+  font-weight: 550;
+  color: #5d5d5d;
+  margin-left: 10rpx;
+}
+
+.hot_images {
+  height: 200rpx;
+  width: 100%;
+  border-radius: 10rpx;
+}
+
+.hot_icon {
+  border-radius: 15rpx;
+  margin-left: 10rpx;
+  font-size: 20rpx;
+  /* width: 20rpx;
+  height: 20rpx; */
+}
+
+.hot_fontsize {
+  margin-left: 5rpx;
+  margin-right: 7rpx;
+  color: #a8a8a8;
+  font-size: 20rpx;
+}
+
+.hot_down {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.hot_down_row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* .hot_cont{
+  margin-top: 30rpx;
+  margin-bottom: 20rpx;
+} */
+.mass{
+  width: 30rpx;
+  height: 30rpx;
+  position: relative;
+  top: 5rpx;
+  right: 10rpx;
+}
+.images {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-bottom: 10rpx;
+}
+
+.img_size {
+  width: 230rpx;
+  height: 150rpx;
+  border-radius: 15rpx;
+}

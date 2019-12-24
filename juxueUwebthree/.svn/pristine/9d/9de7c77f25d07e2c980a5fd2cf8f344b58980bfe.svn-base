@@ -1,0 +1,32 @@
+<view class="modul">
+  <view style="background-color: #fff;margin-top:10rpx;" wx:for="{{information}}" wx:key="index">
+    <view class="back" bindtap="particulars" data-id="{{item.id}}">
+      <view class="left_size">
+        <view class="mod_title">
+          <rich-text nodes="{{item.title?item.title:item.context}}"> </rich-text>
+        </view>
+        <view bindtap="particulars" class="images" data-id="{{item.id}}">
+          <image src="{{item.postsImgs[0]}}" class="img_size"></image>
+          <image src="{{item.postsImgs[1]}}" class="img_size"></image>
+          <image src="{{item.postsImgs[2]}}" class="img_size"></image>
+        </view>
+        <text wx:if='{{item.talkName}}' data-topid="{{item.talkId}}" class="topics1" catchtap="topics">#{{item.talkName}}</text>
+
+        <view class="mod_row">
+          <view class="mod_bottom">
+            <image catchtap="personage"  data-id="{{item.userId}}" src="{{item.userLogo}}" class="img_tx"></image>
+            <text catchtap="personage"  data-id="{{item.userId}}" class="school_title">{{item.userName}}</text>
+            <view class="dian"></view>
+
+            <view>{{item.visitNumber}}浏览</view>
+            <view class="dian"></view>
+            <view>{{item.commentNumber}}评论</view>
+
+          </view>
+          <view class="mod_time">{{item.createTime}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view style="height:5%;"></view>

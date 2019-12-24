@@ -1,0 +1,32 @@
+import requestUrl from '../../../utils/request.js'
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    currenTable: '0'
+  },
+  /* * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
+  },
+  //点击切换页面事件
+  switchPage(e) {
+    this.setData({
+      currenTable: e.currentTarget.dataset.table
+    })
+  },
+  tolower() {
+    let that = this;
+    if (that.data.currenTable == '0') {
+      console.log("attention")
+      that.selectComponent('#attention').tolower()
+    } else if (that.data.currenTable == '1') {
+      that.selectComponent('#comment').tolower()
+    }
+    else if (that.data.currenTable == '2') {
+      that.selectComponent('#private').tolower()
+    }
+  },
+})

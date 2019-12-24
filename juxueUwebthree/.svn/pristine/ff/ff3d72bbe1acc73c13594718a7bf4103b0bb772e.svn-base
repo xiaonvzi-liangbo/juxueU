@@ -1,0 +1,151 @@
+import requestUrl from '../../../utils/request.js'
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    check:false,
+    tetle:'',
+    text:'',
+    picture:[]
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+  },
+  //上传图片点击事件
+  upload(){
+    let that = this;
+    wx.chooseImage({
+      count: 9,  //最多可以选择的图片总数
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        let tempFilePaths = res.tempFilePaths;
+        //启动上传等待中...
+        wx.showToast({
+          title: '正在上传...',
+          icon: 'loading',
+          mask: true,
+          duration: 10000
+        })
+        let uploadImgCount = 0;
+        console.log(tempFilePaths, '这个值是什么啊')
+        for (let i = 0; i < tempFilePaths.length; i++) {
+          setTimeout(res => {
+            console.log('6666')
+            wx.uploadFile({
+              url: 'https://staticfile.xlcwx.com/api/modalupload/image',
+              filePath: tempFilePaths[i],
+              name: 'upload',
+              header: {
+                "Content-Type": "multipart/form-data"
+              },
+              success: function (res) {
+                console.log(res)
+                let arr = res.data.split('"');
+                let str = arr[3].replace(/^(\s|")+|(\s|ab)+$/g, '');
+                console.log(str, 'hgfuisnvuifsbnvuidsbi')
+                console.log(that.data.picture, '插卡安扎堆儿必须撒')
+                let pic = that.data.picture.concat(str)
+                that.setData({
+                  picture: pic
+                });
+                console.log(that.data.picture, '1651651961596')
+                //最后一张时
+                if (i == tempFilePaths.length - 1) {
+                  wx.hideToast();
+                }
+              },
+              fail: function (res) {
+                wx.hideToast();
+                wx.showModal({
+                  title: '错误提示',
+                  content: '上传图片失败',
+                  showCancel: false,
+                  success: function (res) { }
+                })
+              }
+            });
+          }, 1000 * i)
+        }
+      }
+    });
+  },
+  //删除图片点击事件
+  delects(e) {
+    console.log(e.currentTarget.dataset.id,'查看这个的值的内容')
+    let arr = this.data.picture;
+    let end = arr.splice(e.currentTarget.dataset.id, 1);
+    this.setData({
+      picture: arr
+    })
+  },
+  //监听标题输入
+  titles(e){
+    this.setData({
+      tetle:e.detail.value
+    })
+  },
+  //监听内容的输入
+  textare(e){
+    this.setData({
+      text:e.detail.value
+    })
+  },
+  //选择点击事件
+  choice(){
+    this.setData({
+      check: !this.data.check
+    })
+  },
+  //发布文章点击事件
+  issue(){
+    let that = this;
+    let userid = wx.getStorageSync('userid');
+    let visible=0;
+    let img = that.data.picture.join(",")
+    if (that.data.check){
+      visible = 1;
+    };
+    if (!that.data.tetle){
+      wx.showToast({
+        title:'请输入活动主题！',
+        icon:'none',
+        duration:2000
+      })
+    }else{
+      wx.request({
+        url: requestUrl.requestUrl + '/jXCollagePostsApp/add',
+        method: 'POST',
+        data: {
+          postsType:'社团',
+          title: that.data.tetle,
+          context: that.data.text,
+          isVisible:visible,
+          userId:userid,
+          authenticationType:'2',
+          isDraft:'0',
+          imgUrl: img
+        },
+        header:{
+          'content-type': 'application/json',
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success(res){
+          if(res.data.code=='200'){
+            wx.showToast({
+              title:'发布成功！',
+              icon:'none',
+              duration:2000
+            })
+          }
+        }
+      })
+    }
+  }
+})

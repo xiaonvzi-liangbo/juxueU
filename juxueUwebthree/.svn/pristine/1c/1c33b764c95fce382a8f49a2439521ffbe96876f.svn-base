@@ -1,0 +1,31 @@
+<view style="width:95%;margin:auto;">
+  <image src="https://staticfile.xlcwx.com/userfiles/201909/20190917103542.png" class="bannerImg"></image>
+  <i-notice-bar icon="systemprompt" loop speed="2000" wx:if="{{subscri.length}}">
+    <view>
+      <text wx:for="{{subscri}}" wx:key="index" style="margin-right:40rpx;">{{item.phone}}  预约自学考试升本成功</text>
+    </view>
+  </i-notice-bar>
+</view>
+<view class="switch">
+  <view class="title">
+    <view style="">
+      <view class="{{currentTable=='0'?'checked':''}}" bindtap="navigation" data-navi="0">学历提升</view>
+      <view wx:if="{{currentTable=='0'}}" class="bottom"></view>
+    </view>
+    <view>
+      <view class="{{currentTable=='1'?'checked':''}}" bindtap="navigation" data-navi="1">职业资格</view>
+      <view wx:if="{{currentTable=='1'}}" class="bottom"></view>
+    </view>
+
+
+  </view>
+  <view style="height:20rpx;"></view>
+  <scroll-view scroll-y class="scroll" bindscrolltolower="deucat" wx:if="{{currentTable=='0'}}">
+    <view style="height:600rpx;">
+      <education id="education"></education>
+    </view>
+  </scroll-view>
+  <scroll-view scroll-y class="scroll" bindscrolltolower="career" wx:if="{{currentTable=='1'}}">
+    <career id="careers"></career>
+  </scroll-view>
+</view>

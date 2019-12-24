@@ -1,0 +1,62 @@
+.entirety{
+  width: 95%;
+  margin: auto;
+}
+.conter{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+.hear_img{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.hear_icon{
+  width: 34rpx;
+  height: 34rpx;
+  position: relative;
+  right: 30rpx;
+}
+.hear_title{
+  font-size: 34rpx;
+  font-weight: 900;
+}
+.hear_autograph{
+  font-size: 24rpx;
+  color: #808080;
+  margin-top: 10rpx;
+}
+.name{
+  width: 330rpx;
+}
+.select{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 20rpx;
+}
+.consent{
+  font-size: 24rpx;
+  color: #fff;
+  background-color: #2996CC;
+  padding: 10rpx 20rpx;
+  border-radius: 10rpx;
+}
+.lose{
+  margin-left: 40rpx;
+  font-size: 24rpx;
+  color: #666666;
+}
+.zanwu{
+  width: 200rpx;
+  height: 200rpx;
+}
+.wu{
+  text-align: center;
+  padding-top: 200rpx;
+}
+.wu_text{
+  margin-top: 20rpx;
+}

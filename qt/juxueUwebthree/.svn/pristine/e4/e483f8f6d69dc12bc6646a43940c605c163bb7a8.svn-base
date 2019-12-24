@@ -1,0 +1,9 @@
+
+<view class="tabs">
+  <view class="center {{currenTable=='0'?'center_size':''}}" bindtap="switchPage" data-table="0">所有消息</view>
+  <view class="center {{currenTable=='1'?'center_size':''}}" bindtap="switchPage" data-table="1">系统通知</view>
+</view>
+<scroll-view scroll-y style="height:80%;" bindscrolltolower="tolower">
+<attention id="attention" wx:if="{{currenTable=='0'}}"></attention>
+<comment  id="comment" wx:if="{{currenTable=='1'}}"></comment>
+</scroll-view >

@@ -1,0 +1,97 @@
+const requestUrl = require('../../../../../utils/request.js')
+const number = require('../../../../../utils/quantity.js')
+const time = require('../../../../../utils/time.js')
+Component({
+  /**
+   * 组件的属性列表
+   */
+  properties: {
+
+  },
+
+  /**
+   * 组件的初始数据
+   */
+  data: {
+    information: [],
+  },
+
+  /**
+   * 组件的方法列表
+   */
+  methods: {
+    //详情点击事件
+    particulars(e) {
+      wx.navigateTo({
+        url: '/pages/universityCircle/information/information?tzid=' + e.currentTarget.dataset.id,
+      })
+    },
+    //发帖人详情
+    personage(e) {
+      console.log(e)
+      wx.navigateTo({
+        url: '/pages/universityCircle/myPost/myPost?id=' + e.currentTarget.dataset.id,
+      })
+    },
+    //获取收藏文章的数据
+    getData() {
+      let that = this;
+      let userid = wx.getStorageSync('userid');
+      wx.request({
+        url: requestUrl.requestUrl + '/jXCollectionApp/findByPostsAndUserId',
+        data: {
+          type: '问答',
+          userId: userid //用户id
+        },
+        header: {
+          'content-type': 'application/json',
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success(res) {
+          let date = res.data.data;
+          for (let i = 0; i < date.length; i++) {
+            //时间处理
+            date[i].createTime = time.getDateDiff(date[i].createTime);
+            //数量处理
+            // date[i].commentNumber = quantity.number(date[i].commentNumber);
+            // date[i].visitNumber = quantity.number(date[i].visitNumber)
+          };
+          that.setData({
+            information: date
+          })
+        }
+      })
+    },
+    //删除收藏的wz
+    deldata(e) {
+      let that = this;
+      wx.request({
+        url: requestUrl.requestUrl + '/jXCollectionApp/delete',
+        data: {
+          id: e.currentTarget.id
+        },
+        method: 'get',
+        header: {
+          'content-type': 'application/json',
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success(res) {
+          if (res.data.code == '200') {
+            wx.showToast({
+              title: '删除成功！',
+              icon: 'none',
+              duration: 2000
+            })
+            that.getData(),
+            console.log("删除成功")
+          }
+        },
+      })
+    },
+
+  },
+  attached() {
+    this.getData()
+  },
+
+})

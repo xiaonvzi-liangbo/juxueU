@@ -1,0 +1,132 @@
+page {
+  font-size: 33rpx;
+  color: #1b1b1b;
+  overflow: hidden;
+}
+ 
+
+.heards {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cleans {
+  width: 100rpx;
+  margin-left: 20rpx;
+  color: #2996cc;
+}
+
+.search_top {
+  display: flex;
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  flex-direction: row;
+  background-color: #e5e5e5;
+  padding: 0rpx 30rpx;
+  border-radius: 50rpx;
+  justify-content: space-between;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.search { 
+  font-size: 36rpx;
+  color: #000
+}
+
+.entirety {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.ent_top {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.fle_school {
+  margin-left: 8rpx;
+  font-weight: 550;
+  font-size: 30rpx;
+}
+
+.fle_right {
+  font-size: 25rpx;
+  color: #afafaf;
+  margin-right: 4rpx;
+}
+
+.loca_image {
+  width: 38rpx;
+  height: 38rpx;
+}
+
+.border {
+  border-bottom: 1rpx solid #eaeaea;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+.navigation {
+  font-size: 30rpx;
+  width: 100%;
+  margin: auto;
+  height: 90rpx;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10rpx 0 10rpx;
+}
+
+.nav_center {
+  flex: auto;
+  text-align: center;
+}
+
+.nav_underline {
+  width: 110rpx;
+
+}
+.nav_search {
+  margin: 10rpx 0 0 20rpx;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background-color: #e5e5e5;
+  line-height: 60rpx;
+  text-align: center;
+}
+
+
+.switch_page {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper_color {
+  height: 100%;
+}
+.issue {
+  width: 96rpx;
+  height: 96rpx;
+  position: fixed;
+  bottom: 46rpx;
+  border-radius: 50%;
+  left: 45%;
+}

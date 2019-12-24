@@ -1,0 +1,23 @@
+/* pages/uActivities/uActivities.wxss */
+
+page {
+  overflow: hidden;
+}
+.slideshow {
+  text-align: center;
+}
+ 
+.pagebar {
+  width: 98%;
+  height: 140rpx;
+  display: flex;
+  background-color: #fff;
+  justify-content: space-around;
+  margin: 10rpx auto;
+}
+
+.barimage {
+  width: 230rpx;
+  height: 140rpx;
+}
+ 

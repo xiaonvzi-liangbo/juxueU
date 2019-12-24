@@ -1,0 +1,58 @@
+/* pages/DetailsActivities/DetailsActivities.wxss */
+
+page {
+  height: 100%;
+  overflow: hidden;
+}
+
+navigations {
+  font-size: 30rpx;
+  font-style: MicrosoftYaHei;
+  font-weight: Regular;
+  height: 122rpx;
+}
+
+.DetailsTop {
+  width: 100%;
+  height: 280rpx;
+}
+
+.DetailsCon {
+  position: absolute;
+  top: 520rpx;
+  height: 100%;
+  width: 625rpx;
+  margin: 0 20rpx;
+  padding: 30rpx 42rpx 0 42rpx;
+  background-color: #fff;
+  box-shadow: 0rpx 1rpx 14rpx 2rpx #8b8888;
+  border-radius: 20rpx;
+  font-size: 26rpx;
+  font-style: PingFang-SC-Medium;
+}
+
+.DetailsFoot {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 120rpx;
+  background-color: #e6e6e6;
+}
+
+.participation {
+  width: 80%;
+  height: 100%;
+  float: right;
+  line-height: 120rpx; 
+  color: #fff;
+  border-radius: 0;
+  font-size: 32rpx;  background-image: linear-gradient(to bottom right,#7590f2, #2b6cef);
+
+}
+
+.share-btn {
+  width: 20%;
+  height: 100%;
+  float: left;
+  background-color: #fff;
+}

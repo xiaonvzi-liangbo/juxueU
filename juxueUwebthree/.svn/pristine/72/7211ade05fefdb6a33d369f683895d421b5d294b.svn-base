@@ -1,0 +1,47 @@
+/* pages/CourseActivities/CourseActivities.wxss */
+
+page {
+  background-color: #fff;
+}
+
+navigations {
+  font-size: 30rpx;
+  font-style: MicrosoftYaHei;
+  font-weight: Regular;
+}
+
+.details {
+  height: 380rpx;
+  flex: 1 1 auto;
+  font-size: 33rpx;
+  margin: 0 20rpx 20rpx 20rpx;
+  box-shadow: 0rpx 1rpx 14rpx 2rpx #8b8888;
+  border-radius: 10rpx;
+}
+
+.txt {
+  float: left;
+  font-style: PingFang-SC-Medium;
+  font-weight: Medium;
+  font-size: 22rpx;
+  color: #808080;
+  margin: 20rpx 0 0 50rpx;
+}
+
+.participation {
+  float: right;
+  font-size: 28rpx;
+  margin: 5rpx 40rpx 0 0;
+  color: #fff;
+  border-radius: 25rpx;
+  background-image: linear-gradient(to bottom right,#7590f2, #2b6cef);
+  
+  width: 170rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  text-align: center;
+}
+
+scroll-view {
+  width: 100%;
+}

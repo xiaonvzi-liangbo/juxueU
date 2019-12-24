@@ -1,0 +1,7 @@
+{
+  "navigationStyle": "default",
+  "navigationBarTitleText": "社团认证",
+  "usingComponents": {
+    "pickers": "/pages/components/picker/picker"
+  }
+}

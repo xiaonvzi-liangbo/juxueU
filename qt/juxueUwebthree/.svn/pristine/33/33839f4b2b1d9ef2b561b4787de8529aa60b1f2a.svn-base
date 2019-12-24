@@ -1,0 +1,17 @@
+<!--pages/home/home.wxml-->
+<scroll-view class="gun" scroll-y   scroll-left='hide' style="height:100%;">
+  <navigation title="{{title}}" wx:if="{{show}}"></navigation>
+  <index wx:if="{{current=='index'}}"></index>
+  <hotspot id="hotspot" wx:if="{{current=='hotspot'}}"></hotspot>
+  <announce wx:if="{{current=='announce'}}"></announce>
+  <news  id="news" wx:if="{{current=='news'}}"></news>
+  <my id="mine" wx:if="{{current=='mine'}}"></my>
+  </scroll-view>
+<i-tab-bar current="{{ current }}" color="#62AFD9" bindchange="handleChange" fixed="true">
+  <i-tab-bar-item key="index" current-img='/pages/images/index_checked.png' img='/pages/images/index_unselected.png' title="首页"></i-tab-bar-item>
+  <i-tab-bar-item key="hotspot" current-img='/pages/images/icon_Friends2.png' img='/pages/images/icon_Friends.png' title="社团"></i-tab-bar-item>
+  <i-tab-bar-item key="announce" class="announce" current-img='/pages/images/announce.png' img='/pages/images/announce.png'></i-tab-bar-item>
+  
+  <i-tab-bar-item isread='{{isread}}' key="news" current-img='/pages/images/activities_check.png' img='/pages/images/activities.png' title="消息"></i-tab-bar-item>
+  <i-tab-bar-item key="mine" current-img='/pages/images/my_checked.png' img='/pages/images/my_unselected.png' title="我的"></i-tab-bar-item>
+</i-tab-bar>

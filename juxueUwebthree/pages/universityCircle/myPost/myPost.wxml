@@ -1,0 +1,50 @@
+<navigation  dome="用户信息" bottom="0" opacity="1"></navigation>
+<view class="size33" style="height:calc(100vh)">
+  <view class="headback">
+    <view>
+      <image src="{{selfUser.logo}}" class="headimg"></image>
+      <view class="headname size36">{{selfUser.nickName}}</view>
+    </view>
+   
+    <view> <image src="{{selfUser.associationImg}}" class="mass"></image>{{selfUser.collageName}}</view>
+    <view class="lin_hei size30">{{selfUser.autograph?selfUser.autograph:'一句话介绍自己~'}}</view>
+    <view class="education">
+      <view class="edu_conter size30">学校：
+        <text>{{selfUser.collageName}}-{{selfUser.collageCampus}}</text>
+      </view>
+      <view>|</view>
+      <view class="edu_conter size30">专业：
+        <text>{{selfUser.majorId}}</text>
+      </view>
+    </view>
+    <view wx:if="{{!benren}}" class="operation">
+      <view class="private" data-transferid="{{selfUser.id}}" style="margin-ringht:50rpx;" bindtap="private">私信</view>
+      <view class="back_corlor " style="margin-left:50rpx;" bindtap="attention" data-id="{{selfUser.id}}">{{selfUser.isFollow=='0'?'关注':'取消关注'}}</view>
+    </view>
+    <view class="bottom">
+      <view class="edu_conter">
+        <view class="size">{{selfUser.fansNumber}}</view>
+        <view class="sizename">粉丝</view>
+      </view>
+      <view class="edu_conter">
+        <view class="size">{{selfUser.followNumber}}</view>
+        <view class="sizename">关注</view>
+      </view>
+      <view class="edu_conter">
+        <view class="size">{{selfUser.integralNumber}}</view>
+        <view class="sizename">积分</view>
+      </view>
+    </view>
+  </view>
+ <view class="marbotton">
+      <view class="view_top">
+        <view class="view_img">
+          <view  class=" {{currenTable=='0'?'little':'litnot'}}"  bindtap="switchPage" data-table="0">{{benren==false?'他的发布':'我的发布'}}</view>
+          <view class=" {{currenTable=='1'?'little':'litnot'}}"  bindtap="switchPage" data-table="1">{{benren==false?'他的社团':'我的社团'}}</view>
+        </view>
+      </view>
+      <release id="release"  wx:if="{{currenTable=='0'}}" id="release" zjid="{{id}}" />
+      <community  wx:if="{{currenTable=='1'}}" id="release" zjid="{{id}}" />
+
+    </view>
+</view>

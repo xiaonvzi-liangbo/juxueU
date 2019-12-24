@@ -1,0 +1,55 @@
+
+<view class="entirety" bindtap="{{show==true?'':''}}">
+  <view class="navigation">
+    <view wx:if="{{!show}}" class="nav_center" data-number="0" bindtap="attention">
+      <text class="{{currentTab=='0'?'nav_underline':''}}">关注</text>
+    </view>
+    <view wx:if="{{!show}}" class="nav_center" data-number="1" bindtap="attention">
+      <text class="{{currentTab=='1'?'nav_underline':''}}">推荐</text>
+    </view>
+    <view wx:if="{{!show}}" class="nav_center" data-number="2" bindtap="attention">
+      <text class="{{currentTab=='2'?'nav_underline':''}}">精品</text>
+    </view>
+    <view wx:if="{{!show}}" class="nav_center" data-number="4" bindtap="attention">
+      <text class="{{currentTab=='4'?'nav_underline':''}}">社团</text>
+    </view>
+    <view wx:if="{{!show}}" class="nav_center" data-number="3" bindtap="attention">
+      <text class="{{currentTab=='3'?'nav_underline':''}}">话题</text>
+    </view>
+
+    <view class="{{show==true?'heards':''}}">
+      <view class="{{show==true?'search_top':'nav_search'}}">
+        <input wx:if="{{show}}" style="line-height: 60rpx;height:60rpx;width:100%" placeholder="搜索帖子" type="text" confirm-type="搜索" value="{{searinput}}" bindinput="commun" bindconfirm="community"></input>
+        <image src="/pages/images/search.png" catchtap="search" class="search"></image>
+      </view>
+    </view>
+
+  </view>
+  <view wx:if="{{!show}}" class="switch_page">
+    <scroll-view scroll-y style="height:82%;" bindscrolltolower="tolower">
+      <view wx:if="{{currentTab=='0'}}">
+        <attention id="attention"></attention>
+      </view>
+      <view wx:if="{{currentTab=='1'}}">
+        <boutique id="boutique"></boutique>
+      </view>
+      <view wx:if="{{currentTab=='2'}}">
+        <newest id="newest"></newest>
+      </view>
+      <view wx:if="{{currentTab=='3'}}">
+        <topics id="topics"></topics>
+      </view>
+      <view wx:if="{{currentTab=='4'}}">
+        <club id="club"></club>
+      </view>
+    </scroll-view>
+  </view>
+ <view wx:if="{{show}}" class="switch_page">
+    <scroll-view scroll-y style="height:82%;" bindscrolltolower="tolower">
+       <search id="search" searinput="{{searinput}}"></search>
+    </scroll-view>
+  </view>
+</view>
+<!-- <view wx:if="{{currentTab =='1'||currentTab =='2'||currentTab =='0'}}">
+  <image src="/pages/images/announce.jpg" class="issue" bindtap="post"></image>
+</view> -->

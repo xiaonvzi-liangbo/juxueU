@@ -1,0 +1,38 @@
+/* pages/uActivities/myActivities/releaseTwo/releaseTwo.wxss */
+
+.int {
+  height: 70rpx; 
+  border-bottom: 1rpx #ccc solid;
+  margin-bottom: 50rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  color: #b3b3b3;
+   line-height: 90rpx;
+} 
+.release_next {
+  width: 360rpx;
+  height: 86rpx;
+  font-size: 30rpx;
+  line-height: 86rpx;
+  border-radius: 43rpx;
+  color: #fff;
+ background-image: linear-gradient(to bottom right,#7590f2, #2b6cef);
+  margin: 100rpx 0;
+  position: relative;
+  
+  left: 50%;
+  margin-left: -170rpx;
+}
+
+.int_time {
+  width: 250rpx;
+  display: flex;
+  color: #000;
+}
+.int_text{
+   
+ position: relative;
+ bottom: -20rpx;
+ 
+}

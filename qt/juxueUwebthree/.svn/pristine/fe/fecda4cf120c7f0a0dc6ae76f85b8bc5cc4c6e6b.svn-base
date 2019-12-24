@@ -1,0 +1,224 @@
+const requestUrl = require('../../utils/request.js')
+Component({
+  pageLifetimes: {
+    show() {
+      if (typeof this.getTabBar === 'function' &&
+        this.getTabBar()) {
+        this.getTabBar().setData({
+          selected: 1
+        })
+      }
+    }
+  },
+  data: {
+    hot:[],
+    mygroup:[],
+    visible:false,
+    approve:false,
+    pagenum:1,
+    result:[],
+    clean:false,
+    pages:1,
+    searinput:'',
+    checkedNum:'',
+    rzbid:''
+  },
+  methods:{
+    //子组件调用的父组件的方法
+    checkNum(e) {
+      this.setData({
+        checkedNum: e.detail.checkedNum
+      })
+      console.log(e.detail.checkedNum, '查看这个值的内容是什么')
+    },
+    //获取我加入的社团
+    getMyst(){
+      let that=this;
+      let userid= wx.getStorageSync('userid')
+      wx.request({
+        url: requestUrl.requestUrl +'/jXAssociationApp/findByMyAssociationList',
+        method:'get',
+        data:{
+          userId:userid
+        },
+        header: {
+          'content-type': 'application/json',
+          "content-type": "application/x-www-form-urlencoded"
+        },
+        success(res){
+          if(res.data.code==200){
+            that.setData({
+              mygroup:res.data.data
+            })
+            console.log(res,'查看这个返回的值的内容')
+          }
+        }
+      })
+    },
+    //获取热门社团
+    getHot() {
+      let that = this;
+      wx.request({
+        url: requestUrl.requestUrl + '/jXAssociationApp/findByAuto',
+        method: 'get',
+        data: {
+          pageNum: that.data.pagenum,
+          pageSize: '10',
+          id: '2'
+        },
+        header: {
+          'content-type': 'application/json',
+          "content-type": "application/x-www-form-urlencoded"
+        },
+        success(res) {
+          that.setData({
+            hot:that.data.hot.concat(res.data.rows)
+          })
+          console.log(that.data.hot, '查看这个热门返回的值')
+        }
+      })
+    },
+    //加入社团点击事件
+    join(e){
+      let type = e.currentTarget.dataset.whether;
+      console.log(e)
+      this.setData({
+        rzbid: e.currentTarget.dataset.rzbid
+      })
+      if(type=='0'){
+        //已经认证
+        this.setData({
+          visible: true,
+          approve:false
+        })
+      }else{
+        //尚未认证
+        this.setData({
+          visible: true,
+          approve: true
+        })
+      };
+    },
+    //点击进入我的社团
+    entrance(e){
+      console.log(e.currentTarget.dataset.id,'查看这个的内容')
+      wx.navigateTo({
+        url: '/pages/hotspot/myCommunity/myCommunity?id=' + e.currentTarget.dataset.id
+      })
+    },
+    //申请提交点击事件
+    formSubmit(e){
+      let that = this;
+      let err = '';
+      let show = true;
+      if (!e.detail.value.name){
+        err = '姓名不能为空!';
+      } else if (!that.data.checkedNum){
+        err = "学校不能为空!"
+      } else if (that.data.approve && !e.detail.value.major){
+        err = "专业不能为空!"
+      } else if (that.data.approve && !e.detail.value.signature){
+        err = "个性签名不能为空!"
+      }else{
+        show = false;
+        let userid = wx.getStorageSync('userid')
+        wx.request({
+          url: requestUrl.requestUrl +'/jXAssociationApp/addPeople',
+          method: 'post',
+          data: {
+            name: e.detail.value.name,
+            collageId: that.data.checkedNum,
+            major: e.detail.value.major,
+            autograph: e.detail.value.signature,
+            userId: userid,
+            associationId:that.data.rzbid
+          },
+          header: {
+            'content-type': 'application/json',
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          success(res){
+            if(res.data.code=='200'){
+              wx.showToast({
+                title: '提交成功！',
+                icon: 'none',
+                duration: 2000
+              });
+              that.setData({
+                visible:false
+              })
+            }
+          },
+        })
+      }
+      if (show){
+        wx.showToast({
+          title: err,
+          icon:'none',
+          duration:2000
+        })
+      }
+    },
+    //热门社团详情点击
+    xiang(e){
+      wx.navigateTo({
+        url: '/pages/hotspot/organization/organization?stid=' + e.currentTarget.dataset.id
+      })
+    },
+    //热门社团触底加载
+    tolower(){
+      console.log('触底了，进行加载')
+      let that = this;
+      if(that.data.clean){
+        that.pages++;
+        that.community()
+      }else{
+        that.data.pagenum++;
+        that.getHot()
+      }
+    },
+    close(){
+      this.setData({
+        visible:false
+      })
+    },
+    //取消点击事件
+    quxiao(){
+      this.setData({
+        clean:false
+      })
+    },
+    //监听输入框输入事件
+    commun(e){
+      this.setData({
+        searinput:e.detail.value
+      })
+    },
+    //搜索点击事件
+    community(){
+      let that = this;
+      wx.request({
+        url: requestUrl.requestUrl +'/jXAssociationApp/findByAuto',
+        data:{
+          associationName: that.data.searinput,
+          pageNum: that.data.pages,
+          pageSize:10
+        },
+        header:{
+          'content-type': 'application/json',
+          "content-type": "application/x-www-form-urlencoded"
+        },
+        success(res){
+          that.setData({
+            result: that.data.result.concat(res.data.rows),
+            clean:true
+          })
+        }
+      })
+    }
+  },
+  attached(){
+    this.getMyst()
+    this.getHot()
+  }
+})

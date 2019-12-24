@@ -1,0 +1,14 @@
+<!--pages/uActivities/myActivities/release/release.wxml-->
+<view>
+  <!-- <image src="{{organ.img?organ.img:'/pages/images/stbgimg.jpg'}}" class="heard_img" bindtap="{{commander?'bgupload':''}}"></image> -->
+  <image src="{{img}}" class="heard_img"></image>
+  <button class="heard_but" bindtap="accessToken" data-fun="upload"><image class="heard_but_img" src="/pages/images/paishe.png"></image>更换活动封面</button>
+  <view style="margin:100rpx 75rpx">
+    <text class="txt">*活动主题</text>
+    <input class="int" bindinput="inptitle" placeholder="输入活动主题" placeholder-style="color:#ccc"></input>
+    <text class="txt">*举办院校</text>
+    <!-- <input class="int" placeholder="选择活动举办学校"></input> -->
+     <picker  name="title" class="collageName" bind:traCheckedNum="checkNum"></picker> 
+    <button class="next" bindtap="next">下一步</button>
+  </view>
+</view>

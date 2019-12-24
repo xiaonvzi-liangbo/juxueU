@@ -1,0 +1,21 @@
+<navigation dome="编辑资料"></navigation>
+<view class="entirety">
+  <view class="heards">
+    <image src="{{img}}" class="heard_img" ></image>
+  </view>
+  <view class="inpu">
+    <form bindsubmit="formSubmit">
+      <view>昵称</view>
+      <input class="name" maxlength="8" value="{{mine.nickName}}" name="name"></input>
+      <view class="top">签名</view>
+      <input value="{{mine.autograph}}" class="name" name="js"></input>
+      <view class="top">学院</view>
+      <picker college="{{collageName}}" class="name" bind:traCheckedNum="checkNum"></picker> 
+
+      <view class="updata">学院认证可修改2次  {{2-mine.updateNumber}}/2</view>
+      <view class="top">专业</view>
+      <input value="{{mine.majorId}}" class="name" name="zy"></input>
+      <button formType="submit" class="save">保存</button>
+    </form>
+  </view>
+</view>

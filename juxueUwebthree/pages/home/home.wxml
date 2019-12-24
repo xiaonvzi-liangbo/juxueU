@@ -1,0 +1,73 @@
+<scroll-view scroll-y bindscrolltolower="strike" style="height:100%; ">
+  <view class="martop">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="true" interval="{{interval}}" duration="{{duration}}" circular="true" indicator-active-color="#F2F2F2" style="height:300rpx;">
+      <block wx:for="{{imgUrls}}" wx:key="index">
+        <swiper-item class="slideshow">
+          <image src="{{item.imgUrl}}" mode="scaleToFill" class="image"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="nav_slideshow">
+      <view class="navigation">
+        <view class="details" wx:for="{{navOneUrl}}" wx:key="item.id">
+          <image src="{{item.url}}" mode="aspectFit" style="width:87rpx;height:87rpx;" bindtap="navpage" data-linkurl="{{item.linkUrl}}"></image>
+          <view style="font-size:26rpx;">{{item.title}}</view>
+        </view>
+      </view>
+      <view class="navigation">
+        <view class="details" wx:for="{{navTneUrl}}" wx:key="item.id">
+          <image src="{{item.url}}" mode="aspectFit" style="width:87rpx;height:87rpx;" data-linkurl="{{item.linkUrl}}" bindtap="navpage"></image>
+          <view style="font-size:26rpx;">{{item.title}}</view>
+        </view>
+      </view>
+    </view>
+    <button wx:if="{{logbut}}" class='login' open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+  </view>
+  <view class="marbotton">
+    <view class="view_top">
+      <view class="view_img">
+        <view>
+          <view class="view_title">校园热点</view>
+          <view style="font-size:22rpx;margin-left: 10rpx;">热门资讯尽在这里</view>
+        </view>
+      </view>
+      <view class="more" bindtap="navpage" data-linkurl="/pages/universityCircle/invitation/invitation">更多</view>
+    </view>
+    <view wx:for="{{article}}" wx:key="index">
+      <view class="hot_cont">
+        <view bindtap="personage" data-id="{{item.userId}}">
+          <image src="{{item.userLogo}}" mode="scaleToFill" style="height:60rpx;width:60rpx;" class="hot_portrait"></image>
+          <image src="{{item.associationImg}}" class="mass"></image>
+        </view>
+        <view class="hot_title">
+          <rich-text nodes="{{item.title?item.title:item.context}}"> </rich-text>
+        </view>
+      </view>
+      <view bindtap="particulars" data-id="{{item.id}}">
+        <view class="images_box">
+          <image src="{{item.postsImgs[0]}}" mode="scaleToFill" class="hot_images"></image>
+        </view>
+
+        <text wx:if='{{item.talkName}}' data-topid="{{item.talkId}}" class="topics1" catchtap="topics">#{{item.talkName}}</text>
+        <view class="hot_down">
+          <view class="hot_down_row">
+            <view class="hot_down_row">
+              <view class="hot_fontsize">{{item.visitNumber}}</view>
+              <view class="hot_fontsize">浏览</view>
+              <view class="dian"></view>
+            </view>
+            <view class="hot_down_row">
+              <view class="hot_fontsize">{{item.commentNumber}}</view>
+              <view class="hot_fontsize">评论</view>
+            </view>
+          </view>
+          <view class="hot_down_row">
+            <view class="hot_fontsize" style="margin-right:10rpx;">{{item.createTime}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style="height:{{navHeight}}px;"></view>
+</scroll-view>
+<!--为了满足个性化table，使用自定义table,会导致隐藏一部分，解决隐藏的部分-->

@@ -1,0 +1,33 @@
+Component({
+  pageLifetimes: {
+    show() {
+      if (typeof this.getTabBar === 'function' &&
+        this.getTabBar()) {
+        this.getTabBar().setData({
+          selected: 3
+        })
+        wx.hideTabBar({})
+      }
+    }
+  },
+  data: {
+    currenTable: '0',
+  },
+  methods: {
+    //点击切换页面事件
+    switchPage(e){
+      this.setData({
+        currenTable: e.currentTarget.dataset.table
+      })
+    },
+
+    tolower() {
+      let that = this;
+      if (that.data.currenTable == '0') {
+        that.selectComponent('#attention').tolower()
+      } else if (that.data.currenTable == '1') {
+        that.selectComponent('#comment').tolower()
+      } 
+    },
+  }
+})

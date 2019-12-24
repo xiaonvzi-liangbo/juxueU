@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "navigation": "/pages/index/navigation/navigation",
+    "recommend":"/pages/components/topTeacher/recommend/recommend",
+      "getphone": "/pages/guidance/phone/phone"
+  }
+}

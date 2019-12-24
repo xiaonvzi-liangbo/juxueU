@@ -1,0 +1,22 @@
+<navigation dome="@所有成员"></navigation>
+<view class="deliver">
+  <block wx:for="{{historys}}" wx:key="index">
+    <view style="float:right;width:100%;">
+      <view class="time">{{item.createTime}}</view>
+      <view class="deli_img">
+        <image src="{{item.fLogo}}" class="heard_img"></image>
+        <image src="{{item.fImg}}" class="heard_icon"></image>
+      </view>
+      <view class="deli_conter">
+        <text>{{item.context}}</text>
+      </view>
+    </view>
+  </block>
+</view>
+<div style="height:130rpx;"></div>
+<view class="flixt">
+  <view class="input">
+    <input class="input_con" cursor-spacing="15" value="{{conter}}" bindinput="contents"></input>
+    <view class="send" bindtap="sends">留言</view>
+  </view>
+</view> 

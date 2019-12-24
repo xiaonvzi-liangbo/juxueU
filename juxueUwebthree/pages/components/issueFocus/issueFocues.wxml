@@ -1,0 +1,24 @@
+<!--pages/my/focus/focus.wxml-->
+<!--pages/my/fans/fans.wxml-->
+<navigation dome="我的关注"></navigation>
+<scroll-view scroll-y style="height:100%;" bindscrolltolower="tolower">
+  <view class="card" wx:for="{{details}}" wx:key="index">
+    <view >
+      <image src="{{item.logo}}" class="logo" ></image>
+    </view>
+
+    <view >
+      <view class="content">
+        <view class="name">{{item.nickName}}</view>
+
+        <view class="middle">{{item.autograph}}</view>
+        <view class="time">
+          <view>{{item.createTime}}</view>
+        </view>
+      </view>
+      <view>
+        <view class="atten'" catchtap="atten" data-id="{{item.followId}}" data-name="{{item.nickName}}">@</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

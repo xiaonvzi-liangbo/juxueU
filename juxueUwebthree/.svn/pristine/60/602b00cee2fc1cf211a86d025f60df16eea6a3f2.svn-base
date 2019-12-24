@@ -1,0 +1,6 @@
+{"navigationBarTitleText": "社团",
+  "usingComponents": {
+    "modal":"/pages/components/modal/index",
+    "pickers": "/pages/components/picker/picker"
+  }
+}

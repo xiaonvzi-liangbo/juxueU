@@ -1,0 +1,53 @@
+/* pages/CourseActivities/CourseActivities.wxss */
+
+page{
+   background-color:#fff;
+}
+navigations{
+  font-size: 30rpx;
+  font-style: MicrosoftYaHei;
+  font-weight: Regular;
+}
+.details {
+  height: 542rpx;
+  flex: 1 1 auto;
+  font-size: 33rpx;
+  margin: 0 20rpx 20rpx 20rpx;
+  box-shadow: 0rpx 1rpx 14rpx 2rpx #8b8888;
+  border-radius: 10rpx;
+}
+
+.txt {
+  float: left;
+  font-style: PingFang-SC-Medium ;
+  font-weight: Medium;
+  font-size: 32rpx ;
+  margin: 35rpx 0 0 38rpx ;
+}
+
+.participation {
+  float: right;
+   font-weight: Medium;
+  font-style: PingFang-SC-Medium ;
+  font-size:34rpx;
+  margin: 20rpx 30rpx 0 0;
+  width:200rpx;
+  height:58rpx;
+  color: #fff;
+  background-color: #2996CC;
+  border-radius: 30rpx;
+  line-height: 58rpx;
+
+}
+
+scroll-view {
+  width: 100%;
+}
+.com_make_phone {
+  position: absolute;
+  display: flex;
+  left: 20;
+  top: -15rpx;
+  width: 150rpx;
+  height: 40rpx;
+}

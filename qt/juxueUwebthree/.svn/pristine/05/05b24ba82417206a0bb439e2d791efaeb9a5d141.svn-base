@@ -1,0 +1,380 @@
+page {
+  background-color: #ebebeb;
+}
+
+.banner {
+  width: 100%;
+}
+
+.sign {
+  background-color: #fff;
+  width: 95%;
+  margin: auto;
+  box-shadow: 0 0 10rpx #d9d9d9;
+  border-radius: 20rpx;
+  position: relative;
+  top: -120rpx;
+  padding: 25rpx 0;
+}
+
+.sign_head {
+  margin: 0 25rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 33rpx;
+  font-weight: 550;
+}
+
+.sign_integral {
+  font-size: 25rpx;
+  color: red;
+  font-weight: 500;
+}
+
+.sign_red_packed {
+  width: 95%;
+  height: 270rpx;
+  margin: auto;
+  margin-top: 40rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.sign_packed {
+  flex: auto;
+  text-align: center;
+}
+
+.red_packed {
+  width: 90rpx;
+  height: 105rpx;
+}
+
+
+.task_sign-but {
+  height: 50rpx;
+  font-size: 25rpx;
+  text-align: center;
+  width: 120rpx;
+  padding: 8rpx 0rpx;
+  background-color: #fff;
+  border-radius: 50rpx;
+  position: absolute;
+  display:none;
+  left: 515rpx;
+}
+.task_sign-but_fx{
+  height: 50rpx;
+  font-size: 25rpx;
+  color: red;
+  text-align: center;
+  width: 120rpx;
+  padding: 8rpx 0rpx;
+  background-color: #fff;
+  border-radius: 50rpx;
+  position: absolute;
+  left: 515rpx;
+}
+
+
+
+.sing_days {
+  width: 95%;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  top: -70rpx;
+  color: #999;
+  font-size: 28rpx;
+}
+
+.sign_in {
+  width: 300rpx;
+  margin: auto;
+  text-align: center;
+  background-color: #377cd0;
+  color: #fff;
+  padding: 10rpx 0;
+  border-radius: 50rpx;
+  position: relative;
+  top: -30rpx;
+}
+
+.sign_already {
+  width: 300rpx;
+  margin: auto;
+  text-align: center;
+  background-color: #bfbfbf;
+  color: #fff;
+  padding: 10rpx 0;
+  border-radius: 50rpx;
+  position: relative;
+  top: -30rpx;
+}
+
+.integral {
+  width: 95%;
+  margin: auto;
+  border-radius: 20rpx;
+  box-shadow: 0 0 10rpx #d9d9d9;
+  position: relative;
+  top: -105rpx;
+  background-color: #fff;
+  padding: 20rpx 0;
+  margin-bottom: 15rpx;
+}
+
+.conter {
+  margin: 0 20rpx;
+}
+
+.inte_title {
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: 600;
+  position: relative;
+  z-index: 999;
+}
+
+.shadow {
+  width: 170rpx;
+  height: 20rpx;
+  margin: auto;
+  background-color: #b0cbeb;
+  border-radius: 50rpx;
+  position: relative;
+  top: -16rpx;
+  z-index: -99;
+}
+
+.card {
+  position: relative;
+}
+
+.new_task {
+  margin-top: 10rpx;
+  width: 100%;
+  height: 100rpx;
+}
+
+.inte_details {
+  position: absolute;
+  top: 36rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.inte_sign {
+  font-size: 33rpx;
+  margin-left: 20rpx;
+  color: #fff;
+}
+
+.inte_number {
+  font-size: 28rpx;
+}
+
+.into_num {
+  font-size: 38rpx;
+  font-weight: 900;
+  color: #fff;
+  margin-left: 8rpx;
+}
+
+.inte_auto {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  left: 350rpx;
+}
+
+.inte_success {
+  font-size: 25rpx;
+  color: red;
+  text-align: center;
+  width: 120rpx;
+  padding: 8rpx 0rpx;
+  background-color: #fff;
+  border-radius: 50rpx;
+  position: absolute;
+  left: 535rpx;
+}
+
+.task {
+  width: 100%;
+  height: 150rpx;
+  margin-top: 10rpx;
+}
+
+.task_conter {
+  position: absolute;
+  top: 30rpx;
+  left: 20rpx;
+}
+
+.task_title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.task_name {
+  font-size: 33rpx;
+  color: #fff;
+}
+
+.task_money {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  left: 330rpx;
+}
+
+.task_money1 {
+  font-size: 36rpx;
+  font-weight: 900;
+  color: #fff;
+  margin-left: 10rpx;
+}
+
+.task_sign {
+  font-size: 25rpx;
+  color: red;
+  text-align: center;
+  width: 120rpx;
+  padding: 8rpx 0rpx;
+  background-color: #fff;
+  border-radius: 50rpx;
+  position: absolute;
+  left: 515rpx;
+}
+
+.task_bot {
+  margin-top: 30rpx;
+  display: flex;
+  flex-direction: row;
+  font-size: 25rpx;
+  color: #fff;
+}
+
+.task_award {
+  margin-right: 40rpx;
+}
+
+.task_num {
+  margin-left: 5rpx;
+  font-size: 30rpx;
+  font-weight: 550;
+}
+
+.rule {
+  margin-top: 40rpx;
+}
+
+.rule_xy {
+  width: 65%;
+  margin: auto;
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  margin-bottom: 5rpx;
+}
+
+.mo_title {
+  font-size: 36rpx;
+  font-weight: 900;
+  color: #2996cc;
+  margin-bottom: 25rpx;
+  position: relative;
+  left: 20rpx;
+}
+
+.mo_tetx {
+  font-size: 25rpx;
+  margin-top: 10rpx;
+  margin-bottom: 30rpx;
+}
+
+.color {
+  color: #399ccf;
+}
+
+.mo_gift {
+  font-size: 33rpx;
+  font-weight: 600;
+}
+
+/*从底部升起的模态框*/
+
+.top_image {
+  text-align: center;
+}
+
+.down_img {
+  width: 100rpx;
+  height: 60rpx;
+  margin-top: 90rpx;
+}
+
+.model_position {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 55%;
+}
+
+.model_top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.tx_image {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  margin-left: 80rpx;
+  margin-right: 30rpx;
+}
+
+.model_bottom {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.moddel_promulgator {
+  flex: auto;
+  margin-top: 100rpx;
+}
+
+.moddel_promulgator1 {
+  flex: auto;
+  margin-top: 90rpx;
+}
+
+.backimg {
+  background: url('https://staticfile.xlcwx.com/userfiles/201909/20190917100208.png');
+  height: 100%;
+  padding-top: 60rpx;
+  position: fixed;
+  width: 100%;
+  z-index: 99999999999999999999;
+}
+
+.issue {
+  width: 96rpx;
+  height: 96rpx;
+  position: fixed;
+  bottom: 46rpx;
+  left: 45%;
+}

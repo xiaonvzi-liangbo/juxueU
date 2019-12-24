@@ -1,0 +1,8 @@
+<navigation dome="积分明细"></navigation>
+<view class="record" >
+  <view>
+    <view class="reco_title">邀请好友</view>
+    <view class="reco_time">2019-9-9 08:57</view>
+  </view>
+  <view class="reco_result">+500</view>
+</view>

@@ -1,0 +1,29 @@
+
+<view class="DetailsActivities" wx:for="{{details}}" wx:key="item.id">
+  <view class="chat" wx:if="{{item.type=='0'}}">
+    <view class="chat_time">{{item.createTime}}</view>
+    <view class="{{message?'chat_row':'chat_row_right'}}">
+      <view style="margin:10rpx 0rpx 10rpx 30rpx;">
+        <image src="{{item.fLogo}}" class="logo"></image>
+        <image src="{{item.fImg}}" class="fimg"></image>
+      </view>
+      <view class="chat_conter">{{item.context}}</view>
+    </view>
+  </view>
+  <view class="chat" wx:if="{{item.type=='1'}}">
+    <view class="chat_time">{{item.createTime}}</view>
+    <view class="{{!message?'chat_row':'chat_row_right'}}">
+      <view style="margin:10rpx 20rpx;">
+        <image src="{{item.fLogo}}" class="logo"></image>
+        <image src="{{item.fImg}}" class="fimg"></image>
+      </view>
+      <view class="chat_conter">{{item.context}}</view>
+    </view>
+  </view>
+</view>
+<view style="height:100rpx;"></view>
+<view class="leave">
+  <view class="box">
+    <input class="input" cursor-spacing="10" value="{{context}}" bindinput="transmit"></input><view class="mess" bindtap="send">留言</view>
+  </view>
+</view>

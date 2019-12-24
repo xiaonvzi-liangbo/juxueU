@@ -1,0 +1,12 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "attention": "/pages/components/attention/attention",
+    "boutique": "/pages/components/boutique/boutique",
+    "newest": "/pages/components/newest/newest",
+    "topics": "/pages/tztopics/topics/topics",
+    "club": "/pages/components/club/club",
+    "search":"/pages/components/search/search",
+    "i-action-sheet": "/pages/components/action-sheet/index"
+  }
+}

@@ -1,0 +1,94 @@
+<navigations title="" show="{{show}}" backColor="" wx:if="{{!showPost}}"></navigations>
+<view>
+  <image src="https://staticfile.xlcwx.com/userfiles/201909/20190920084907.png" class="banner"></image>
+</view>
+<view class="sign">
+  <view class="sign_head">
+    <view>连续签到七天获得惊喜大礼</view>
+    <view class="sign_integral" bindtap="conversion">积分兑换></view>
+  </view>
+  <view class="sign_red_packed">
+    <view class="sign_packed" wx:for="{{imgs}}" wx:key="index">
+      <image class="red_packed check" src="{{item}}"></image>
+    </view>
+  </view>
+
+  <view class="sing_days">
+    <text wx:if="{{signInfor}}">在连续签到<text style="color:red;"> {{signInfor}} </text>天即可获得神秘大礼！</text>
+    <text wx:else>恭喜获得 1 次提现集合和 188积分</text>
+  </view>
+  <view wx:if="{{already!=1}}" class="sign_in" bindtap="sign" data-signs="{{signnumber}}">立即签到</view>
+  <view wx:else class="sign_already">已签到</view>
+</view>
+<view class="integral">
+  <view class="conter">
+    <view class="inte_title" wx:if="{{!showPost}}">
+      <view>积分任务</view>
+      <view class="shadow"></view>
+    </view>
+    <block wx:for="{{missionInfo}}" wx:key="index">
+      <view class="card" wx:if="{{item.taskType=='1'}}" wx:key="index">
+        <image src="/pages/images/newTask.png" class="new_task"></image>
+        <view class="inte_details">
+          <view class="inte_sign">{{item.name}}</view>
+          <view class="inte_auto">
+            <image src="/pages/images/gold.png" style="width:28rpx;height:28rpx;"></image>
+            <view class="into_num">{{item.taskIntegral}}</view>
+          </view>
+          <view class="inte_success" bindtap="leaveFor" data-url="/{{item.url}}">去完成</view>
+        </view>
+      </view>
+      <view class="card" wx:if="{{item.taskType=='0'}}">
+        <image src="/pages/images/task.png" class="task"></image>
+        <view class="task_conter">
+          <view class="task_title">
+            <view class="task_name">{{item.name}}</view>
+            <view class="task_money">
+              <image src="/pages/images/gold.png" style="width:28rpx;height:28rpx;"></image>
+              <view class="task_money1">{{item.taskIntegral}}</view>
+            </view>
+            <view class="task_sign" open-type="getPhoneNumber" bindtap="{{item.url!=''?'leaveFor':'shower'}}" data-url="/{{item.url}}">去完成</view>
+
+          </view>
+          <view class="task_bot">
+            <block wx:for="{{item.mapList}}" wx:key="index" wx:for-index='ind' wx:for-item='list'>
+              <view class="task_award">{{list.type}}
+                <image src="/pages/images/gold.png" style="width:20rpx;height:20rpx;margin-left:15rpx;"></image>
+                <text class="task_num">{{list.intrgral}}</text>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="rule">
+    <view class="inte_title">
+      <view>积分规则</view>
+      <view class="shadow"></view>
+    </view>
+    <view class="rule_xy">
+      <view>1.转发任务每日最多可完成5次； </view>
+      <view>2.就业分析模块不计入积分；</view>
+      <view>3.最终解释权归聚学U所有</view>
+    </view>
+  </view>
+</view>
+<modal id="hint">
+  <view>
+    <view class="mo_title">签到成功！</view>
+    <image src="/pages/images/chenggong.png" style="width:150rpx;height:150rpx;"></image>
+    <view class="mo_tetx">已连续签到
+      <text class="color"> {{signnumber}} </text>天
+      <text>+{{sign[signnumber].money}}</text>积分</view>
+  </view>
+</modal>
+<modal id="hint2" width="60%">
+  <view>
+    <view class="mo_title">签到成功！</view>
+    <image src="/pages/images/chenggong.png" style="width:150rpx;height:150rpx;"></image>
+    <view class="mo_tetx">—— 神秘大礼 ——</view>
+    <view class="mo_gift color">一次提现机会 + 额外188积分</view>
+  </view>
+</modal>
+<canvas-share id='share' bindclose="close" visible="{{visible}}" />

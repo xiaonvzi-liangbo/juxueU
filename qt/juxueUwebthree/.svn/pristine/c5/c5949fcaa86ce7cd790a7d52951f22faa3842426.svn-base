@@ -1,0 +1,92 @@
+import requestUrl from '../../utils/request.js'
+Component({
+  pageLifetimes: {
+    show() {
+      if (typeof this.getTabBar === 'function' &&
+        this.getTabBar()) {
+        this.getTabBar().setData({
+          selected: 2
+        })
+      }
+    }
+  },
+  data: {
+    mytime:''
+  },
+  methods: {
+    //发图文点击事件
+    sendBy() {
+      let quanxian = wx.getStorageSync('quanxian');
+      console.log(quanxian,'查看啊这个值的内容')
+      console.log(wx.getStorageSync('userid'))
+    
+      if (quanxian){
+        wx.navigateTo({
+          url: '/pages/universityCircle/issue/issue?id=0'
+        })
+      }else{
+        wx.showToast({
+          title: '请先去 "我的-认证中心" 进行认证',
+          icon:'none',
+          duration:2000
+        })
+      }
+    },
+    //发心情点击事件
+    sendMood() {
+      let quanxian = wx.getStorageSync('quanxian');
+      if (quanxian) {
+        wx.navigateTo({
+          url: '/pages/universityCircle/issue/issue?id=1'
+        })
+      } else {
+        wx.showToast({
+          title: '请先去 "我的-认证中心" 进行认证',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    },
+    //发问答点击事件
+    sendQuestions() {
+      let quanxian = wx.getStorageSync('quanxian');
+      if (quanxian) {
+        wx.navigateTo({
+          url: '/pages/universityCircle/issue/issue?id=2',
+        })
+      }else{
+        wx.showToast({
+          title: '请先去 "我的-认证中心" 进行认证',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    },
+    //获取注册事件
+    mytime() {
+      let that = this
+      let userid = wx.getStorageSync('userid')
+      wx.request({
+        url: requestUrl.requestUrl + '/jXUserApp/findByMyTime',
+        data: {
+          userId: userid
+        },
+        method: 'GET',
+        header: {
+          'content-type': 'application/json',
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+
+        success: function (res) {
+          console.log(res)
+          that.setData({
+            mytime: res.data.data
+          })
+        },
+      })
+    },
+    onLoad() {
+      this.mytime()
+    }
+  }
+})

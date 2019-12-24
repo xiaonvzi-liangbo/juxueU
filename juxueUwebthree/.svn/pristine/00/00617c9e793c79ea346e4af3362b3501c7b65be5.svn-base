@@ -1,0 +1,19 @@
+<scroll-view scroll-y class="all">
+  <view class="title">
+    <input placeholder="请编辑标题（16字以内）" maxlength="16" placeholder-style="color:#D6D6D6" value="{{title}}" bindinput="headline"></input>
+  </view>
+  <textarea placeholder="请编辑正文" show-confirm-bar="{{false}}" class="textarea" placeholder-style="color:#D1D1D1" value="{{context}}" bindinput="content" maxlength="-1"></textarea>
+  <view class="upload">
+    <view wx:if="{{files.length!=0}}" class="upload" wx:for="{{files}}" wx:key="index">
+      <image src="{{item}}" class="images"></image>
+      <view class="delect" bindtap="imageDeletion" data-index="{{index}}">
+        <image bindtap="imageDeletion" data-index="{{index}}" src="/pages/images/ImageDeletion.png" class="del"></image>
+      </view>
+    </view>
+    <image src="../../images/uploading.png" class="images" bindtap="uploading" wx:if="{{files.length<9}}"></image>
+  </view>
+  <view class="button">
+    <view class="but_fbwt" bindtap="issue">
+      发布 </view>
+  </view>
+</scroll-view>

@@ -1,0 +1,31 @@
+<navigation  dome="用户信息" bottom="0" opacity="0" vishow="{{false}}"></navigation> 
+<view style="height:100%;">
+  <view>
+    <image src="https://staticfile.xlcwx.com/userfiles/201909/20190917113701.png" class="banimg"></image>
+  </view>
+  <view class="analysis">
+    <view style="height:50rpx;"></view>
+    <scroll-view scroll-y class="scroll">
+      <view class="an_conter" wx:for="{{hq}}" wx:key="{{item.id}}">
+        <view><image src="{{item.linkImg}}" mode="aspectFit" class="an_img"></image></view>
+        <view>
+          <view class="an_title">{{item.title}}</view>
+          <view class="an_text">{{item.content}}</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view style="height:280rpx;"></view>
+  <view class="bottom">
+    <button class="bot_but" bindtap="pullDown">立即免费领取</button>
+    <view class="bot_header">
+      <text class="bot_line"></text>
+      <text class="bot_text">已有<text style="color:red;">9999</text>人领取了独家职业就业分析</text>
+      <text class="bot_line"></text>
+    </view>
+    <view class="bot_bottom">
+      <image src="../../images/forbid.png" class="bot_img"></image>
+      <text class="bot_img_text">此资料严禁用于商业用途，严禁转载！</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,15 @@
+<view wx:if="{{!news[0]}}" style=" width: 100%;height: 100%; overflow: hidden">
+<image style="width: 100%;height:100%" mode="aspectFill" src="/pages/images/new.jpg"></image></view>
+<scroll-view wx:if="{{news[0]}}" scroll-y style="height:100%;" bindscrolltolower="tolower">
+  <view class="card" wx:for="{{news}}" wx:key="index">
+    <view><image src="{{item.logo}}" class="logo" bindtap="personage" data-id="{{item.userId}}"></image></view>
+    <view class="center">
+      <view class="name">{{item.name}}</view>
+      <view class="middle">{{item.info}}</view>
+      <view class="time">
+        <view>{{item.createTime}}</view>
+       
+      </view>
+    </view>
+  </view>
+</scroll-view>

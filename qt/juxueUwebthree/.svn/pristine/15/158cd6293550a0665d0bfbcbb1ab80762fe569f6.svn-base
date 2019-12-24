@@ -1,0 +1,36 @@
+<view class="top">
+  <view class="search">
+    <image src="../../images/search.png" style="width:36rpx;height:36rpx;"></image>
+    <input placeholder="教师资格证" placeholder-class="place" class="sousuo" confirm-type="search"></input>
+  </view>
+  <view class="flex">
+    <view class="{{furls==false?'conceal':'conceals'}}">
+      <scroll-view scroll-x="{{furls==false?true:false}}"  class="{{furls==false?'scroll':'scrolls'}}">
+        <view wx:for="{{navigTitle}}" wx:key="{{item.id}}" class="navig_title" data-id="{{item.id}}" bindtap="switchPage">
+          <text class="{{item.id==currenbTable?'underline':''}}">{{item.title}}</text>
+        </view>
+      </scroll-view>
+    </view>
+    <image src="../../images/screen.png" class="img" bindtap="unfurls"></image>
+  </view>
+</view>
+<view style="height:100%;">
+  <getphone class="com_make_phone" wx:if="{{getphone}}"></getphone>
+  <scroll-view scroll-y style="height:100%;" bindscrolltolower="scrolltolower">
+    <view wx:if="{{currenbTable=='0'}}">
+      <recommend id="recommend" title='推荐'></recommend>
+    </view>
+    <view wx:if="{{currenbTable=='1'}}">
+      <recommend id="zk" title='自考专升本' kinds='2'></recommend>
+    </view>
+    <view wx:if="{{currenbTable=='2'}}">
+      <recommend id="pt" title='普通专升本' kinds='3'></recommend>
+    </view>
+    <view wx:if="{{currenbTable=='3'}}">
+      <recommend id="ky" title='专业考研辅导' kinds='7'></recommend>
+    </view>
+    <view wx:if="{{currenbTable=='4'}}">
+      <recommend id="js" title='教师资格证' kinds='6'></recommend>
+    </view>
+  </scroll-view>
+</view>

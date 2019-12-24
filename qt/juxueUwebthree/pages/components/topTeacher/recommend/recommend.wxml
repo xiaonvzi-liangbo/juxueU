@@ -1,0 +1,16 @@
+<view>
+  <view class="banner">
+    <image src="	https://staticfile.xlcwx.com/userfiles/201909/20190917141439.png" style="width:100%;height:300rpx;"></image>
+  </view>
+  <view>
+    <view class="widt" wx:for="{{getCourse}}" wx:key="index">
+      <image bindtap="curriculum" data-id="{{item.id}}" src="{{item.img}}" style="width:100%;height:200rpx;border-radius:10rpx"></image>
+      <view bindtap="curriculum" data-id="{{item.id}}" class="widt_title">{{item.title}}</view>
+      <view class="widt_num">
+        <tetx bindtap="curriculum" data-id="{{item.id}}" style="color:red">{{item.clicks}}</tetx> 人观看</view>
+     
+    </view>
+   
+  </view>
+  <view style="height:350rpx;"></view>
+</view>

@@ -1,0 +1,37 @@
+<view wx:if="{{!information[0]}}" style=" width: 100%;height: 100%; overflow: hidden">
+  <image style="width: 100%;height:100%" mode="aspectFill" src="/pages/images/collect.jpg"></image>
+</view>
+<view wx:if="{{information[0]}}"  class="modul">
+  <view style="background-color: #fff;margin-top:10rpx;" wx:for="{{information}}" wx:key="index">
+    <view class="back">
+      <view class="left_size">
+        <view class="mod_title" bindtap="particulars" data-id="{{item.id}}">
+          <rich-text nodes="{{item.title?item.title:item.context}}"> </rich-text>
+        </view>
+        <image bindtap="deldata" id="{{item.collectionId}}" src="/pages/images/delect.png" class="delect"></image>
+
+        <view bindtap="particulars" class="images" data-id="{{item.id}}">
+          <image src="{{item.postsImgs[0]}}" class="img_size"></image>
+          <image src="{{item.postsImgs[1]}}" class="img_size"></image>
+          <image src="{{item.postsImgs[2]}}" class="img_size"></image>
+        </view>
+        <view class="mod_row">
+          <view class="mod_row">
+            <view class="mod_bottom">
+              <image src="{{item.userLogo}}" class="img_tx"></image>
+              <text class="school_title">{{item.userName}}</text>
+              <view class="dian"></view>
+              <view>{{item.visitNumber}}浏览</view>
+              <view class="dian"></view>
+              <view>{{item.commentNumber}}评论</view>
+            </view>
+            <!-- <view class="mod_time">{{item.createTime}}</view> -->
+          </view>
+          <view class="mod_time">{{item.createTime}}</view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+  <view style="height:200rpx;background-color:#fff;"></view>
+</view>

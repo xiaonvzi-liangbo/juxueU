@@ -1,0 +1,23 @@
+<view class="entirety">
+  <view class="unlind">
+    <input placeholder="请输入活动主题(50字以内)" maxlength="50" value="{{tetle}}" class="input" bindinput="titles"></input>
+  </view>
+  <view class="top">
+    <textarea placeholder="请输入活动内容(选填)" maxlength="-1" class="input" value="{{text}}" bindinput="textare"></textarea>
+  </view>
+</view>
+<view class="img">
+  <view wx:if="{{picture.length>0}}" class="images" wx:for="{{picture}}" wx:key="index">
+    <image src="/pages/images/msnui.png" class="delect" bindtap="delects" data-id="{{index}}"></image>
+    <image src="{{item}}" class="uploading"></image>
+  </view>
+  <image src="/pages/images/uploading.png" class="uploading" bindtap="accessToken" data-fun="upload"></image>
+</view>
+<view style="height:230rpx;"></view>
+<view class="bom">
+  <view class="rad">
+    <view bindtap="choice">
+      <radio class="radio" checked="{{check}}"></radio>不同步到大学圈</view>
+  </view>
+  <view class="article" bindtap="accessToken" data-fun="issue">发布文章</view>
+</view>

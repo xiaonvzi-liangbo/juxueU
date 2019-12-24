@@ -1,0 +1,143 @@
+import requestUrl from '../../../utils/request.js'
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    stid:'4',
+    listfile:[],
+    commander:false
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.setData({
+      stid: options.stid,
+      commander: options.commander
+    })
+    console.log(options,'4156165')
+    this.apply()
+  },
+  //发帖人详情
+  personage(e) {
+    console.log(e)
+    wx.navigateTo({
+      url: '/pages/universityCircle/myPost/myPost?id=' + e.currentTarget.dataset.id,
+    })
+  },
+  //获取申请列表
+  apply(){
+    let that = this;
+    wx.request({
+      url: requestUrl.requestUrl +'/jXAssociationApp/findByAutoByPeople',
+      method:'get',
+      data:{
+        associationId: that.data.stid,
+        isSuccess:'1'
+      },
+      header:{
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res){
+        if(res.data.code==200){
+          that.setData({
+            listfile:res.data.data
+          })
+          //刷新上级页面
+          let pages = getCurrentPages();
+          pages[pages.length - 2].getOrganization();
+        }else{
+          wx.showToast({
+            title: '获取失败，请重试',
+            icon:'none',
+            duration:2000
+          })
+        }
+      }
+    })
+  },
+  //同意点击事件
+  consent(e){
+    console.log(e.currentTarget.dataset.id)
+    let that = this;
+    if (this.data.commander){
+      wx.request({
+        url: requestUrl.requestUrl +'/jXAssociationApp/updatePeopleByAgree',
+        method:'post',
+        data:{
+          agree:'2',
+          id: e.currentTarget.dataset.id
+        },
+        header:{
+          'content-type': 'application/json',
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success(res){
+          if(res.data.code==200){
+            wx.showToast({
+              title: '加入成功',
+              icon:'none',
+              duration:2000
+            })
+            that.apply();
+          }else{
+            wx.showToast({
+              title: '加入失败，请重试！',
+              icon: 'none',
+              duration: 2000
+            })
+          }
+        }
+      })
+    }else{
+      wx.showToast({
+        title: '您不是团长，无法进行操作！',
+        icon:'none',
+        duration:2000
+      })
+    }
+  },
+  //忽略点击事件
+  ignore(e){
+    if (this.data.commander) {
+      wx.request({
+        url: requestUrl.requestUrl + '/jXAssociationApp/updatePeopleByAgree',
+        method: 'post',
+        data: {
+          agree: '0',
+          id: e.currentTarget.dataset.id
+        },
+        header: {
+          'content-type': 'application/json',
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success(res) {
+          if (res.data.code == 200) {
+            wx.showToast({
+              title: '已拒绝！',
+              icon: 'none',
+              duration: 2000
+            })
+            that.apply()
+          } else {
+            wx.showToast({
+              title: '拒绝失败，请重试！',
+              icon: 'none',
+              duration: 2000
+            })
+          }
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '您不是团长，无法进行操作！',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+  }
+})

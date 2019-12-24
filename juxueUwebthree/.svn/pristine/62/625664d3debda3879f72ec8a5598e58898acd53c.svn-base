@@ -1,0 +1,216 @@
+@import '/colorui/icon.wxss';
+@import '/colorui/main.wxss';
+.backcolor {
+  background-image: linear-gradient(to bottom right,#7590f2, #2b6cef);
+
+  height: 550rpx;
+}
+
+.login {
+  width: 170rpx;
+  height: 50rpx;
+  font-size: 24rpx;
+  line-height: 40rpx;
+  position: absolute;
+  background-color: #2996cc;
+  border: 4rpx #fff solid;
+  color: #fff;
+  border-radius: 30rpx;
+  top: 250rpx;
+  left: 250rpx;
+}
+.hd{
+  width: 13rpx;
+  height: 13rpx;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  right: 32%;
+}
+.flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  top: 150rpx;
+  left: 40rpx;
+}
+
+.txImg {
+  width: 140rpx;
+  height: 140rpx;
+  border: 4rpx solid #fff;
+  border-radius: 50%;
+}
+.txposition{
+  position: relative;
+  top: 150rpx;
+  left: 40rpx;
+}
+.name {
+  color: #fbfdfe;
+  margin-left: 30rpx;
+  font-size: 30rpx;
+  width: 400rpx;
+}
+
+.nickname {
+  font-size: 36rpx;
+  color: #fff;
+  font-weight: bold;
+  height: 55rpx;
+}
+.picker{
+  font-size: 22rpx;
+}
+.xiugai{
+   width: 150rpx;
+  height:100rpx;
+}
+.entrance {
+  width: 15rpx;
+  height: 35rpx;
+margin: 30rpx 0 30rpx 50rpx;
+  
+}
+
+.information {
+  width: 90%;
+  text-align: center;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  color: #fbfdfe;
+  margin-top: 60rpx;
+  font-size: 30rpx;
+}
+
+.auto {
+  flex: auto;
+  line-height: 40rpx;
+  font-size: 24rpx;
+}
+
+.modularity {
+  width: 95%;
+  height: 170rpx;
+  margin: auto;
+  position: relative;
+  top: -85rpx;
+  border-radius: 20rpx;
+  background-color: #fff;
+  box-shadow: 0 0 10rpx #a6a6a6;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+.icons {
+  width: 70rpx;
+  height: 70rpx;
+  margin-bottom: 4rpx;
+}
+
+.center {
+  flex: auto;
+  text-align: center;
+}
+
+.titleImg {
+  width: 36rpx;
+  height: 36rpx;
+  margin: 0 15rpx 0 4rpx;
+}
+
+.rightImg {
+  width: 24rpx;
+  height: 24rpx;
+  position: absolute;
+  right: 40rpx;
+}
+
+.path {
+  width: 94%;
+  font-size: 30rpx;
+  margin: auto;
+  display: flex;
+  height: 100rpx;
+  flex-direction: row;
+  align-items: center;
+}
+.myphone{
+   position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100rpx;
+}
+.getphone{
+  width: 150rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  background-color: #2896cc;
+  color:#fff;
+  position: absolute;
+  left: 180rpx;
+  top: 100rpx;
+  font-size: 24rpx;
+  border-radius:20rpx;
+  padding:0 !important;
+  border: 1rpx #fff solid;
+
+}
+.but {
+  background: none;
+  border: none !important;
+  color: rgb(207, 14, 14);
+  position: absolute;
+  width: 100%;
+  height: 100rpx;
+}
+.but::after{
+   border: none 
+}
+
+.base {
+  position: relative;
+  top: -50rpx;
+}
+
+.time {
+  position: absolute;
+  background-color: red;
+  color: #fff;
+  font-size: 18rpx;
+  border-radius: 50rpx;
+  padding: 4rpx 10rpx;
+  top: 10rpx;
+  left: 14%;
+}
+
+.red_dot {
+  width: 25rpx;
+  height: 25rpx;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  right: 31%;
+  top: 14rpx;
+}
+
+.mass {
+  width: 30rpx;
+  height: 30rpx;
+  position: relative;
+  top: 5rpx;
+  right: 10rpx;
+  float: left;
+}
+.switching{
+   position: absolute;
+   display: flex;
+  top: 85rpx;
+  right: 150rpx;
+  float: right;
+
+}

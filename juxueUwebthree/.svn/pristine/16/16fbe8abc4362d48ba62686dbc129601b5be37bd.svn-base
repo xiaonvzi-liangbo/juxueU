@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "vhall": "/pages/plugin/components/vhall/vhall",
+    "vhallDoc": "/pages/plugin/components/doc/doc"
+  },
+    "navigationBarTitleText": "推荐"
+}

@@ -1,0 +1,59 @@
+ 
+<navigation dome="话题"></navigation>
+<scroll-view scroll-y style="height:100%;" bindscrolltolower="tolower">
+  <view class="heards">
+    <view class="search_top">
+      <input placeholder="搜索话题" type="text" confirm-type="搜索" value="{{searinput}}" bindinput="commun" bindconfirm="community"></input>
+      <text class="cuIcon-search search" catchtap='community'></text>
+    </view>
+    <view class="cleans" bindtap="quxiao" wx:if="{{clean}}">取消</view>
+  </view>
+  <view wx:if="{{!clean}}" class="card" wx:for="{{details}}" wx:key="index">
+    <view>
+      <image src="{{item.img}}" class="logo"></image>
+    </view>
+
+    <view>
+      <view>
+        <view class="name">{{item.name}}</view>
+        <view class="middle">{{item.autograph}}</view>
+        <view class="hot_botm">
+          <view class="hot_con">
+            <!-- <image src="/pages/images/school_hot.png" class="hot_con_img"></image> -->
+            <text class="cuIcon-hotfill hot_con_img"></text>
+            <text class="hot_num">{{item.visitNumber}}万观看</text>
+          </view>
+          <view class="hot_con"> 
+            <text class="hot_num">{{item.fabulousNumber}}万热度</text>
+          </view>
+        </view>
+      </view>
+      <view>
+        <view class="atten'" catchtap="atten" data-id="{{item.id}}" data-name="{{item.name}}">选我</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{clean}}"  class="card" wx:for="{{result}}" wx:key="index">
+    <view>
+      <image src="{{item.img}}" class="logo"></image>
+    </view>
+
+    <view>
+      <view>
+        <view class="name">{{item.name}}</view>
+        <view class="middle">{{item.autograph}}</view>
+        <view class="hot_botm">
+          <view class="hot_con">  
+            <text class="hot_num">{{item.visitNumber}}万观看</text>
+          </view>
+          <view class="hot_con"> 
+            <text class="hot_num">{{item.fabulousNumber}}万热度</text>
+          </view>
+        </view>
+      </view>
+      <view>
+        <view class="atten'" catchtap="atten" data-id="{{item.id}}" data-name="{{item.name}}">选我</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

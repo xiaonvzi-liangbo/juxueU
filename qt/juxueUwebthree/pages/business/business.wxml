@@ -1,0 +1,39 @@
+<navigation dome="大学生创业"></navigation>
+<scroll-view scroll-y bindscrolltolower="strike" style="height:100%;background-color:#fff;">
+  <view class="martop">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="true" interval="{{interval}}" duration="{{duration}}" circular="true" indicator-active-color="#F2F2F2" style="height:300rpx;">
+      <block wx:for="{{imgUrls}}" wx:key="index">
+        <swiper-item class="slideshow">
+          <image style="width:710rpx;height:300rpx;" src="{{item.imgUrl}}" mode="scaleToFill" class="image"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+ 
+  <view wx:if="{{!clean}}" class='pagebar'>
+    <image bindtap="navigate" data-url="/pages/uActivities/myActivities/myActivities" class='barimage' src="/pages/images/release_event.png"></image>
+    <image bindtap="navigate" data-url="/pages/uActivities/collect/collect" class='barimage' src="/pages/images/u_collect.png"></image>
+    <image bindtap="navigate" data-url="/pages/uActivities/browse/browse" class='barimage' src="/pages/images/browsing_history.png"></image>
+  </view>
+  <view class="cu-bar bg-white">
+    <view class=" flex justify-between title-style-3" style="width:100%;margin:auto 30rpx">
+      <view class="text-xl text-bold">专家名师</view>
+      <view class="text-Abc text-gray self-end ">更多</view>
+    </view>
+  </view>
+ 
+
+   <view class="cu-bar bg-white">
+    <view class=" flex justify-between title-style-3" style="width:100%;margin:auto 30rpx">
+      <view class="text-xl text-bold">专家名师</view>
+      <view class="text-Abc text-gray self-end ">更多</view>
+    </view>
+  </view>
+    <view class="cu-bar bg-white">
+    <view class=" flex justify-between title-style-3" style="width:100%;margin:auto 30rpx">
+      <view class="text-xl text-bold">专家名师</view>
+      <view class="text-Abc text-gray self-end ">更多</view>
+    </view>
+  </view>
+ 
+</scroll-view>

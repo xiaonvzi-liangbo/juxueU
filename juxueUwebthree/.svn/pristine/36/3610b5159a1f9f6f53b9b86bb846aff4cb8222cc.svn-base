@@ -1,0 +1,91 @@
+.modul{
+  font-size: 33rpx;
+  color: #1B1B1B;
+  background-color: #EBEBEB;
+}
+.back{
+  padding-top: 30rpx;
+  width: 95%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+}
+.img_size{
+  width: 230rpx;
+  height: 230rpx;
+  border-radius: 15rpx;
+}
+.left_size{
+  width: 100%;
+}
+.img_tx{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  border: 1px solid #EBEBEB;
+}
+.aligning{
+  display: flex;
+  align-items: center;
+  margin-top: -10rpx;
+}
+.mod_row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.mod_title{
+  margin: 20rpx 12rpx 0rpx 20rpx;
+  font-size: 30rpx;
+  height: 130rpx;
+  font-weight: 550;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:3;
+  overflow: hidden;
+
+}
+.mod_bottom{
+  font-size: 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #B4B4B4;
+  margin-left: 20rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+  top: -4rpx;
+}
+.mod_text{
+  margin-left: 4rpx;
+  margin-right: 25rpx;
+}
+.mod_time{
+  margin-right: 20rpx;
+  font-size: 25rpx;
+  color: #B4B4B4;
+  position: relative;
+  top: -15rpx;
+}
+.com_image{
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 8rpx;
+}
+.img_icon{
+  width: 20rpx;
+  height: 20rpx;
+  position: relative;
+  top: 20rpx;
+  right: 20rpx;
+}
+.school{
+  font-size: 20rpx;
+  color: #808080;
+}
+.school_title{
+  font-size: 24rpx;
+  font-weight: 900;
+}

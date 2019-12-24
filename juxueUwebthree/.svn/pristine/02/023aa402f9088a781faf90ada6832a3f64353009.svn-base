@@ -1,0 +1,57 @@
+.card{
+  width: 95%;
+  margin: auto;
+  margin-top: 30rpx;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+.logo{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.center{
+  margin-left: 20rpx;
+}
+.name{
+  font-size: 22rpx;
+}
+.time{
+  font-size: 22rpx;
+  color: #808080;
+  display: flex;
+  flex-direction: row;
+}
+.middle{
+  font-size: 34rpx;
+  margin: 10rpx 0; 
+}
+.end{
+  padding: 10rpx;
+  position: absolute;
+  right: 30rpx;
+  width: 106rpx;
+  height: 106rpx;
+  line-height: 28rpx;
+  background-color: #E6E6E6;
+  font-size: 18rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:4;
+  overflow: hidden;
+}
+.like{
+  width: 34rpx;
+  height: 34rpx;
+}
+.attention{
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+  font-size: 24rpx;
+  background-color: #2996CC;
+  color: #fff;
+  border-radius: 10rpx;
+  padding: 15rpx 37rpx;
+}

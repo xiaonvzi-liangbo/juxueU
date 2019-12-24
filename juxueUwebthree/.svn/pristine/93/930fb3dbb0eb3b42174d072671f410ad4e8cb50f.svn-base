@@ -1,0 +1,8 @@
+<view>
+  <view class="site"><image src="/pages/images/tubiao.png" class="tubiao"></image></view>
+  <view class="title">一站式大学生学习就业资讯娱乐类平台</view>
+  <block wx:if="{{button}}">
+    <button open-type="getUserInfo" class="login" bindgetuserinfo="getUserInfo" wx:if="{{but}}">微信授权登陆</button>
+    <button open-type="getPhoneNumber" class="login" bindgetphonenumber="phonenumber" wx:if="{{!but}}">获取手机号码</button>
+  </block>
+</view>

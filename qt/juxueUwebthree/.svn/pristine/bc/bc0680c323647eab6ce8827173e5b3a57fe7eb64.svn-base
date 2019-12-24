@@ -1,0 +1,19 @@
+<view class="navigation">
+  <view class="nav_text {{current=='0'?'checked':''}}" data-current="0" data-upload="article" bindtap="publish">发文章</view>
+  <view class="nav_text {{current=='1'?'checked':''}}" data-current="1" data-upload="article" bindtap="publish">发心情</view>
+  <view class="nav_text {{current=='2'?'checked':''}}" data-current="2" data-upload="article" bindtap="publish">发问答</view>
+</view>
+<view class="underline"></view>
+<view class="switch">
+  <swiper current="{{current}}" style="height:100%;" bindchange="slide">
+    <swiper-item item-id="article">
+      <aiticle upload="{{upload}}"></aiticle>
+    </swiper-item>
+    <swiper-item item-id="answer">
+      <answer upload="{{upload}}"></answer>
+    </swiper-item>
+    <swiper-item item-id="mood">
+      <mood upload="{{upload}}"></mood>
+    </swiper-item>
+  </swiper>
+</view>

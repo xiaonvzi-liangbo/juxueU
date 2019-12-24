@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "名师公开课",
+  "usingComponents": {
+    "recommend":"/pages/components/topTeacher/recommend/recommend"
+  }
+}

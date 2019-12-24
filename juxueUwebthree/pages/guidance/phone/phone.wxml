@@ -1,0 +1,3 @@
+
+ <button wx:if="{{button}}" class="phone" open-type="getPhoneNumber"  bindgetphonenumber="phonenumber">{{title}}</button>
+

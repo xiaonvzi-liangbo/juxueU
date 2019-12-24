@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我的社团",
+  "usingComponents": {
+    "modal":"/pages/components/model2/index"
+  }
+}

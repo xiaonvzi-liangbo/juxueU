@@ -1,0 +1,37 @@
+.modal {
+  border: 1rpx solid #ebebeb;
+  height: 300rpx;
+  width: 90%;
+  box-shadow: 0 0 10rpx #ebebeb;
+  font-size: 25rpx;
+  text-align: center;
+  background-color: #fff;
+  top: 60rpx;
+  border-radius: 10rpx;
+  position: absolute;
+  z-index: 100 !important;
+  overflow: auto;
+}
+
+.modalcov {
+  height: 100%;
+  width: 100%;
+  font-size: 25rpx;
+  text-align: center;
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+
+.conter {
+  position: relative;
+}
+
+.collage {
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  width: 100%;
+  /* box-shadow: 0 0 10rpx #ebebeb; */
+  border-bottom: 2rpx #ebebeb solid;
+}

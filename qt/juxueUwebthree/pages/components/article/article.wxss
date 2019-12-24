@@ -1,0 +1,85 @@
+@import '/colorui/icon.wxss';
+@import '/colorui/main.wxss';
+page {
+  height: 100%;
+  overflow: hidden;
+}
+
+.title {
+  padding: 30rpx 20rpx;
+  border-bottom: 1rpx solid #e1e1e1;
+  border-radius: 20rpx;
+  font-size: 36rpx;
+}
+
+.container {
+  height: 80%;
+  padding: 10rpx 20rpx 0;
+}
+
+.ql-container {
+  height: 80%;
+  padding-right: 20rpx;
+}
+
+.but_fbwt {
+  width: 176rpx;
+  height: 54rpx;
+  border-radius: 27rpx;
+  color: #fff;
+  font-size: 24rpx;
+  line-height: 54rpx;
+  background-image: linear-gradient(to bottom right, #7590f2, #2b6cef);
+}
+
+.inco {
+  width: 100%;
+  position: absolute;
+  bottom: 240rpx;
+  left: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20rpx;
+}
+
+.inco_left {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+
+.inco_img {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 40rpx;
+}
+.inco_pic{
+  font-size: 50rpx;
+  margin-left: 40rpx;
+}
+.topics {
+  padding: 0;
+  border: 1rpx #000 solid;
+  border-radius: 20rpx;
+  width: 120rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  background: none;
+  color: #000;
+  font-size: 22rpx;
+  margin: 0;
+}
+
+.topics1 {
+  border-radius: 20rpx;
+  height: 40rpx;
+  padding: 0;
+  line-height: 40rpx;
+  background: none;
+  color: #2f6eef;
+  margin: 0;
+  font-size: 22rpx;
+}

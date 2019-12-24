@@ -1,0 +1,125 @@
+.modul {
+  font-size: 33rpx;
+  color: #1b1b1b; 
+}
+
+.back { 
+  width: 95%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.images {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-bottom: 10rpx;
+}
+
+.img_size {
+  width: 230rpx;
+  height: 150rpx;
+  border-radius: 15rpx;
+}
+
+.left_size {
+  width: 100%;
+}
+
+.topics1 {
+  bottom: 10rpx;
+  position: relative;
+  margin: 20rpx 0;
+  border-radius: 20rpx;
+  height: 40rpx;
+  padding: 0 10rpx;
+  line-height: 40rpx;
+  background: none;
+  color: #2f6eef;
+  font-size:22rpx;
+  border: 1rpx #2996cc solid;
+}
+
+.img_tx {
+  width: 26rpx;
+  height: 26rpx;
+  border-radius: 50%;
+  border: 1px solid #ebebeb;
+  margin-right: 5rpx;
+}
+ 
+
+.mod_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.mod_title {
+  margin: 0rpx 12rpx 20rpx 20rpx;
+  font-size: 30rpx; 
+  font-weight: 550;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.mod_bottom {
+  width: 80%;
+  font-size: 22rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #808080;
+  margin-left: 20rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+  top: -4rpx;
+}
+
+.mod_text {
+  margin-left: 4rpx;
+  margin-right: 25rpx;
+}
+
+.mod_time {
+  margin-right: 20rpx;
+  font-size: 25rpx;
+  color: #b4b4b4;
+  position: relative;
+  top: -15rpx;
+}
+
+.com_image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 8rpx;
+}
+
+.img_icon {
+  width: 20rpx;
+  height: 20rpx;
+  position: relative;
+  top: 20rpx;
+  right: 20rpx;
+}
+ 
+
+.school_title {
+  font-size: 22rpx; 
+  margin-right: 5rpx;
+   width: 8em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.dian{
+  border: 2px #a8a8a8 solid;
+  border-radius: 50%;
+  margin:0 10rpx;
+}

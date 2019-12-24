@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "U活动",
+  "usingComponents": {
+   "hotact": "/pages/components/uActivities/hotact/hotact"
+  }
+}

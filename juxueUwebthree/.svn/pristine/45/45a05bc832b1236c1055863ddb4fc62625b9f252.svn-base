@@ -1,0 +1,95 @@
+
+.card{
+  width: 95%;
+  margin: auto;
+  margin-bottom: 40rpx;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+.content{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.logo{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 34rpx;
+}
+.name{
+  font-size: 22rpx;
+}
+.time{
+  font-size: 18rpx;
+  color: #999;
+  display: flex;
+  flex-direction: row;
+}
+.middle{
+  font-size: 28rpx;
+  margin: 10rpx 0; 
+}
+.end{
+  padding: 10rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 0;
+  width: 106rpx;
+  height: 106rpx;
+  line-height: 28rpx;
+  background-color: #E6E6E6;
+  font-size: 18rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:4;
+  overflow: hidden;
+}
+.like{
+  width: 34rpx;
+  height: 34rpx;
+}
+.attention{
+  width:50rpx;
+  position: absolute;
+  right:20rpx;
+  top: 30rpx;
+  font-size: 24rpx;
+  background-color: #2996CC;
+  color: #fff;
+  border-radius: 10rpx;
+  padding: 15rpx 27rpx;
+}
+.atten{
+  background-image: linear-gradient(to bottom right,#7590f2, #2b6cef);
+ 
+  width:100rpx;
+  height: 48rpx;
+  position: absolute;
+  right:20rpx;
+  top: 30rpx;
+  font-size: 20rpx;
+  text-align: center;
+  line-height: 48rpx; 
+  color:  #fff;
+  border-radius: 24rpx;
+}
+.img_icon{
+  width: 40rpx;
+  height: 40rpx;
+  position: relative;
+  top: 70rpx;
+  right: 35rpx;
+}
+.attention1{
+  position: absolute;
+  right: 30rpx;
+  top: 30rpx;
+  font-size: 24rpx;
+  background-color: #E6E6E6;
+  color: #fff;
+  border-radius: 10rpx;
+  padding: 15rpx 37rpx;
+}

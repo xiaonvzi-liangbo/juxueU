@@ -1,0 +1,10 @@
+<view class="share {{ visible ? 'show' : '' }}">
+  <view class="content" style="transform:scale({{responsiveScale}});-webkit-transform:scale({{responsiveScale}});">
+    <view class="text">点击保存领取专属推广码</view>
+    <image class="canvas" src="data:image/png;base64,{{twoDimension}}" style="width:500rpx;height:500rpx" />
+    <view class="footer" style="margin-top:50rpx">
+      <view class="save" bindtap="handleSave">保存</view>
+      <view class="close" bindtap="handleClose">关闭</view>
+    </view>
+  </view>
+</view>

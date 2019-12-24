@@ -1,0 +1,11 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "attention": "/pages/components/attention/attention",
+    "boutique": "/pages/components/boutique/boutique",
+    "newest": "/pages/components/newest/newest",
+    "questions": "/pages/components/questions/questions",
+    "club": "/pages/components/club/club",
+    "i-action-sheet": "/pages/components/action-sheet/index"
+  }
+}

@@ -1,0 +1,114 @@
+// pages/universityCircle/invitation/invitation.js
+import requestUrl from '../../../utils/request.js'
+Page({
+  data: {
+    currentTab: '1',
+    showPost: false,
+    mytime: ''
+  },
+  //点击切换事件
+  attention(e) {
+    this.setData({
+      currentTab: e.currentTarget.dataset.number,
+    })
+  },
+  //点击发布帖子事件
+  post() {
+    this.setData({
+      showPost: true
+    })
+  },
+  //点击关闭帖子发布事件
+  close() {
+    this.setData({
+      showPost: false
+    })
+  },
+
+  sendBy() {
+    let quanxian = wx.getStorageSync('quanxian');
+    if (quanxian) {
+      wx.navigateTo({
+        url: '/pages/universityCircle/issue/issue?id=0'
+      })
+    } else {
+      wx.showToast({
+        title: '请先去 "我的-认证中心" 进行认证',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+  },
+  //发心情点击事件
+  sendMood() {
+    let quanxian = wx.getStorageSync('quanxian');
+    if (quanxian) {
+      wx.navigateTo({
+        url: '/pages/universityCircle/issue/issue?id=1'
+      })
+    } else {
+      wx.showToast({
+        title: '请先去 "我的-认证中心" 进行认证',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+  },
+  //发问答点击事件
+  sendQuestions() {
+    let quanxian = wx.getStorageSync('quanxian');
+    if (quanxian) {
+      wx.navigateTo({
+        url: '/pages/universityCircle/issue/issue?id=2',
+      })
+    } else {
+      wx.showToast({
+        title: '请先去 "我的-认证中心" 进行认证',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+  },
+  //下拉触底加载
+  tolower() {
+    let that = this;
+    if (that.data.currentTab == '0') {
+      that.selectComponent('#attention').tolower()
+    } else if (that.data.currentTab == '1') {
+      that.selectComponent('#boutique').tolower()
+    } else if (that.data.currentTab == '2') {
+      that.selectComponent('#newest').tolower()
+    } else if (that.data.currentTab == '3') {
+      that.selectComponent('#question').tolower()
+    } else if (that.data.currentTab == '4') {
+      that.selectComponent('#club').tolower()
+    }
+  },
+  // 获取注册时间
+  mytime() {
+    let that = this
+    let userid = wx.getStorageSync('userid')
+    wx.request({
+      url: requestUrl.requestUrl + '/jXUserApp/findByMyTime',
+      data: {
+        userId: userid
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+
+      success: function(res) {
+        console.log(res)
+        that.setData({
+          mytime: res.data.data
+        })
+      },
+    })
+  },
+  getData() {},
+  onLoad() {
+    this.mytime()
+  }
+})

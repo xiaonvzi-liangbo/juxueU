@@ -1,0 +1,14 @@
+<scroll-view scroll-y style="height: calc(100vh - 90rpx);" bindscrolltolower="tolower">
+  <view class="card" wx:for="{{news}}" wx:key="index">
+    <view><image src="{{item.logo}}" class="logo" bindtap="personage" data-id="{{item.userId}}"></image></view>
+    <view class="center">
+      <view class="name">{{item.name}}</view>
+      <view class="middle">{{item.info}}</view>
+      <view class="time">
+        <view>{{item.createTime}}</view>
+       
+      </view>
+    </view>
+  </view>
+</scroll-view>
+ 

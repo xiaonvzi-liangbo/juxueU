@@ -1,0 +1,25 @@
+<view>
+  <navigations title="立即预约" imags="/pages/images/ht.png" color="#fff" show="{{show}}" backColor=""></navigations>
+  <!-- <view class="navi" bindtap="back">
+    <image src="../../images/ht.png" class="fhImage"></image>
+    <view>立即预约</view>
+  </view> -->
+  <view class="conter">
+    <view class="con_shadow"></view>
+    <view class="con_title">{{contenr.proTitle}}</view>
+    <view class="contertxt">
+      <scroll-view scroll-y>
+        <rich-text style="padding-bottom: 100rpx;" nodes="{{contenr.proDetail}}">
+        </rich-text>
+      </scroll-view>
+
+    </view>
+  </view>
+  <view class="bottom">
+    <view class="bot_num">已有
+      <text style="color:red;"> {{contenr.proCount==null?0:contenr.proCount}} </text>人预约成功</view>
+    <button class="bot_yy" open-type="contact">
+      <text class="bot_cent">立即咨询</text>
+    </button>
+  </view>
+</view>

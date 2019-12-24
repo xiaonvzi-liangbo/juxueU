@@ -1,0 +1,400 @@
+import requestUrl from '../../../utils/request.js'
+import time from '../../../utils/time.js'
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    stdynamic: [],
+    details: [],
+    pageNum: 1,
+    stid: '',
+    commander: false,
+    compile: true,
+    text: '',
+    editor: false,
+    addition: false,
+    elegants: false,
+    picture: [],
+    productInfo: {},
+    imgs: "",
+    picture: []
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
+    this.setData({
+      stid: options.stid,
+      // commander: options.commander
+      // stid: '4',
+      commander: true
+    });
+    console.log(this.data.commander)
+    this.getDetails();
+    this.dynamic(4)
+    // this.dynamic(options.stid)
+  },
+  //获取社团详情
+  getDetails() {
+    let that = this;
+    wx.request({
+      url: requestUrl.requestUrl + '/jXAssociationApp/findById',
+      method: 'get',
+      data: {
+        associationType: '1',
+        id: that.data.stid
+      },
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        if (res.data.code == 200) {
+          that.setData({
+            text: res.data.data.associationInfo,
+            details: res.data.data
+          })
+          console.log(that.data.details, '4156165')
+        } else {
+          wx.showToast({
+            title: '获取失败，请重试！',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    })
+  },
+  //社团详情点击事件
+  particulars(e) {
+    console.log(e, '156165165465')
+    wx.navigateTo({
+      url: '/pages/universityCircle/information/information?tzid=' + e.currentTarget.dataset.id,
+    })
+  },
+  //获取社团动态
+  dynamic(id) {
+    let that = this;
+    wx.request({
+      url: requestUrl.requestUrl + '/jXCollagePostsApp/findByAssociationActivity',
+      method: 'get',
+      data: {
+        authenticationId: id,
+        authenticationType: 2,
+        pageNum: that.data.pageNum,
+        pageSize: 10
+      },
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        //时间的处理
+        for (let i = 0; i < res.data.rows.length; i++) {
+          res.data.rows[i].createTime = time.getDateDiff(res.data.rows[i].createTime)
+        };
+        that.setData({
+          stdynamic: that.data.stdynamic.concat(res.data.rows)
+        })
+      }
+    })
+  },
+  //监听社团介绍输入事件
+  monitor(e) {
+    this.setData({
+      text: e.detail.value
+    })
+  },
+  //编辑个性签名点击事件
+  addition() {
+    this.setData({
+      compile: false,
+      text: ''
+    })
+  },
+  //编辑个性签名取消点击事件
+  cancel() {
+    this.setData({
+      compile: true,
+      text: this.data.details.associationInfo
+    })
+  },
+  //编辑个性签名完成点击事件
+  accomplish() {
+    let that = this;
+    wx.request({
+      url: requestUrl.requestUrl + '/jXAssociationApp/update',
+      method: 'post',
+      data: {
+        associationInfo: that.data.text,
+        id: that.data.stid
+      },
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        if (res.data.code == 200) {
+          wx.showToast({
+            title: '修改成功！',
+            icon: 'none',
+            duration: 2000
+          });
+          that.setData({
+            compile: true
+          });
+          that.getDetails()
+        }
+      }
+    })
+  },
+  //联系方式编辑点击事件
+  redact() {
+    this.setData({
+      editor: true
+    })
+  },
+  //联系方式编辑取消点击事件
+  redactcancels() {
+    this.setData({
+      editor: false
+    })
+  },
+  //添加联系方式点击事件
+  add() {
+    // console.log('6666')
+    this.setData({
+      addition: true
+    })
+  },
+  //删除点击事件
+  delet(e) {
+    let that = this;
+    wx.request({
+      url: requestUrl.requestUrl + '/jXAssociationApp/fromDel',
+      method: 'get',
+      data: {
+        id: e.currentTarget.dataset.id
+      },
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        if (res.data.code == 200) {
+          wx.showToast({
+            title: '删除成功！',
+            icon: 'none',
+            duration: 2000
+          });
+          that.getDetails()
+        } else {
+          wx.showToast({
+            title: '删除失败，请重试！',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      }
+    })
+  },
+  //添加联系方式提交点击事件
+  formSubmit(e) {
+    let that = this;
+    let err = true;
+    let matter = '';
+    if (!e.detail.value.name) {
+      matter = '姓名不能为空！'
+    } else if (!(/^1[3456789]\d{9}$/.test(e.detail.value.phone))) {
+      matter = '电话号码错误！'
+    } else {
+      err = false;
+      wx.request({
+        url: requestUrl.requestUrl + '/jXAssociationApp/fromAdd',
+        method: 'post',
+        data: {
+          associationId: that.data.stid,
+          fromType: '1',
+          titile: e.detail.value.name,
+          phone: e.detail.value.phone,
+          remarks: e.detail.value.bz
+        },
+        header: {
+          'content-type': 'application/json',
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success(res) {
+          if (res.data.code == 200) {
+            wx.showToast({
+              title: '添加成功',
+              icon: 'none',
+              duration: 2000
+            });
+            that.setData({
+              addition: false
+            });
+            that.getDetails()
+          } else {
+            wx.showToast({
+              title: '添加失败，请重试！',
+              icon: 'none',
+              duration: 2000
+            })
+          }
+        }
+      })
+    };
+    if (err) {
+      wx.showToast({
+        title: matter,
+        icon: 'none',
+        duration: 2000
+      });
+    }
+  },
+  //社团风采点击添加事件
+  elegant() {
+    this.setData({
+      elegants: true
+    })
+  },
+  //点击取消事件
+  cancels() {
+    // console.log('6666')
+    this.setData({
+      elegants: false
+    })
+  },
+  //添加图片点击事件
+  picture() {
+    let that = this;
+    wx.chooseImage({
+      count: 9, //最多可以选择的图片总数
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        const tempFilePaths = res.tempFilePaths
+        //启动上传等待中...
+        wx.showToast({
+          title: '正在上传...',
+          icon: 'loading',
+          mask: true,
+          duration: 10000
+        })
+        let uploadImgCount = 0;
+        console.log(tempFilePaths, ':tupianlujiang ')
+        for (let i = 0; i < tempFilePaths.length; i++) {
+          setTimeout(res => {
+            wx.uploadFile({
+              // 将本地资源上传到服务器
+              url: 'https://staticfile.xlcwx.com/api/modalupload/image',
+              filePath: tempFilePaths[i],
+              name: 'upload',
+              header: {
+                "Content-Type": "multipart/form-data"
+              },
+              success: function (res) {
+                const datas = res.data
+                let arr = res.data.split('"');
+                let str = arr[3].replace(/^(\s|")+|(\s|ab)+$/g, '');
+                let pic = that.data.picture.concat(str)
+
+                console.log(datas)
+                console.log(arr)
+                console.log(str)
+                //最后一张时
+                if (i == tempFilePaths.length - 1) {
+                  wx.hideToast();
+                };
+                wx.request({
+                  url: requestUrl.requestUrl + '/jXAssociationApp/fromAdd',
+                  method: 'post',
+                  data: {
+                    associationId: that.data.stid,
+                    fromType: '2',
+                    img: str
+                  },
+                  header: {
+                    'content-type': 'application/json',
+                    'content-type': 'application/x-www-form-urlencoded'
+                  },
+                  success(res) {
+                    if (res.data.code == 200) {
+                      wx.showToast({
+                        title: '添加成功',
+                        icon: 'none',
+                        duration: 2000
+                      });
+                      that.setData({
+                        addition: false
+                      });
+                      that.getDetails()
+                    } else {
+                      wx.showToast({
+                        title: '添加失败，请重试！',
+                        icon: 'none',
+                        duration: 2000
+                      })
+                    }
+                  }
+                })
+              },
+              fail: function (res) {
+                wx.hideToast();
+                wx.showModal({
+                  title: '错误提示',
+                  content: '上传图片失败',
+                  showCancel: false,
+                  success: function (res) { }
+                })
+              }
+            });
+          }, 1000 * i)
+        }
+      }
+    });
+  },
+  //删除图片点击事件
+
+  delimg(e) {
+    let that = this;
+    wx.request({
+      url: requestUrl.requestUrl + '/jXAssociationApp/fromDel',
+      method: 'get',
+      data: {
+        id: e.currentTarget.dataset.id
+      },
+      header: {
+        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success(res) {
+        if (res.data.code == 200) {
+          wx.showToast({
+            title: '删除成功！',
+            icon: 'none',
+            duration: 2000
+          });
+          that.getDetails()
+        } else {
+          wx.showToast({
+            title: '删除失败，请重试！',
+            icon: 'none',
+            duration: 2000
+          });
+        }
+      }
+    })
+  },
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function() {
+    let that = this;
+    that.data.pageNum++;
+    that.dynamic(that.data.pageNum)
+  },
+})

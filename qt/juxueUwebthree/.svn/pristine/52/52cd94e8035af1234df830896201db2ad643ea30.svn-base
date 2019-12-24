@@ -1,0 +1,16 @@
+<view class="conter">
+  <input placeholder="请选择校区" bindinput="monitor" value="{{college}}"></input>
+  <scroll-view scroll-y bindscrolltolower="tolower" class="modal" wx:if="{{show}}">
+    <cover-view class="modalcov">
+      <cover-view wx:if="{{school.length}}">
+        <cover-view wx:for="{{school}}" wx:key="index" bindtap="choice" data-name="{{item.name}}" data-cam="{{item.collageCampus}}" data-id="{{item.id}}">
+          <cover-view class="collage">{{item.name}}-{{item.collageCampus}}</cover-view>
+        </cover-view>
+      </cover-view>
+      <view wx:else>
+        暂无数据！
+      </view>
+
+    </cover-view>
+  </scroll-view>
+</view>

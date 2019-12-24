@@ -1,0 +1,13 @@
+/* pages/components/uActivities/time/time.wxss */
+
+.pictime {
+  width: 450rpx;
+  background: none;
+}
+
+.pictxt {
+  background: none;
+  line-height: 40px;
+  width: 250rpx;
+  color: #ccc;
+}

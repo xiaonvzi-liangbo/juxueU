@@ -1,0 +1,23 @@
+// pages/my/collect/collect.js
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    current: '0'
+  },
+  //滑动切换事件
+  swiperChange(e) {
+    this.setData({
+      current: e.detail.current
+    })
+  },
+  //点击切换事件
+  switchs(e) {
+    this.setData({
+      current: e.currentTarget.dataset.current
+    })
+  },
+  getData() {},
+})

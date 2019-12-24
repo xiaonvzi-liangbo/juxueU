@@ -1,0 +1,85 @@
+<view>
+  <image src="{{details.img}}" class="heard_img"></image>
+  <view class="conter">
+    <view class="title">
+      <view>{{details.associationName}}</view>
+      <view>
+        <image src="/pages/images/renshu.png" class="renshu"></image>
+        <text class="number">{{details.associationNumber}}</text>
+      </view>
+    </view>
+    <view class="signature">
+      <textarea value="{{text}}" maxlength="100" disabled="{{compile}}" auto-height class="textarea" bindinput="monitor"></textarea>
+      <view>
+        <image src="/pages/images/fabutiezi.png" class="fabu" wx:if="{{commander&&compile}}" bindtap="addition"></image>
+        <view class="save" wx:if="{{!compile}}">
+          <view bindtap="accomplish">完成</view>
+          <view style="color:#BFBFBF;" bindtap="cancel">取消</view>
+        </view>
+      </view>
+    </view>
+    <view class="relation">
+      <view class="relation_title">
+        <view class="relation_block"></view>
+        <view class="relation_lx">联系方式</view>
+        <view class="relation_com" wx:if="{{commander&&!editor}}" bindtap="redact">编辑</view>
+        <view class="relation_com" style="color:#2996CC;margin-right:160rpx;" wx:if="{{commander&&editor}}" bindtap="redactcancels">取消</view>
+        <view class="relation_com" wx:if="{{commander&&editor}}" bindtap="redact" style="color:#2996CC;" bindtap="add">添加联系方式</view>
+      </view>
+      <block wx:for="{{details.jxAssociationFroms}}" wx:key="index">
+        <view class="relation_wary" wx:if="{{item.fromType=='1'}}">
+          <view>{{item.titile}}</view>
+          <view class="relation_distance">{{item.phone}}</view>
+          <view class="relation_distance">{{item.remarks}}</view>
+          <view class="relation_del" wx:if="{{editor}}" bindtap="delet" data-id="{{item.id}}">删除</view>
+        </view>
+      </block>
+    </view>
+    <view class="mien">
+      <view class="relation_title">
+        <view class="relation_block"></view>
+        <view class="relation_lx">社团风采</view>
+        <view class="relation_com" wx:if="{{commander&&!elegants}}" bindtap="elegant">编辑</view>
+        <view class="relation_com" style="color:#2996CC;margin-right:160rpx;" wx:if="{{commander&&elegants}}" bindtap="cancels">取消</view>
+        <view class="relation_com" style="color:#2996CC;" wx:if="{{commander&&elegants}}" bindtap="picture">添加图片</view>
+      </view>
+      <swiper autoplay="{{true}}" indicator-dots="{{true}}" class="relation_wary" indicator-active-color="#fff" circular="{{true}}">
+        <block wx:for="{{details.jxAssociationFroms}}" wx:key="index">
+          <swiper-item wx:if="{{item.fromType=='2'}}">
+            <image src="{{item.img}}"></image>
+            <image src="/pages/images/msnui.png" class="del" bindtap="delimg" data-id="{{item.id}}" wx:if="{{commander&&elegants}}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="dynamic">
+      <view class="relation_title">
+        <view class="relation_block"></view>
+        <view class="relation_lx">社团动态</view>
+      </view>
+      <view class="dyna_card" wx:for="{{stdynamic}}" wx:key="index">
+        <view>
+          <image src="{{item.img}}" class="card_img"></image>
+        </view>
+        <view class="card_conter" bindtap="particulars" data-id="{{item.id}}">
+          <view class="card_text">{{item.context}}</view>
+          <view class="card_bom">
+            <view>
+              <image src="/pages/images/browse.png" class="card_imgs"></image>{{item.visitNumber}}</view>
+            <view class="comment">
+              <image src="/pages/images/comment.png" class="card_imgs"></image>{{item.commentNumber}}</view>
+            <view class="card_time">{{item.createTime}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<model showModal="{{addition}}" width="60%" radius="0">
+  <form class="form" bindsubmit="formSubmit">
+    <input placeholder="姓名" name="name" class="form_in"></input>
+    <input placeholder="电话" name="phone" class="form_in"></input>
+    <input placeholder="备注(选填)" name="bz" class="form_in"></input>
+    <button class="model_save" formType="submit">保存</button>
+  </form>
+</model>

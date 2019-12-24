@@ -1,0 +1,21 @@
+<view class="head">
+  <view class="navigation">
+    <view class="center {{current=='0'?'center_check':''}}" bindtap="switchs" data-current="0">文章
+    </view>
+    <view class="center {{current=='1'?'center_check':''}}" bindtap="switchs" data-current="1">问答
+    </view>
+    <view class="center {{current=='2'?'center_check':''}}" bindtap="switchs" data-current="2">心情
+    </view>
+  </view>
+</view>
+<swiper bindchange="swiperChange" current="{{current}}" class="swiper">
+  <swiper-item>
+    <article></article>
+  </swiper-item>
+  <swiper-item>
+    <question></question>
+  </swiper-item>
+  <swiper-item>
+    <mood></mood>
+  </swiper-item>
+</swiper>

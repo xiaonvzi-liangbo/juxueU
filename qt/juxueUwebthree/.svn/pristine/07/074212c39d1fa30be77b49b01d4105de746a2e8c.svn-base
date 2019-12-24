@@ -1,0 +1,86 @@
+import requestUrl from "../../../utils/request.js"
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    checkedNum:'',
+    access_token: ''
+
+  },
+
+ 
+  //子组件调用的父组件的方法
+  checkNum(e) {
+    this.setData({
+      checkedNum: e.detail.checkedNum
+    })
+  },
+  //获取accessToken
+  accessToken(e) {
+    let that = this
+    let fun = e.currentTarget.dataset.fun
+    wx.request({
+      url: requestUrl.requestUrl + '/jj/weChat/getAccessToken',
+      method: "get",
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json'
+      },
+      success(res) {
+        that.setData({
+          access_token: res.data.data
+        })
+        if (fun == 'formSubmit') {
+          that.formSubmit(e)
+        }
+      }
+    })
+  },
+  //提交点击事件
+  formSubmit(e){
+    let that = this;
+    let err=true;
+    let conter = '';
+    if(!e.detail.value.name){
+      conter="姓名不能为空！"
+    } else if (!that.data.checkedNum){
+      conter="请选择校区！"
+    }else if(!e.detail.value.zy){
+      conter = "专业不能为空！"
+    }else{
+      err = false;
+      let userid = wx.getStorageSync('userid');
+      wx.request({
+        url: requestUrl.requestUrl +'/jXAssociationApp/add',
+        method:'post',
+        data:{
+          userId:userid,
+          name:e.detail.value.name,
+          major:e.detail.value.zy,
+          collageId: that.data.checkedNum,
+          autograph:e.detail.value.text,
+          associationType:'0',
+          accessToken: that.data.access_token
+
+        },
+        header:{
+          'content-type': 'application/json',
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success(res){
+          if(res.data.code=='200'){
+            let pages = getCurrentPages();
+            let prevPage = pages[pages.length - 2];
+            prevPage.onLoad()
+            wx.setStorageSync('renzheng', true)
+            wx.navigateBack({
+              delta:1
+            })
+          }
+        }
+      })
+    }
+  }
+})

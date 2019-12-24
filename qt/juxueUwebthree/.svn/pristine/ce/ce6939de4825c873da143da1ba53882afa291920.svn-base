@@ -1,0 +1,119 @@
+.complete{
+  width: 95%;
+  margin: auto;
+  padding-left: 50rpx;
+}
+.my{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+}
+.heards_img{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.heard_conter{
+  /* margin-left: 30rpx; */
+  width: 320rpx;
+}
+.title{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.heard_title{
+  width: 80%;
+  font-size: 34rpx;
+  font-weight: 900;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:1;
+  overflow: hidden;
+  
+}
+.heard_qm{
+  color: #808080FF;
+  font-size: 24rpx;
+  margin-top: 15rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:1;
+  overflow: hidden;
+}
+.texting{
+  /* text-align: right; */
+  width: 150rpx;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+}
+.anniu{
+  border: 1rpx solid #7D7D7D;
+  padding: 10rpx 20rpx;
+  border-radius: 10rpx;
+  float: right;
+  position: absolute;
+  right: 50rpx;
+}
+.textmy{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26rpx;
+  color: #808080FF;
+}
+.heard_tz{
+  width: 60rpx;
+  text-align: center;
+  color: #fff;
+  background-color: #E32626FF;
+  font-size: 20rpx;
+  margin-left: 25rpx;
+  padding: 2rpx 10rpx;
+  border-radius: 10rpx;
+  position: relative;
+  top: 10rpx;
+  white-space:nowrap; 
+}
+.bom_bot{
+  width: 80%;
+  border-bottom: 1rpx solid #CCCCCCFF;
+  position: absolute;
+  right: 0;
+  margin-top: 15rpx;
+}
+.heards_img1{
+  width: 34rpx;
+  height: 34rpx;
+  position: relative;
+  right: 30rpx;
+}
+.chengyuan{
+  display: flex;
+  flex-direction: row;
+  margin-top: 40rpx;
+}
+.attention{
+  padding: 10rpx 20rpx;
+  border-radius: 10rpx;
+  background-color: #2896CC;
+  color: #fff;
+}
+.texting1{
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  position: absolute;
+  right: 50rpx;
+}
+.attention1{
+  padding: 10rpx 20rpx;
+  border-radius: 10rpx;
+  /* background-color: #A8A9A9; */
+  color: #A8A9A9;
+}

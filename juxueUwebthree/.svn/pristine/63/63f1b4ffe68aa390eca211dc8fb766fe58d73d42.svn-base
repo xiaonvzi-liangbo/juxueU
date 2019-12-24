@@ -1,0 +1,9 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarBackgroundColor": "#2996CC",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "canvas-share": "/pages/components/my/canvas-share/canvasshare",
+    "getphone":"/pages/guidance/phone/phone"
+  }
+}

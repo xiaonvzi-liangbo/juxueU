@@ -1,0 +1,27 @@
+/* app.css 全局css中设置样式 */
+.custom{ 
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(to bottom right,#7590f2, #2b6cef);
+  z-index: 19;
+  text-align: center;
+  position: fixed;
+}
+.custom text{
+  color: #fff;
+  font-size: 34rpx;
+  font-weight: 500;
+  max-width: 280rpx;
+}
+.empty_custom{
+  height: 45px;
+  width: 100%;
+}
+.backtrack{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute; 
+  left: 20rpx;
+  z-index: 9999;
+}

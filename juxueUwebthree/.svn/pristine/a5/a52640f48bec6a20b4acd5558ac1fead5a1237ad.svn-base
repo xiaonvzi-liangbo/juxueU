@@ -1,0 +1,49 @@
+<navigations title="校园帖子" wx:if="{{!showPost}}"></navigations>
+<view class="entirety">
+  <view class="navigation">
+    <view class="nav_center" data-number="0" bindtap="attention"><text class="{{currentTab=='0'?'nav_underline':''}}">关注</text></view>
+    <view class="nav_center" data-number="1" bindtap="attention"><text class="{{currentTab=='1'?'nav_underline':''}}">最新</text></view>
+    <view class="nav_center" data-number="2" bindtap="attention"><text class="{{currentTab=='2'?'nav_underline':''}}">精品</text></view>
+    <view class="nav_center" data-number="3" bindtap="attention"><text class="{{currentTab=='3'?'nav_underline':''}}">问答</text></view>
+    <view class="nav_center" data-number="4" bindtap="attention"><text class="{{currentTab=='4'?'nav_underline':''}}">社团</text></view>
+  </view>
+  <view class="switch_page">
+    <scroll-view scroll-y style="height:82%;" bindscrolltolower="tolower">
+      <view wx:if="{{currentTab=='0'}}"><attention id="attention"></attention></view>
+      <view wx:if="{{currentTab=='1'}}"><boutique id="boutique"></boutique></view>
+      <view wx:if="{{currentTab=='2'}}"><newest id="newest"></newest></view>
+      <view wx:if="{{currentTab=='3'}}"><questions id="question"></questions></view>
+      <view wx:if="{{currentTab=='4'}}"><club id="club"></club></view>
+    </scroll-view>
+  </view>
+</view>
+<view>
+  <image src="/pages/images/announce.png" class="issue" bindtap="post"></image>
+</view>
+<i-action-sheet visible="{{showPost}}" post="{{showPost}}" mask-closable="true">
+  <view slot="header" class="backimg">
+    <view class="top_image">
+      <image src="../../images/down.png" class="down_img" bindtap="close"></image>
+    </view>
+    <view class="model_position">
+      <view class="model_top">
+        <image src="https://staticfile.xlcwx.com/userfiles/201909/20190917091147.png" class="tx_image"></image>
+        <view>Hi，今天是你来到聚学U的第{{mytime}}天</view>
+      </view>
+      <view class="model_bottom">
+        <view class="moddel_promulgator" bindtap="sendBy">
+          <image src="../../images/imageText.png" style="width:110rpx;height:80rpx;"></image>
+          <view>发图文</view>
+        </view>
+        <view class="moddel_promulgator1" bindtap="sendMood">
+          <image src="../../images/questions.png" style="width:110rpx;height:95rpx;"></image>
+          <view>发心情</view>
+        </view>
+        <view class="moddel_promulgator" bindtap="sendQuestions">
+          <image src="../../images/mood.png" style="width:110rpx;height:90rpx;"></image>
+          <view>发问答</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</i-action-sheet>

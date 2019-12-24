@@ -1,0 +1,72 @@
+<navigations title="我的贴子" wx:if="{{!showPost}}"></navigations>
+<view class="head">
+  <view class="head_tx" >
+    <view class="head_tx_tp">
+      <image src="{{userdata.logo}}" style="width:120rpx;height:120rpx;  border-radius: 50%;"></image>
+    </view>
+    <view class="head_nc">
+      <view class="head_name">{{userdata.nickName}}</view>
+      <image src="{{userdata.associationImg}}" class="mass"></image>
+      <view class="head_signature">{{associationName}}</view>
+    </view>
+  </view>
+  <view class="head_exhibition" >
+    <view class="head_auto">
+      <text style="margin-right:8rpx;">{{userdata.Image}}</text>文章</view>
+    <view class="head_auto">
+      <text style="margin-right:8rpx;">{{userdata.article==null?'0':userdata.article}}</text>回答</view>
+    <view class="head_auto">
+      <text style="margin-right:8rpx;">{{userdata.mood}}</text>心情</view>
+  </view>
+</view>
+<view class="conter">
+  <view class="con_title">
+    <view class="con_tetx {{current=='0'?'con_tetx_check':''}}" bindtap="switchs" data-current='0'>文章
+    </view>
+    <view class="con_tetx {{current=='1'?'con_tetx_check':''}}" bindtap="switchs" data-current='1'>问答
+    </view>
+    <view class="con_tetx {{current=='2'?'con_tetx_check':''}}" bindtap="switchs" data-current='2'>心情
+    </view>
+  </view>
+  <swiper class="con_swiper" bindchange="swiperChange" current="{{current}}">
+    <swiper-item>
+      <article wx:if="{{showCom}}"></article>
+    </swiper-item>
+    <swiper-item>
+      <question wx:if="{{showCom}}"></question>
+    </swiper-item>
+    <swiper-item>
+      <mood  wx:if="{{showCom}}"></mood>
+    </swiper-item>
+  </swiper>
+</view>
+<view class="bottom">
+  <image src="/pages/images/announce.png" class="img" bindtap="post"></image>
+</view>
+<i-action-sheet visible="{{showPost}}" post="{{showPost}}" mask-closable="true">
+  <view slot="header" class="backimg">
+    <view class="top_image">
+      <image src="../../images/down.png" class="down_img" bindtap="close"></image>
+    </view>
+    <view class="model_position">
+      <view class="model_top">
+        <image src="https://staticfile.xlcwx.com/userfiles/201909/20190917091147.png" class="tx_image"></image>
+        <view>Hi，今天是你来到聚学U的第{{mytime}}天</view>
+      </view>
+      <view class="model_bottom">
+        <view class="moddel_promulgator" bindtap="sendBy">
+          <image src="../../images/imageText.png" style="width:110rpx;height:80rpx;"></image>
+          <view>发图文</view>
+        </view>
+        <view class="moddel_promulgator1" bindtap="sendMood">
+          <image src="../../images/questions.png" style="width:110rpx;height:95rpx;"></image>
+          <view>发心情</view>
+        </view>
+        <view class="moddel_promulgator" bindtap="sendQuestions">
+          <image src="../../images/mood.png" style="width:110rpx;height:90rpx;"></image>
+          <view>发问答</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</i-action-sheet>

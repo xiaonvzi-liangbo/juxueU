@@ -1,0 +1,111 @@
+.all{
+  width: 95%;
+  margin: auto;
+}
+.search{
+  margin-top: 20rpx;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  background-color: #EBEBEB;
+  padding: 12rpx 30rpx;
+  border-radius: 50rpx;
+}
+.sea_input{
+  margin-left: 20rpx;
+  width: 100%;
+}
+.sea_clea{
+  position: absolute;
+  right: 24rpx;
+  color: #3B9BD0;
+}
+.history{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40rpx;
+  padding: 0 10rpx;
+}
+.his_title{
+  font-weight: 550;
+  color: 353535;
+}
+.his_label_posi{
+  margin-top: 35rpx;
+  padding: 0 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+.his_label{
+  background-color: #F2F2F2;
+  color: #A6A6A6;
+  padding: 10rpx 35rpx;
+  border-radius: 50rpx;
+  margin-right: 25rpx;
+  margin-bottom: 20rpx;
+}
+
+.al{
+  margin: 0 auto;
+}
+.title{
+  font-weight: 550;
+  margin-top: 40rpx;
+  margin-bottom: 20rpx;
+  margin-left: 25rpx;
+  color: #252525;
+}
+.row{
+  width: 95%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0 0 8rpx #DDDDDD;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+}
+.left_image{
+  margin: 15rpx 10rpx 15rpx 25rpx;
+}
+.title1{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 10rpx;
+  position: relative;
+  top: -30rpx;
+}
+.conter{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 28rpx;
+  margin-left: 10rpx;
+  position: relative;
+  top: 20rpx;
+}
+.auto{
+  flex: auto;
+  text-align: center;
+  margin-left: 10rpx;
+}
+.school_name{
+  font-size: 36rpx;
+  font-weight: 900;
+}
+.add{
+  font-size: 25rpx;
+  padding: 8rpx 30rpx;
+  background-color: #2896CC;
+  border-radius: 10rpx;
+  color: #fff;
+}
+.finish_bot{
+  font-size: 28rpx;
+  text-align: center;
+  margin-top: 40rpx;
+  margin-bottom: 20rpx;
+  color: #B5B5B5;
+}

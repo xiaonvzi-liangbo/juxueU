@@ -1,0 +1,124 @@
+<!--pages/uActivities/details/details.wxml-->
+<view>
+  <view class="martop">
+    <image style="width:100%;height:400rpx;" src="{{context.img?context.img:imgUrl}}" mode="scaleToFill" class="image"></image>
+  </view>
+  <view class="content">
+    <view class="title">
+      <view class="title_left">
+        <view class="content_title" data-number="0" bindtap="attention" style="width:130rpx">
+          <text class="{{currentTab=='0'?'nav_underline':''}}">详情</text>
+            <view wx:if="{{currentTab=='0'}}" class="bottom"></view>
+        </view>
+        <view class="content_title" data-number="1" bindtap="attention" style="width:130rpx">
+          <text class="{{currentTab=='1'?'nav_underline':''}}">讨论</text>
+            <view wx:if="{{currentTab=='1'}}" class="bottom"></view>
+        </view>
+      </view>
+      <view class="title_right">
+        <image bindtap="collection" class="left_img" src="{{collection?'/pages/images/icon-28.png':'/pages/images/icon-27.png'}}"></image>
+        <image class="left_img" src="/pages/images/icon-30.png"></image>
+
+      </view>
+    </view>
+
+    <view class="content_details" wx:if="{{currentTab=='0'}}">
+      <view class="details_title">{{context.theme}}</view>
+      <view class="info">
+        <view class="details_info">{{context.info}}</view>
+        <view class="details_text">
+          <view class="table">
+            <view class="tab">状态：</view>
+            <view class="tb"> {{context.activityState=='1'?"报名中":(context.activityState=='3'||context.activityState=='2'?"进行中":(context.activityState=='4'?"已结束":""))}}</view>
+          </view>
+          <view class="table">
+            <view class="tab">承办方：</view>
+            <view class="tb">{{context.undertake}}</view>
+          </view>
+          <view class="table">
+            <view class="tab">主办方：</view>
+            <view class="tb">{{context.host}}</view>
+          </view>
+          <view class="table">
+            <view class="tab">活动地点：</view>
+            <view class="tb">{{context.activityAddress}}</view>
+          </view>
+          <view class="table">
+            <view class="tab">起止时间：</view>
+            <view class="tb">{{activityStartTime}}至{{activityEndTime}}</view>
+          </view>
+          <view style="margin-right: 10rpx" class="table">
+            <view class="tab">报名截止:</view>
+            <view class="tb">{{enlistEndTime}}</view>
+          </view>
+          <view class="table">
+            <view class="tab">报名地点：</view>
+            <view class="tb">{{context.theme}}</view>
+          </view>
+        </view>
+      </view>
+    </view> 
+    <view wx:if="{{currentTab=='1'}}">
+
+      <scroll-view scroll-y style="height:82%;padding:0 45rpx" bindscrolltolower="tolower">
+        <block wx:for="{{onelist}}" wx:key="index">
+          <view class="com_img_name">
+            <image src="{{item.userLogo}}" class="com_img" bindtap="personage" data-id="{{postData.userId}}"></image>
+            <image src="{{item.associationImg}}" class="img_icon"></image>
+            <text class="com_name">{{item.userName}}</text>
+            <view class="com_bet">
+              <view>{{item.createTime}}</view>
+            </view>
+          </view>
+          <view class="com_conter" bindtap="getTwolist" data-oneid="{{item.id}}">
+            <view>
+              <text class="com_text">{{item.info}}</text>
+            </view>
+
+          </view>
+        </block>
+      </scroll-view>
+      <!-- //底部留言 -->
+      <form class="leave" bindsubmit="accessToken" data-fun="sendOnelist">
+        <input class="leave_inp" bindinput="assignment" bindconfirm="sendOnelist" data-id="{{postData.id}}" value="{{oneinfo}}"></input>
+        <button class="leave_but" formType="submit">留言</button>
+      </form>
+    </view>
+  </view>
+</view>
+<!--回复-->
+<i-action-sheet visible="{{showReply}}" mask-closable="true" bind:cancel="close">
+  <view slot="header">
+    <view class="reply" catchtouchmove="true" animation='{{animationData}}'>
+      <view class="rep_posi">
+        <view class="row">
+          <image src="../../images/close.png" style="width:47rpx;height:47rpx;" bindtap="close"></image>
+          <view class="rep_reply">回复详情</view>
+        </view>
+        <scroll-view class="rep_conter" scroll-y="true" style="height: 84%;">
+          <block wx:for="{{twolist}}" wx:key="index">
+            <view class="com_img_name">
+              <image src="{{item.userLogo}}" class="com_img"></image>
+              <text class="com_name">{{item.userName}}</text>
+              <view class="com_bet">{{item.createTime}}</view>
+            </view>
+            <view class="com_conter">
+              <view>
+                <text class="com_text">{{item.info}}</text>
+              </view>
+            </view>
+          </block>
+          <view style="height:40rpx;"></view>
+        </scroll-view>
+      </view>
+    </view>
+    <view class="rep_botom">
+      <!-- <input placeholder="回复评论 " bindinput="transmit" value="{{twoinfo}}" class="rep_input" cursor-spacing="10" confirm-type="send" bindconfirm="accessToken" data-fun="sendTwolist"></input>
+       <button class="leave_but" formType="submit">留言</button> -->
+        <form class="leave" bindsubmit="accessToken" data-fun="sendTwolist">
+        <input class="leave_inp" bindinput="transmit" bindconfirm="sendOnelist" data-id="{{postData.id}}" value="{{oneinfo}}"></input>
+        <button class="leave_but" formType="submit">留言</button>
+      </form>
+    </view>
+  </view>
+</i-action-sheet>

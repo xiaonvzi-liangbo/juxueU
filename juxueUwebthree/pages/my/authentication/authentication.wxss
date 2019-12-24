@@ -1,0 +1,40 @@
+.conter{
+  text-align: center;
+  padding-top: 200rpx;
+}
+.icons{
+  width: 200rpx;
+  height: 200rpx;
+}
+.images{
+  margin-top: 90rpx;
+}
+.rzicon{
+  width: 60rpx;
+  height: 60rpx;
+}
+.all{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10rpx;
+}
+.name{
+  width: 200rpx;
+  text-align: left;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+}
+.radio{
+  transform: scale(0.7);
+}
+.title{
+  margin-top: 30rpx;
+  font-size: 22rpx;
+  font-weight: 900;
+}
+.nr{
+  font-size: 22rpx;
+  margin-top: 15rpx;
+}

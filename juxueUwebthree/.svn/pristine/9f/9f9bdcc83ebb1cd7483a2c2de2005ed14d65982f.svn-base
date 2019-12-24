@@ -1,0 +1,95 @@
+const requestUrl = require('../../../utils/request.js')
+const quantity = require('../../../utils/quantity.js')
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    information:[],
+    finish:false,
+    branches:0,
+  },
+  //搜索点击事件
+  search(){
+    wx.navigateTo({
+      url: '/pages/universityCircle/search/search',
+    })
+  },
+  //获取信息
+  getData() {
+    let that=this;
+    that.data.branches++;
+    console.log(that.data.branches,'chakan')
+    wx.request({
+      url: requestUrl.requestUrl +'/jXCollageApp/findByHotAndNumber',
+      data:{
+        pageNum: that.data.branches,
+        pageSize:'10',
+      },
+      header: {
+        'content-type': 'application/json',
+        "content-type": "application/x-www-form-urlencoded"
+      },
+      success(res) {
+        let receive = res.data.rows;
+        console.log(receive,'查看这个数值')
+        for(let i=0;i<receive.length;i++){
+          //热度的处理
+          receive[i].hotNumber = quantity.number(receive[i].hotNumber);
+          //人数的处理
+          receive[i].peopleNumber = quantity.number(receive[i].peopleNumber);
+          //帖子数
+          receive[i].postsNumber = quantity.number(receive[i].postsNumber);
+        }
+        that.setData({
+          information: that.data.information.concat(receive)
+        });
+        if (!receive){
+          that.setData({
+            finish:true
+          })
+        }
+      }
+    })
+  },
+  //高校点击加入事件
+  add(e){
+    let userid = wx.getStorageSync('userid');
+    wx.request({
+      url: requestUrl.requestUrl +'/jXUserCollageApp/add',
+      data:{
+        collageId:e.currentTarget.dataset.id,
+        userId: userid
+      },
+      method:'POST',
+      header:{
+        'content-type': 'application/json',
+        "content-type": "application/x-www-form-urlencoded"
+      },
+      success(res){
+        if(res.data.code==200){
+          wx.navigateTo({
+            url: '/pages/universityCircle/invitation/invitation'
+          });
+          wx.setStorageSync('collageid', e.currentTarget.dataset.id)
+        } else if (res.data.code == 500){
+          wx.showToast({
+            title: '加入失败，请重试',
+            icon: 'none',
+            duration: 2000
+          });
+        }
+      }
+    })
+  },
+  //页面上拉触底事件
+  onReachBottom(){
+    //作用于懒加载
+    this.getData();
+    console.log('666666666666666')
+  },
+  onLoad(){
+    this.getData()
+  }
+})

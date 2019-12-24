@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "index": "/pages/home/home",
+    "hotspot": "/pages/hotspot/hotspot",
+    "announce": "/pages/components/article/article",
+    "uActivities": "/pages/uActivities/uActivities",
+    "my": "/pages/my/my",
+    "navigation":"/pages/index/navigation/navigation"
+  }
+}

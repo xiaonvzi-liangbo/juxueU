@@ -1,0 +1,27 @@
+.titleImg{
+  width: 42rpx;
+  height: 45rpx;
+  margin: 0 15rpx 0 4rpx;
+}
+.rightImg{
+  width: 15rpx;
+  height: 25rpx;
+  position: absolute;
+  right: 40rpx;
+}
+.switch{
+  position: absolute;
+  right: 10rpx;
+}
+.path{
+  width: 94%;
+  font-size: 30rpx;
+  margin: auto;
+  display: flex;
+  height: 100rpx;
+  flex-direction: row;
+  align-items: center;
+}
+.base{
+  margin-top: 20rpx;
+}

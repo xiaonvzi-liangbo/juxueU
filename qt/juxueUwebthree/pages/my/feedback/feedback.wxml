@@ -1,0 +1,6 @@
+<navigation dome="意见反馈"></navigation>
+<view>
+  <textarea  placeholder="请输入内容，字数在300字以内" class="textarea" maxlength="{{number}}" bindinput="expInput" value="{{text}}"></textarea>
+  <view class="word_count">{{cursor}}/300</view>
+</view>
+<view class="submit" bindtap="postdata">立即提交</view>

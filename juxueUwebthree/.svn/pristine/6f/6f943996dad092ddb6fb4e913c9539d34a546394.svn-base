@@ -1,0 +1,24 @@
+<navigations title="大学圈"></navigations>
+<view class="all">
+  <view class="search" bindtap="search">
+    <image src="../../images/search1.png" mode="aspectFit" style="width:170rpx;height:50rpx;"></image>
+  </view>
+  <view class="title size36">热门高校</view>
+  <view class="row" wx:for="{{information}}" wx:key="index">
+    <view class="left_image"><image src="{{item.linkUrl}}" style="width:200rpx;height:170rpx;"></image></view>
+    <view style="width:60%;">
+      <view class="title1">
+        <view class="school_name">{{item.name}}</view>
+        <view class="add" bindtap="add" data-id="{{item.id}}" data-name="{{item.name}}">加入</view>
+      </view>
+      <view class="conter">
+        <view class="auto"><image src="/pages/images/redu.png" style="width:30rpx;height:30rpx;margin-right:7rpx;"></image>{{item.hotNumber}}</view>
+        <view class="auto"><tetx style="margin-right:10rpx;">帖子数</tetx>{{item.postsNumber}}</view>
+        <view class="auto"><image src="/pages/images/renshu.png" style="width:30rpx;height:30rpx;margin-right:5rpx;"></image>{{item.peopleNumber}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{finish}}">
+  <view class="finish_bot">已经到底了哦</view>
+</view>

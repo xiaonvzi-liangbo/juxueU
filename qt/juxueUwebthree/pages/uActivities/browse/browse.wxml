@@ -1,0 +1,20 @@
+<navigation dome="浏览记录"></navigation>
+<view style="padding-top:20rpx;" wx:for="{{eventContent}}" wx:key="index">
+   <view slot="content">
+      <navigator url="/pages/uActivities/details/details?id={{item.id}}" hover-class="navigator-hover">
+        <view class="entire">
+          <view>
+            <image src=" {{item.img}} " class="logo"></image> 
+          </view>
+          <view class="entireRight">
+            <view class="cont_title">{{item.theme}}</view>
+              <button class="cont_con " style="{{item.activityState==4?'background-image: linear-gradient(to left, #D30000 , #FF3F3F);':'background-image: linear-gradient(to left, #D0D000 , #E8E865);'}}">{{item.activityState=='1'?"报名中":(item.activityState=='3'||item.activityState=='2'?"进行中":(item.activityState=='4'?"已结束":""))}}</button>
+            <view class="cont_time ">{{item.collageName}}</view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+</view>
+<view wx:if="{{!eventContent[0]}}" style=" width: 100%;height: 100%; overflow: hidden">
+  <image style="width: 100%;height:100%" mode="aspectFill" src="/pages/images/activities.jpg"></image>
+</view>

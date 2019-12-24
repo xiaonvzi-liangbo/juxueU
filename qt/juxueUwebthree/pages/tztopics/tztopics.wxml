@@ -1,0 +1,60 @@
+<navigation dome="帖子话题"></navigation>
+<!--pages/tztopics/tztopics.wxml-->
+<view class="header">
+  <view class="left">
+    <image class="left_img" src="{{topics.img}}"></image>
+  </view>
+  <view class="header_right" style="margin-left:24rpx">
+    <view class="name">{{topics.name}}</view>
+    <view class="num" >
+      <view>
+         <text class="cuIcon-hotfill search"></text>
+        <text>{{topics.visitNumber}}万热度</text>
+      </view>
+      <view>
+        {{topics.fabulousNumber}}万观看
+      </view>
+
+    </view>
+  </view>
+  <button class="{{isFollow=='0'?'attention':'attentionbut'}}" bindtap="attention"  data-id="{{topics.id}}">{{isFollow=='0'?'关注':'取消关注'}}</button>
+</view>
+<view class="modul">
+  <view style="background-color: #fff;margin-top:10rpx;" wx:for="{{toplist}}" wx:key="index">
+    <view class="back">
+      <view class="left_size">
+        <view class="mod_row">
+          <view class="aligning" bindtap="personage" data-id="{{item.userId}}">
+            <image src="{{item.userLogo}}" class="img_tx"></image>
+            <image src="{{item.associationImg}}" class="img_icon"></image>
+            <view>
+              <text class="school_title">{{item.userName}}</text>
+      
+              <view class="school">{{item.associationImg =='https://staticfile.xlcwx.com/userfiles/201910/20191009145821.png'?item.associationName:item.collageName}}</view>
+
+            </view>
+          </view>
+        </view>
+        <view class="mod_title" bindtap="particulars" data-id="{{item.id}}">
+          <rich-text nodes="{{item.title?item.title:item.context}}"> </rich-text>
+        </view>
+         <view bindtap="particulars" class="images" data-id="{{item.id}}">
+          <image src="{{item.jxCollagePostsFroms[0].imgUrl}}" class="img_size"></image>
+          <image src="{{item.jxCollagePostsFroms[1].imgUrl}}" class="img_size"></image>
+          <image src="{{item.jxCollagePostsFroms[2].imgUrl}}" class="img_size"></image>
+        </view>
+        <view class="mod_row" bindtap="particulars" data-id="{{item.id}}">
+          <view class="mod_bottom">
+            <image src="/pages/images/browse.png" style="width:24rpx;height:24rpx;"></image>
+            <view class="mod_text">{{item.visitNumber}}</view>
+            <image src="/pages/images/comment.png" class="com_image"></image>
+            <view>{{item.commentNumber}}</view>
+            <image src="/pages/images/adress.png" class="com_image" style="margin-left:30rpx;"></image>
+            <view>{{item.collageName==null?item.associationName:item.collageName}}</view>
+          </view>
+          <view class="mod_time">{{item.createTime}}</view>
+        </view>
+      </view> 
+    </view>
+  </view>
+</view>

@@ -1,0 +1,16 @@
+<scroll-view scroll-y class="all">
+
+    <textarea placeholder="分享一下今天的心情~" show-confirm-bar="{{false}}" class="textarea" placeholder-style="color:#D1D1D1" bindinput="content" value="{{context}}"></textarea>
+
+
+  <view class="upload">
+    <view wx:if="{{files.length!=0}}" class="upload" wx:for="{{files}}" wx:key="index">
+      <image src="{{item}}" class="images"></image>
+      <view class="delect" bindtap="imageDeletion" data-index="{{index}}" ><image src="/pages/images/ImageDeletion.png" class="del"></image></view>
+    </view>
+    <image src="../../images/uploading.png" class="images" bindtap="uploading" wx:if="{{file.length!=9}}"></image>
+  </view>
+  <view class="button">
+    <view class="but_fbwt" bindtap="issue"> 发布 </view>
+  </view>
+</scroll-view>

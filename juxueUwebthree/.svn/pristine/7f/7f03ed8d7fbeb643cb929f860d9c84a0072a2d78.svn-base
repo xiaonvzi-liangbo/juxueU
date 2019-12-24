@@ -1,0 +1,62 @@
+const requestUrl = require('../../../../utils/request.js')
+Component({
+  /**
+   * 组件的属性列表
+   */
+  properties: {
+
+  },
+
+  /**
+   * 组件的初始数据
+   */
+  data: {
+    news:[],
+    pageNum:1
+  },
+
+  /**
+   * 组件的方法列表
+   */
+  methods: {
+    getNews() {
+      let that = this;
+      let userid = wx.getStorageSync('userid');
+      wx.request({
+        url: requestUrl.requestUrl + '/jXInformationApp/findByType',
+        method: 'get',
+        data: {
+          pageNum: that.data.pageNum,
+          pageSize: '10',
+          type: '通知',
+          userId: userid
+        },
+        header: {
+          'content-type': 'application/json',
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success(res) {
+          console.log(res)
+          that.setData({
+            news: that.data.news.concat(res.data.rows)
+          })
+        }
+      })
+    },
+    //上拉加载
+    tolower() {
+      this.data.pageNum++;
+      this.getNews()
+    },
+    //发帖人详情
+    personage(e) {
+      console.log(e)
+      wx.navigateTo({
+        url: '/pages/universityCircle/myPost/myPost?id=' + e.currentTarget.dataset.id,
+      })
+    },
+  },
+  attached() {
+    this.getNews()
+  }
+})
